@@ -11,6 +11,7 @@
     }
   },
   "scripts": {
+    "preview": "vite preview --port 8080",
     "dev": "vite --host",
     "build": "tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "jest --runInBand",
