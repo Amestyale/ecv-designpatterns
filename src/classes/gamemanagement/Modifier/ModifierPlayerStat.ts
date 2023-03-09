@@ -4,7 +4,7 @@ import Player from "../../Player";
 import Modifier from "./Modifier";
 
 export default abstract class ModifierPlayerStat extends Modifier {
-  private _stat: PlayerDataList // TODO change type
+  private _stat: PlayerDataList 
 
   constructor(stat: PlayerDataList, value: number){
     super(value)
@@ -23,10 +23,8 @@ export default abstract class ModifierPlayerStat extends Modifier {
     switch(this._stat){
       case PlayerDataList.health:
         return (player.health + this.value) > 0
-        break
       case PlayerDataList.money:
         return (player.money + this.value) > 0
-        break
     }
   }
 
@@ -34,10 +32,8 @@ export default abstract class ModifierPlayerStat extends Modifier {
     switch(stat){
       case PlayerDataList.health:
         player.health =+ this.value
-        break
       case PlayerDataList.money:
         player.money =+ this.value
-        break
     }
   }
 

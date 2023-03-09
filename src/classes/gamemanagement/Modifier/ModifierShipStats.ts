@@ -1,11 +1,10 @@
 
 import { ShipDataList } from "../../../types/ShipStatList";
-import Player from "../../Player";
 import Ship from "../../Ship";
 import Modifier from "./Modifier";
 
 export default abstract class ModifierShipStat extends Modifier {
-  private _stat: ShipDataList // TODO change type
+  private _stat: ShipDataList 
 
   constructor(stat: ShipDataList, value: number){
     super(value)
@@ -24,13 +23,10 @@ export default abstract class ModifierShipStat extends Modifier {
     switch(this._stat){
       case ShipDataList.fuel:
         return (ship.fuel + this.value) > 0
-        break
       case ShipDataList.shield:
         return (ship.shield + this.value) > 0
-        break
       case ShipDataList.health:
         return (ship.health + this.value) > 0
-        break
     }
   }
 
