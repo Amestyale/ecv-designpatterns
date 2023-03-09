@@ -1,5 +1,6 @@
 import ItemPlayer from "./ItemPlayer";
 import Race from "./Race";
+import Ship from "./Ship";
 
 class Player {
   private _health: number;
@@ -7,14 +8,16 @@ class Player {
   private _race: Race;
 
   private _inventory: [ItemPlayer];
+  private _ship: Ship;
 
-  constructor(health: number, money: number, race: Race, inventory: [ItemPlayer]) {
+  constructor(health: number, money: number, race: Race, inventory: [ItemPlayer], ship: Ship) {
     this._health = health;
     this._money = money;
     this._race = race;
 
     //TODO Define how inventory work
     this._inventory = inventory;
+    this._ship = ship;
   }
  
   public get health(){
@@ -47,6 +50,10 @@ class Player {
 
   public set inventory(inventory: [ItemPlayer]){
     this._inventory = inventory;
+  }
+
+  public get ship(){
+    return this._ship
   }
 }
 

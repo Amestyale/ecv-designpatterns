@@ -45,5 +45,8 @@ class Ship {
 
     }
    
+    getMaxFlyingDistance(){
+      return this.fuel * 0.5
+    }
 }
 export default Ship;
