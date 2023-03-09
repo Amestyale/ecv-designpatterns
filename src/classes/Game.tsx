@@ -42,7 +42,7 @@ export default class Game {
     this._currentChapter = chapter
   }
 
-  public nextChapters() : Array<Chapter> {
+  public nextChaptersAvailables() : Array<Chapter> {
     const currentX = this._currentChapter.x
     const currentY = this._currentChapter.y
     const ship = this.player.ship;
