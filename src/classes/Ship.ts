@@ -1,10 +1,12 @@
+import ItemShip from "./ItemShip";
+
 class Ship {
-    public _items:[string];
+    public _items:[ItemShip];
     public _fuel:number;
     public _health:number;
     public _shield:number;
 
-    constructor(fuel: number, health: number, shield: number, items: [string]) {
+    constructor(fuel: number, health: number, shield: number, items: [ItemShip]) {
         this._fuel = fuel;
         this._health = health;
         this._shield = shield;
@@ -32,6 +34,13 @@ class Ship {
         this._shield = shield;
     }
 
+    public get items(){
+        return this._items;
+      }
+    
+      public set items(items: [ItemShip]){
+        this._items = items;
+      }
     addItems() {
 
     }

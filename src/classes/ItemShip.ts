@@ -1,11 +1,12 @@
 import Item from "./Item";
+import ShipStatList from "../types/ShipStatList";
 
 class ItemShip extends Item {
     private _type: string;
     private _category: string;
-    private _stat: [{name: string, modifier: number}];
+    private _stat: [{name: ShipStatList, modifier: number}];
   
-    constructor(title: string, description: string, stat: [{name: string, modifier: number}], type: string, category: string) {
+    constructor(title: string, description: string, stat: [{name: ShipStatList, modifier: number}], type: string, category: string) {
 
         super(title, description);
 
@@ -39,7 +40,7 @@ class ItemShip extends Item {
         return this._stat;
       }
     
-      public set stat(stat: [{name: string, modifier: number}]){
+      public set stat(stat: [{name: ShipStatList, modifier: number}]){
         this._stat = stat;
       }
 

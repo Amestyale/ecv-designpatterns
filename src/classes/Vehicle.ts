@@ -1,37 +1,42 @@
 class Vehicle {
-    constructor(name: string, fuelMax: number, healthMax: number, shieldMax: number) {
-        this.name = name;
-        this.fuelMax = fuelMax; 
-        this.healthMax = healthMax;  
-        this.shieldMax = shieldMax;     
+    private _name: string;
+    private _maxFuel: number;
+    private _maxHealth: number;
+    private _maxShield: number;
+
+    constructor(name: string, maxFuel: number, maxHealth: number, maxShield: number) {
+        this._name = name;
+        this._maxFuel = maxFuel; 
+        this._maxHealth = maxHealth;  
+        this._maxShield = maxShield;     
     }
 
     public get name() {
-        return this.name;
+        return this._name;
     }
     public set name(name: string) {
-        this.name = name;
+        this._name = name;
     }
 
-    public get fuelMax() {
-        return this.fuelMax;
+    public get maxFuel() {
+        return this._maxFuel;
     }
-    public set fuelMax(fuelMax: number) {
-        this.fuelMax = fuelMax;
-    }
-
-    public get healthMax() {
-        return this.healthMax;
-    }
-    public set healthMax(healthMax: number) {
-        this.healthMax = healthMax;
+    public set maxFuel(maxFuel: number) {
+        this._maxFuel = maxFuel;
     }
 
-    public get shieldMax() {
-        return this.shieldMax;
+    public get maxHealth() {
+        return this._maxHealth;
     }
-    public set shieldMax(shieldMax: number) {
-        this.shieldMax = shieldMax;
+    public set maxHealth(maxHealth: number) {
+        this._maxHealth = maxHealth;
+    }
+
+    public get maxShield() {
+        return this._maxShield;
+    }
+    public set maxShield(maxShield: number) {
+        this._maxShield = maxShield;
     }
 }
 export default Vehicle;
