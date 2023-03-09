@@ -5,4 +5,9 @@ enum PlayerStatList {
     "luck"
   }
 
-export default PlayerStatList;
+enum PlayerDataList {
+    "health",
+    "money"
+}
+
+export { PlayerStatList, PlayerDataList};
