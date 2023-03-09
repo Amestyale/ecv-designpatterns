@@ -4,4 +4,4 @@ enum ShipStatList {
     "maxFuel"
   }
 
-export default ShipStatList;
+export {ShipStatList};
