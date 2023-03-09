@@ -1,10 +1,10 @@
 import Item from "./Item";
-import ShipStatList from "../types/ShipStatList";
+import { ShipStatList } from "../types/ShipStatList";
 
 class ItemShip extends Item {
-    private _stat: [{name: string, modifier: number}];
+    private _stat: [{name: ShipStatList, modifier: number}];
   
-    constructor(id: string, title: string, description: string, stat: [{name: string, modifier: number}], type: string, category: string) {
+    constructor(id: string, title: string, description: string, stat: [{name: ShipStatList, modifier: number}], type: string, category: string) {
 
         super(id, title, description, type, category);
 
