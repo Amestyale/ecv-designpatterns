@@ -4,4 +4,10 @@ enum ShipStatList {
     "maxFuel"
   }
 
-export {ShipStatList};
+  enum ShipDataList {
+    "health",
+    "shield",
+    "fuel"
+  }
+
+export {ShipStatList, ShipDataList};
