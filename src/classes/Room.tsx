@@ -3,14 +3,14 @@ export default class Room {
   private _title: string
   private _text: string
   private _options: [any]
-  private _answerType: string
+  private _optionFacade: string
 
-  constructor(id: number, title: string, text: string, options: [any], answerType: string) {
+  constructor(id: number, title: string, text: string, options: [any], optionFacade: string) {
     this._id = id
     this._title = title
     this._text = text
     this._options = options
-    this._answerType = answerType
+    this._optionFacade = optionFacade
   }
 
   get id(): number {
@@ -25,7 +25,8 @@ export default class Room {
   get options(): [any] {
     return this._options
   }
-  get answerType(): string {
-    return this._answerType
+  get optionFacade(): String{
+    return this._optionFacade
   }
+
 }
