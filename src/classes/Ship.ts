@@ -44,5 +44,17 @@ class Ship {
     addItem(item: ItemShip) {
         this._items.push(item)
     }
+
+    removeItem(id: string) {
+        // Find item index with given id
+        const index = this._items.findIndex(item => item.id === id);
+        // If item not found, return array without modification
+        if (index === -1) {
+          return this._items;
+        }
+        // Delete item
+        this._items.splice(index, 1);
+        return this._items;
+      }
 }
 export default Ship;
