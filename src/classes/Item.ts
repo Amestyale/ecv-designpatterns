@@ -1,10 +1,20 @@
 class Item {
+  private _id: number;
   private _title: string;
   private _description: string;
 
-  constructor(title: string, description: string) {
+  constructor(id: number, title: string, description: string) {
+    this._id = id;
     this._title = title;
     this._description = description;
+  }
+
+  public get id(){
+    return this._id;
+  }
+
+  public set id(id: number){
+    this._id = id;
   }
 
   public get title(){
