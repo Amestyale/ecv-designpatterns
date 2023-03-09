@@ -41,6 +41,7 @@ class Ship {
     public set items(items: [ItemShip]){
         this._items = items;
     }
+
     addItem(item: ItemShip) {
         this._items.push(item)
     }
@@ -56,5 +57,9 @@ class Ship {
         this._items.splice(index, 1);
         return this._items;
       }
+   
+    getMaxFlyingDistance(){
+      return this.fuel * 0.5
+    }
 }
 export default Ship;
