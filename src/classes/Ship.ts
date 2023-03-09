@@ -31,11 +31,10 @@ class Ship {
     public set shield(shield: number) {
         this._shield = shield;
     }
-/*
-    getHealthMax(vehicle) {
+
+    addItems() {
 
     }
-    */
    
 }
 export default Ship;
