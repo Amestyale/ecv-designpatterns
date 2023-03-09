@@ -1,5 +1,5 @@
 import Item from "./Item";
-import PlayerStatList from "../types/PlayerStatList";
+import { PlayerStatList } from "../types/PlayerStatList";
 
 class ItemPlayer extends Item {
     private _stat: [{name: PlayerStatList, modifier: number}];
