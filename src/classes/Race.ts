@@ -1,4 +1,4 @@
-class Race {
+abstract class Race {
   private _name: string;
   private _maxHealth: number;
 
