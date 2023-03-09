@@ -3,7 +3,7 @@ import { PlayerDataList } from "../../../types/PlayerStatList";
 import Player from "../../Player";
 import Modifier from "./Modifier";
 
-export default abstract class ModifierPlayerStat extends Modifier {
+export default class ModifierPlayerStat extends Modifier {
   private _stat: PlayerDataList 
 
   constructor(stat: PlayerDataList, value: number){

@@ -3,7 +3,7 @@ import { ShipDataList } from "../../../types/ShipStatList";
 import Ship from "../../Ship";
 import Modifier from "./Modifier";
 
-export default abstract class ModifierShipStat extends Modifier {
+export default class ModifierShipStat extends Modifier {
   private _stat: ShipDataList 
 
   constructor(stat: ShipDataList, value: number){
