@@ -36,14 +36,13 @@ class Ship {
 
     public get items(){
         return this._items;
-      }
-    
-      public set items(items: [ItemShip]){
-        this._items = items;
-      }
-    addItems() {
-
     }
-   
+    
+    public set items(items: [ItemShip]){
+        this._items = items;
+    }
+    addItem(item: ItemShip) {
+        this._items.push(item)
+    }
 }
 export default Ship;
