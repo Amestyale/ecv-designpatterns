@@ -10,6 +10,7 @@ function AdapterOption(props: any) {
       break;
     default:
       return (<h2>Hmmm, nan :l</h2>)
+
   }
 }
 

@@ -1,3 +1,5 @@
+import Option from "./gamemanagement/Option"
+
 export default class Room {
   private _id: number
   private _title: string
@@ -22,10 +24,10 @@ export default class Room {
   get text(): string {
     return this._text
   }
-  get options(): [any] {
+  get options(): Option[] {
     return this._options
   }
-  get optionFacade(): String{
+  get optionFacade(): String {
     return this._optionFacade
   }
 

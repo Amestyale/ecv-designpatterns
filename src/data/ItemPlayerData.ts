@@ -48,6 +48,14 @@ let ItemPlayerData =
         category: '',
         stat: [{name: 'maxHealth', modifier: '-5'}],
     },
+    {
+        id: 'presence_douteuse',
+        title: 'Présence douteuse',
+        description: 'La chose qui errait dans le monolithe vous a suivi, ses intentions à votre égard restent trouble.',
+        type: 'effect',
+        category: '',
+        stat: [{name: 'luck', modifier: '1'}],
+    },
 ];
 
 export default ItemPlayerData;
