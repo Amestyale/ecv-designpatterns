@@ -10,18 +10,15 @@ import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
 
 
 export default class Scenario {
-  private _planets: Planet[]
   private _distance: number
   private _gameinstance: any
 
-  constructor(PlanetData: any[], gameInstance : any) {
-    this._distance = 100;
-
+  constructor(gameInstance : any) {
+    this._distance = 1000;
     this._gameinstance = gameInstance
-    this._planets = this.InstantiatePlanetList(PlanetData);
   }
 
-  private InstantiatePlanetList(PlanetData: Planet[]): any{
+  public InstantiatePlanetList(PlanetData: Planet[]): any{
 
     const planetlist = PlanetData.map(x => new Planet(
       x.x,
@@ -55,6 +52,16 @@ export default class Scenario {
     return roomlist
   }
 
+  public instanciateRoom(RoomData: any): Room{
+    return new Room(
+      RoomData.id,
+      RoomData.title,
+      RoomData.text,
+      this.instantiateOptions(RoomData.options),
+      RoomData.optionFacade
+    )
+  }
+
   private instantiateOptions(options: any): Option[]{
     return options.map((option: any)=> this.instantiateOption(option))
   }
@@ -83,7 +90,4 @@ export default class Scenario {
   }
 
   
-  get planets(): Planet[] {
-    return this._planets
-  }
 }

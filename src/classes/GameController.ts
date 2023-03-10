@@ -1,3 +1,4 @@
+import EventsData from '../data/EventsData'
 import { PlayerDataList } from '../types/PlayerStatList'
 import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
@@ -16,6 +17,8 @@ export default class GameController {
   private _currentPlanet: Planet | null
   private _currentRoomIndex: number
   private _inspace: boolean
+  private _inevent: boolean
+  private _canevent: boolean
   private _planets: Planet[]
 
   constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
@@ -25,9 +28,11 @@ export default class GameController {
     this._player = player
     this._currentPlanet = null
 
-    const scenario =  new Scenario(planetData, this)
-    this._planets = scenario.planets
+    const scenario =  new Scenario( this)
+    this._planets = scenario.InstantiatePlanetList(planetData);
     this._inspace = true
+    this._inevent = false
+    this._canevent = false
 
     this._currentRoomIndex = -1
   }
@@ -68,23 +73,30 @@ export default class GameController {
       if(m) m.apply()
     })
 
-    if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
+    if(this._inevent){
+    } else if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
       this._currentRoomIndex++
     } else {
       this._inspace = true
       this._currentRoomIndex = -1
     }
-    
+
   }
 
   public currentRoom(): Room {
-    if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[this._currentRoomIndex]
+    if(this._inevent){
+      this._canevent = false
+      this._inevent = false
+      const scenario = new Scenario(this);
+      return scenario.instanciateRoom(EventsData[0])
+    } else if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[this._currentRoomIndex]
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
         const modifier = new ModifierCustom(() => {
           this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
           this.currentPlanet = planet
           this.inSpace = false
+          this._inevent = (this._canevent) ? ((Math.random() * 0) + this.player.race.luck) < 8 : false
         })
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
