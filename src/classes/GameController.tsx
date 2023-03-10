@@ -3,19 +3,19 @@ import Chapter from "./Chapter"
 export default class GameController {
   private _id: number
   private _name: string
-  private _distance: string
+  private _distance: number
   private _player: any
 
-  private _currentChapter: Chapter;
+  private _currentChapter: Chapter | null;
   private _inspace: boolean;
   private _chapters: [Chapter];
 
-  constructor(id: number, name: string, distance: string, player: any, chapters: [Chapter], startChapter: Chapter) {
+  constructor(id: number, name: string, distance: number, player: any, chapters: [Chapter]) {
     this._id = id
     this._name = name
     this._distance = distance
     this._player = player
-    this._currentChapter = startChapter
+    this._currentChapter = null
     this._chapters = chapters
     this._inspace = true
   }
@@ -28,7 +28,7 @@ export default class GameController {
     return this._name
   }
 
-  get distance(): string {
+  get distance(): number {
     return this._distance
   }
 
@@ -36,7 +36,7 @@ export default class GameController {
     return this._player
   }
 
-  get currentChapter(): Chapter {
+  get currentChapter(): Chapter | null {
     return this._currentChapter
   }
 
@@ -44,13 +44,13 @@ export default class GameController {
     return this._inspace
   }
 
-  set currentChapter(chapter: Chapter) {
+  set currentChapter(chapter: Chapter | null) {
     this._currentChapter = chapter
   }
 
   public nextChaptersAvailables() : Array<Chapter> {
-    const currentX = this._currentChapter.x
-    const currentY = this._currentChapter.y
+    const currentX = (this._currentChapter) ? this._currentChapter.x : 0
+    const currentY = (this._currentChapter) ? this._currentChapter.y : 0
     const ship = this.player.ship;
     return this._chapters.filter((chapter)=>{
       const distance = chapter.distanceFrom(currentX, currentY)
