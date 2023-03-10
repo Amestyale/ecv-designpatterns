@@ -1,4 +1,6 @@
+import { PlayerDataList } from '../types/PlayerStatList'
 import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
+import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Room from './Room'
@@ -55,7 +57,12 @@ export default class GameController {
     if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[0]
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
-        const modifier = new ModifierCustom(() => (this._currentPlanet = planet))
+        const modifier = new ModifierCustom(() => { 
+          console.log("Coucou")
+          this._currentPlanet = planet 
+          this._inspace = false
+        })
+        const modif2 = new ModifierPlayerStat(this._player, PlayerDataList.health, 50)
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
       })
@@ -69,7 +76,7 @@ export default class GameController {
     const ship = this.player.ship
     return this._planets.filter((planet) => {
       const distance = planet.distanceFrom(currentX, currentY)
-      return ship.getMaxFlyingDistance() <= distance
+      return true // ship.getMaxFlyingDistance() <= distance
     })
   }
 }

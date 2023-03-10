@@ -4,6 +4,7 @@ import Player from '../classes/Player'
 import useGameController from '../hooks/useGameController'
 import usePlanets from '../hooks/usePlanets'
 import useRooms from '../hooks/useRooms'
+import AdapterOption from './AdapterOption'
 
 interface Props {
   player: Player
@@ -24,11 +25,11 @@ const Game = ({ player }: Props) => {
     <div>
       <p>Life {player.health}</p>
       <p>Money {player.money}</p>
-      {/* <AdapterOption
+      <AdapterOption
         callback={choose}
-        type={room.optionFacade}
-        options={room.options}
-      /> */}
+        type={gameController.currentRoom().optionFacade}
+        options={gameController.currentRoom().options}
+      />
     </div>
   )
 }
