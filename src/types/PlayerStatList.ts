@@ -1,13 +1,13 @@
 enum PlayerStatList {
-    "maxHealth",
-    "strenght",
-    "intelligence",
-    "luck"
+    "maxHealth" = "maxHealth",
+    "strenght" = "strenght",
+    "intelligence" = "intelligence",
+    "luck" = "luck"
   }
 
 enum PlayerDataList {
-    "health",
-    "money"
+    "health" = "health",
+    "money" = "moner"
 }
 
 export { PlayerStatList, PlayerDataList};

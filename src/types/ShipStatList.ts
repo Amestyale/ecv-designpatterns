@@ -1,12 +1,12 @@
 enum ShipStatList {
-    "maxHealth",
-    "maxShield",
-    "maxFuel"
+    "maxHealth" = "maxHealth",
+    "maxShield" = "maxShield",
+    "maxFuel" = "maxFuel"
   }
 
   enum ShipDataList {
-    "health",
-    "shield",
+    "health" = "health",
+    "shield" = "shield",
     "fuel" = "fuel"
   }
 
