@@ -17,8 +17,6 @@ const ChooseOptionButtons = ({ callback, options }: any) => {
           <Button
             key={i}
             onClick={() => callback(option)}
-
-            color={"inherit"}
           >
             {option.title}
           </Button>

@@ -8,8 +8,8 @@ interface Props {
   setShip: Dispatch<SetStateAction<Ship | null>>
 }
 
-const leger = new Ship(100, 100, 100, [null])
-const lourd = new Ship(200, 200, 200, [null])
+const leger = new Ship(12, 100, 100, [null])
+const lourd = new Ship(5, 200, 200, [null])
 const ships = [
   {
     name: 'leger',

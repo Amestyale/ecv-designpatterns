@@ -89,7 +89,7 @@ let RoomData =
             {
                 name : "Un étrange boitier noir affublé d’une bandoulière", 
                 description : "Après une lecture attentive du manuel d’utilisation, vous vous rendez-compte qu’il s’agit d’un champ de force miniature.<br>Vous vous sentez tout de suite plutôt fier de votre achat et repartez satisfait.<br>-50 crédits, +1 Champ de force personnel",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-50'},{type: "item",item:
+                consequences: [{type: "player-data", name: 'money', modifier: '-50'},{type: "item",item:
                 {
                     id: 'champ_de_force_personnel_tx_4670',
                     title: 'Champ de force personnel TX-4670',
@@ -103,7 +103,7 @@ let RoomData =
             {
                 name : "Un pistolet un plastique", 
                 description : "Ce petit pistolet en plastique que vous venez de trouver dans la section enfant du magasin vous a curieusement rappelé votre enfance.<br>À la sortie du magasin, vous vous amusez à faire semblant de tirer avant de couper un panneau publicitaire en deux d’un coup de laser.<br>Eh bien, il faut croire que les normes galactiques en matière de jouet sont bien lax en ce moment !<br>-20 crédits, +1 Pistolet laser",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-20'},{type: "item",item:
+                consequences: [{type: "player-data", name: 'money', modifier: '-20'},{type: "item",item:
                 {
                     id: 'pistolet_laser',
                     title: 'Pistolet Laser',
@@ -117,7 +117,7 @@ let RoomData =
             {
                 name : "Un nez de clown", 
                 description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-5'},{type: "item",item:
+                consequences: [{type: "player-data", name: 'money', modifier: '-5'},{type: "item",item:
                 {
                     id: 'nez_de_clown',
                     title: 'Nez de clown',
@@ -143,7 +143,7 @@ let RoomData =
                 {
                     id: 'nez_de_clown',
                 },
-                modifier: '-1'},{type: "PlayerDataList", name: 'money', modifier: '60'}]
+                modifier: '-1'},{type: "player-data", name: 'money', modifier: '60'}]
             },
             {
                 name : "Raconter un blague à Bozo", 
