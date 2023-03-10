@@ -1,13 +1,29 @@
-import React from 'react'
-import Player from '../classes/Player'
-import Ship from '../classes/Ship'
+import React, { useState } from 'react'
+import GameController from '../classes/GameController'
+import Option from '../classes/gamemanagement/Option'
+import AdapterOption from './AdapterOption'
 
 interface Props {
-  player: Player
+  gameController: GameController
 }
 
-const Game = ({ player }: Props) => {
-  return <div>Game</div>
+const Game = ({ gameController }: Props) => {
+  const [refresh, setRefresh] = useState(false)
+
+  const choose = (option: Option) => {
+    option.modifiers.map((m) => m.apply())
+    setRefresh(!refresh)
+  }
+
+  return (
+    <>
+      <AdapterOption
+        callback={choose}
+        type={gameController.currentRoom().optionFacade}
+        options={gameController.currentRoom().options}
+      />
+    </>
+  )
 }
 
 export default Game

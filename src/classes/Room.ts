@@ -27,8 +27,7 @@ export default class Room {
   get options(): Option[] {
     return this._options
   }
-  get optionFacade(): String{
+  get optionFacade(): String {
     return this._optionFacade
   }
-
 }

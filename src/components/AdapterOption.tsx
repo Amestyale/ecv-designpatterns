@@ -1,15 +1,18 @@
 import React from 'react'
-import ChooseOptionButtons from './ChooseOptionButtons';
+import ChooseOptionButtons from './ChooseOptionButtons'
 
-function AdapterOption(props: any) {
-  const { type, options, callback } = props
-
-  switch(type){
-    case "buttons":
-      return (<ChooseOptionButtons callback={callback} options={options} />)
-      break;
+const AdapterOption = ({ type, options, callback }: any) => {
+  switch (type) {
+    case 'buttons':
+      return (
+        <ChooseOptionButtons
+          callback={callback}
+          options={options}
+        />
+      )
+      break
     default:
-      return (<h2>Hmmm, nan :l</h2>)
+      return <h2>Hmmm, nan :l</h2>
   }
 }
 
