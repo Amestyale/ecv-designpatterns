@@ -23,7 +23,7 @@ export default class GameController {
     this._player = player
     this._currentPlanet = null
 
-    const scenario =  new Scenario(planetData, this)
+    const scenario = new Scenario(planetData, this)
     this._planets = scenario.planets
     this._inspace = true
   }
@@ -83,5 +83,23 @@ export default class GameController {
       const distance = planet.distanceFrom(currentX, currentY)
       return true // ship.getMaxFlyingDistance() <= distance
     })
+  }
+
+  public isGameWin(): boolean {
+    if (this.currentPlanet && this.currentPlanet.x >= this._distance) return true
+    return false
+  }
+
+  public isGameLoose(): boolean {
+    if (this._player._health <= 0) {
+      return true
+    }
+    if (this._player.ship._health <= 0) {
+      return true
+    }
+    if (this._player.ship.fuel <= 0) {
+      return true
+    }
+    return false
   }
 }

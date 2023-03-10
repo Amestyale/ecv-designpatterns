@@ -12,7 +12,7 @@ const AdapterOption = ({ type, options, callback }: any) => {
       )
       break
     default:
-      return <h2>Hmmm, nan :l</h2>
+      return <>error</>
   }
 }
 

@@ -3,15 +3,19 @@ import Player from './classes/Player'
 import Ship from './classes/Ship'
 import SelectPlayer from './components/SelectPlayer'
 import SelectShip from './components/SelectShip'
-import { Center } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import GameController from './components/GameController'
 
 const App = () => {
   const [player, setPlayer] = useState<Player | null>(null)
   const [ship, setShip] = useState<Ship | null>(null)
-
   return (
-    <Center minHeight={'100vh'}>
+    <Flex
+      direction={'column'}
+      justify={'center'}
+      align={'center'}
+      minHeight={'100vh'}
+    >
       {!ship && <SelectShip setShip={setShip} />}
       {!player && ship && (
         <SelectPlayer
@@ -20,7 +24,7 @@ const App = () => {
         />
       )}
       {player && ship && <GameController player={player} />}
-    </Center>
+    </Flex>
   )
 }
 
