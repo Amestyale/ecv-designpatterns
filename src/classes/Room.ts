@@ -1,4 +1,4 @@
-import Option from './gamemanagement/Option'
+import Option from "./gamemanagement/Option"
 
 export default class Room {
   private _id: number

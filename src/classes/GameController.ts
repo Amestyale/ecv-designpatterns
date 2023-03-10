@@ -4,6 +4,7 @@ import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Room from './Room'
+import Scenario from './Scenario'
 
 export default class GameController {
   private _id: number
@@ -15,13 +16,15 @@ export default class GameController {
   private _inspace: boolean
   private _planets: Planet[]
 
-  constructor(id: number, name: string, distance: number, player: any, planets: Planet[]) {
+  constructor(id: number, name: string, distance: number, player: any, planetData: any) {
     this._id = id
     this._name = name
     this._distance = distance
     this._player = player
     this._currentPlanet = null
-    this._planets = planets
+
+    const scenario =  new Scenario(planetData, this)
+    this._planets = scenario.planets
     this._inspace = true
   }
 
