@@ -36,6 +36,33 @@ let PlanetData =
         appearance: 'à poids',
         rooms: [40, 40],
     },
+    {
+        id: 100,
+        x: 450,
+        y: 0,
+        name: 'Planète volcanique',
+        description: 'La première chose que vous remarquez en atterrissant est la chaleur intense et la lave en fusion qui coule sur cette planète.<br>Des volcans en éruption sont visibles à l’horizon, envoyant des nuages de cendres dans le ciel.<br>Attention où vous mettez les pieds…',
+        appearance: 'rouge et noir',
+        rooms: [50,51],
+    },
+    {
+        id: 101,
+        x: 680,
+        y: 0,
+        name: 'Planète aquatique',
+        description: 'Vous atterrissez dans l’océan d’une planète entièrement recouverte d’eau.<br>Des créatures étranges nagent autour de vous et les plantes sous-marines forment des paysages colorés.<br>Attention aux tempêtes sous-marines…',
+        appearance: 'bleue et verte',
+        rooms: [60,61],
+    },
+    {
+        id: 102,
+        x: 620,
+        y: 16,
+        name: 'Planète désertique',
+        description: 'Vous arrivez sur une planète où il n’y a que du sable et des rochers à perte de vue.<br>Le soleil brûlant tape sur votre peau et le vent souffle des tempêtes de sable.<br>Attention aux tempêtes de sable et aux créatures souterraines…',
+        appearance: 'jaune et beige',
+        rooms: [20,21],
+    }
 ];
 
 export default PlanetData;
