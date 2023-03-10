@@ -1,4 +1,6 @@
+import { PlayerDataList } from '../types/PlayerStatList'
 import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
+import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Room from './Room'
