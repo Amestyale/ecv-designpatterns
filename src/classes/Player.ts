@@ -55,6 +55,20 @@ class Player {
   public get ship(){
     return this._ship
   }
+
+
+  addItem(item: ItemPlayer) {
+    this._inventory.push(item)
+}
+
+  removeItem(id: string) {
+    const index = this._inventory.findIndex(item => item.id === id);
+    if (index === -1) {
+      return this._inventory;
+    }
+    this._inventory.splice(index, 1);
+    return this._inventory;
+  }
 }
 
 export default Player;
