@@ -6,26 +6,23 @@ import RoomData from '../data/RoomData'
 import Option from './gamemanagement/Option'
 import Modifier from './gamemanagement/Modifier/Modifier'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
+import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
 
 
 export default class Scenario {
-  private _planets: Planet[]
   private _distance: number
   private _gameinstance: any
 
-  constructor(PlanetData: any[], gameInstance : any) {
-    this._distance = 100;
-
+  constructor(gameInstance : any) {
+    this._distance = 1000;
     this._gameinstance = gameInstance
-    this._planets = this.InstantiatePlanetList(PlanetData);
-    console.log(gameInstance)
   }
 
-  private InstantiatePlanetList(PlanetData: Planet[]): any{
+  public InstantiatePlanetList(PlanetData: Planet[]): any{
 
     const planetlist = PlanetData.map(x => new Planet(
-      1,
-      1,
+      x.x,
+      x.y,
       x.name,
       x.description,
       x.appearance,
@@ -55,6 +52,16 @@ export default class Scenario {
     return roomlist
   }
 
+  public instanciateRoom(RoomData: any): Room{
+    return new Room(
+      RoomData.id,
+      RoomData.title,
+      RoomData.text,
+      this.instantiateOptions(RoomData.options),
+      RoomData.optionFacade
+    )
+  }
+
   private instantiateOptions(options: any): Option[]{
     return options.map((option: any)=> this.instantiateOption(option))
   }
@@ -74,6 +81,8 @@ export default class Scenario {
     switch(data.type){
       case 'player-data':
         return new ModifierPlayerStat(this._gameinstance.player, data.name, data.modifier)
+      case 'ship-data':
+        return new ModifierShipStat(this._gameinstance.player.ship, data.name, data.modifier)
 
       default:
         return null
@@ -81,7 +90,4 @@ export default class Scenario {
   }
 
   
-  get planets(): Planet[] {
-    return this._planets
-  }
 }

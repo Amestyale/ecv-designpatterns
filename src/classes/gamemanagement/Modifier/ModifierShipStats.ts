@@ -33,16 +33,15 @@ export default class ModifierShipStat extends Modifier {
   }
 
   public apply(){
-    const ship = this._ship
     switch(this._stat){
       case ShipDataList.fuel:
-        ship.fuel += this.value
+        this._ship.fuel += +this.value
         break
       case ShipDataList.shield:
-        ship.shield += this.value
+        this._ship.shield += +this.value
         break
       case ShipDataList.health:
-        ship.health += this.value
+        this._ship.health += +this.value
         break
     }
   }

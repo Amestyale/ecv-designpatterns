@@ -1,13 +1,15 @@
 enum ShipStatList {
-    "maxHealth",
-    "maxShield",
-    "maxFuel"
+    "maxHealth" = "maxHealth",
+    "maxShield" = "maxShield",
+    "maxFuel" = "maxFuel"
   }
 
   enum ShipDataList {
-    "health",
-    "shield",
-    "fuel"
+    "health" = "health",
+    "shield" = "shield",
+    "fuel" = "fuel"
   }
+
+
 
 export {ShipStatList, ShipDataList};

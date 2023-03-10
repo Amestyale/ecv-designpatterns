@@ -59,7 +59,13 @@ class Ship {
       }
    
     getMaxFlyingDistance(){
-      return this.fuel * 0.5
+      // 1 fuel = 50 distance
+      return Math.floor(this.fuel * 50)
+    }
+    
+    flying(dist: number){
+      // 1 fuel = 50 distance
+      this._fuel -= Math.ceil(dist / 50)
     }
 }
 export default Ship
