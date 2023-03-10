@@ -1,14 +1,17 @@
 
 import { PlayerDataList } from "../../../types/PlayerStatList";
+import GameController from "../../GameController";
 import Player from "../../Player";
 import Modifier from "./Modifier";
 
 export default class ModifierCustom extends Modifier {
   private _callback: Function
+  private _gamecontroller: GameController
 
-  constructor(callback: any){
+  constructor(callback: any, gameController: GameController){
     super(0)
     this._callback = callback
+    this._gamecontroller = gameController
   }
 
   public canBeChoosen(){
@@ -16,7 +19,7 @@ export default class ModifierCustom extends Modifier {
   }
 
   public apply(){
-    this._callback()
+    this._callback(this._gamecontroller)
   }
 
 }
