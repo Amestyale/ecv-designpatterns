@@ -123,7 +123,7 @@ export default class GameController {
     const ship = this.player.ship
     return this._planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
-      return ship.getMaxFlyingDistance() >= distance
+      return ship.getMaxFlyingDistance() >= distance && this._currentPlanet?.name != planet.name
     })
   }
 
