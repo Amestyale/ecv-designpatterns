@@ -41,6 +41,9 @@ const Game = ({ gameController }: Props) => {
           </HStack>
         </HStack>
         <HStack>
+          <Text>Distance {gameController.distanceFromWin()}</Text>
+        </HStack>
+        <HStack>
           <Text>User</Text>
           <HStack>
             <FaHeart />

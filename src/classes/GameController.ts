@@ -115,6 +115,10 @@ export default class GameController {
     return this._currentPlanet ? this._currentPlanet.y : 0
   }
 
+  public distanceFromWin(): number {
+    return this._distance - this.currentX()
+  }
+
   public nextPlanetsAvailables(): Array<Planet> {
     const ship = this.player.ship
     return this._planets.filter((planet) => {
