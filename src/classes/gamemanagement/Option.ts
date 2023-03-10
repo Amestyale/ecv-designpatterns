@@ -30,4 +30,10 @@ export default class Option{
   public get modifiers(): Array<Modifier>{
     return this._modifiers
   }
+
+  public canBeChoosen(){
+    return this.modifiers.every((modifier: Modifier)=>{
+      return modifier.canBeChoosen()
+    })
+  }
 }

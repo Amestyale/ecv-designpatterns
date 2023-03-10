@@ -13,6 +13,10 @@ export default abstract class Modifier {
     this._value = value
   }
 
+  public canBeChoosen(){
+    
+  }
+
   public apply(){
   }
 
