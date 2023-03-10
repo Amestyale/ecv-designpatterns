@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-import Chapter from '../classes/Chapter'
-import GameController from '../classes/GameController'
-=======
 import GameController from '../classes/GameController'
 import GameInstance from '../classes/GameController'
->>>>>>> game-loop
 import ModifierPlayerStat from '../classes/gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from '../classes/gamemanagement/Modifier/ModifierShipStats'
 import Option from '../classes/gamemanagement/Option'
