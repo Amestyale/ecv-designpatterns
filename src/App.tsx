@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Player from './classes/Player'
 import Ship from './classes/Ship'
 import Game from './components/Game'
-import SelectRace from './components/SelectPlayer'
+import SelectPlayer from './components/SelectPlayer'
 import SelectShip from './components/SelectShip'
 
 const App = () => {
@@ -11,14 +11,14 @@ const App = () => {
 
   return (
     <>
-      {!player && <SelectRace setPlayer={setPlayer} />}
       {!ship && <SelectShip setShip={setShip} />}
-      {player && ship && (
-        <Game
-          player={player}
+      {!player && ship && (
+        <SelectPlayer
           ship={ship}
+          setPlayer={setPlayer}
         />
       )}
+      {player && ship && <Game player={player} />}
     </>
   )
 }

@@ -1,19 +1,21 @@
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import Human from '../classes/Human'
 import Player from '../classes/Player'
+import Ship from '../classes/Ship'
 
 interface PropsType {
+  ship: Ship
   setPlayer: Dispatch<SetStateAction<Player | null>>
 }
 
-const humain = new Human()
-const player = new Player(humain, 100, [null])
-
-const SelectPlayer = ({ setPlayer }: PropsType) => {
+const SelectPlayer = ({ ship, setPlayer }: PropsType) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
+    //todo
     const race = selectRef?.current?.value
-    if (race) setPlayer(player)
+
+    const player = new Player(new Human(), 100, [null], ship)
+    if (player) setPlayer(player)
   }
   return (
     <>

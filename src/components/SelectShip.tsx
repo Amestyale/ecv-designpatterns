@@ -37,7 +37,7 @@ const SelectShip = ({ setShip }: Props) => {
           </option>
         ))}
       </select>
-      <button onClick={handleOnClick}>Select race</button>
+      <button onClick={handleOnClick}>Select ship</button>
     </>
   )
 }
