@@ -10,7 +10,7 @@ export default class GameController {
   private _player: any
 
   private _currentPlanet: Planet | null;
-  private _inspace: boolean;
+  private _inspace: Boolean;
   private _planets: Planet[];
 
   constructor(id: number, name: string, distance: number, player: any, planets: Planet[]) {
@@ -43,19 +43,27 @@ export default class GameController {
     return this._currentPlanet
   }
 
-  get inSpace(): boolean {
+  get inSpace(): Boolean {
     return this._inspace
   }
 
+
+  set inSpace(inspace: Boolean) {
+    this._inspace = inspace
+  }
   set currentPlanet(planet: Planet | null) {
     this._currentPlanet = planet
   }
   
   public currentRoom(): Room {
+    console.log("building cap", this.inSpace, this.currentPlanet)
     if(!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[0]
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet)=>{ 
-        const modifier = new ModifierCustom(() => this._currentPlanet = planet)
+        const modifier = new ModifierCustom((gameController: GameController) => {
+          gameController.currentPlanet = planet
+          gameController.inSpace = false
+        }, this)
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
       })
@@ -69,7 +77,7 @@ export default class GameController {
     const ship = this.player.ship;
     return this._planets.filter((planet)=>{
       const distance = planet.distanceFrom(currentX, currentY)
-      return ship.getMaxFlyingDistance() <= distance
+      return true // ship.getMaxFlyingDistance() <= distance
     })
   }
 

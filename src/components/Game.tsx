@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
 import GameInstance from '../classes/GameController'
+import ModifierCustom from '../classes/gamemanagement/Modifier/ModifierCustom'
 import ModifierPlayerStat from '../classes/gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from '../classes/gamemanagement/Modifier/ModifierShipStats'
 import Option from '../classes/gamemanagement/Option'
@@ -61,9 +62,13 @@ const Game = ({ player }: Props) => {
 
   const gameInstance = new GameController(1, 'Game Test', 1, player, [planet1, planet2] )
 
-  const choose = (option: Option) => {
+  const currentRoom = gameInstance.currentRoom()
+
+  const choose =  (option: Option) => {
     option.modifiers.map(m => m.apply())
-    setRefresh(!refresh)
+    setTimeout(() => {
+      setRefresh(!refresh)
+    }, 2000);
   }
 
 
@@ -72,7 +77,9 @@ const Game = ({ player }: Props) => {
   <p>Life {player.health}</p>
   <p>Money {player.money}</p>
   
-  <AdapterOption callback={choose} type={room.optionFacade} options={room.options} />
+  <p>{ currentRoom.title }</p>
+  <p>{ currentRoom.text }</p>
+  <AdapterOption callback={choose} type={currentRoom.optionFacade} options={currentRoom.options} />
   </div>
   )
 }
