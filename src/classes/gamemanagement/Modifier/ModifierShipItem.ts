@@ -22,7 +22,7 @@ export default class ModifierShipItem extends Modifier {
 
   public canBeChoosen(){
     if (this.value < 0) {
-      return this._ship._items.find(item => item.id === this._item.id) !== undefined;
+      return this._ship._items.find(item => item && item.id === this._item.id) !== undefined;
     } else {
       return true
     }
