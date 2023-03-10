@@ -11,7 +11,7 @@ const Game = ({ gameController }: Props) => {
   const [refresh, setRefresh] = useState(false)
 
   const choose = (option: Option) => {
-    option.modifiers.map((m) => m.apply())
+    gameController.resolveRoom(option)
     setRefresh(!refresh)
   }
 

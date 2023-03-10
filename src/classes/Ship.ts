@@ -59,7 +59,8 @@ class Ship {
       }
    
     getMaxFlyingDistance(){
-      return this.fuel * 0.5
+      // 1 fuel = 50 distance
+      return this.fuel * 50
     }
 }
 export default Ship

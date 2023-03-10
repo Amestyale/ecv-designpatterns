@@ -13,6 +13,7 @@ export default class GameController {
   private _player: any
 
   private _currentPlanet: Planet | null
+  private _currentRoomIndex: number
   private _inspace: boolean
   private _planets: Planet[]
 
@@ -26,6 +27,8 @@ export default class GameController {
     const scenario =  new Scenario(planetData, this)
     this._planets = scenario.planets
     this._inspace = true
+
+    this._currentRoomIndex = -1
   }
 
   get id(): number {
@@ -59,9 +62,22 @@ export default class GameController {
     this._currentPlanet = planet
   }
 
+  public resolveRoom(option: Option) {
+    option.modifiers.map((m) => {
+      if(m) m.apply()
+    })
+
+    if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
+      this._currentRoomIndex++
+    } else {
+      this._inspace = true
+      this._currentRoomIndex = -1
+    }
+    
+  }
+
   public currentRoom(): Room {
-    console.log('building cap', this.inSpace, this.currentPlanet)
-    if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[0]
+    if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[this._currentRoomIndex]
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
         const modifier = new ModifierCustom((gameController: GameController) => {
@@ -75,13 +91,14 @@ export default class GameController {
       return new Room(0, 'Choisir le cap', 'Où voulez-vous aller ?', options, 'buttons')
     }
   }
+
   public nextPlanetsAvailables(): Array<Planet> {
     const currentX = this._currentPlanet ? this._currentPlanet.x : 0
     const currentY = this._currentPlanet ? this._currentPlanet.y : 0
     const ship = this.player.ship
     return this._planets.filter((planet) => {
       const distance = planet.distanceFrom(currentX, currentY)
-      return true // ship.getMaxFlyingDistance() <= distance
+      return ship.getMaxFlyingDistance() >= distance
     })
   }
 }

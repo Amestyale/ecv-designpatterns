@@ -24,8 +24,8 @@ export default class Scenario {
   private InstantiatePlanetList(PlanetData: Planet[]): any{
 
     const planetlist = PlanetData.map(x => new Planet(
-      1,
-      1,
+      x.x,
+      x.y,
       x.name,
       x.description,
       x.appearance,

@@ -24,7 +24,7 @@ const SelectShip = ({ setShip }: Props) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
     const ship = ships.find((ship) => ship.name === selectRef?.current?.value)
-    if (ship) setShip(new Ship(100, 100, 100, [null]))
+    if (ship) setShip(new Ship(10, 100, 100, [null]))
   }
   return (
     <VStack minWidth={'sm'}>
