@@ -8,7 +8,7 @@ let RoomData =
             {
                 name : "Fouiller les alentours", 
                 description : "Après deux heures de fouille à des températures glaciales, la seule chose que vous avez trouvée est une engelure à l’une de vos extrémités.<br>-10 de santé",
-                consequences: [{type: "PlayerDataList", name: 'health', modifier: '-10'}]
+                consequences: [{type: "player-data", name: 'health', modifier: '-10'}]
             },
             {
                 name : "Repartir immédiatement", 
@@ -53,12 +53,12 @@ let RoomData =
             {
                 name : "Une station essence", 
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-20'},{type: "ShipDataList", name: 'fuel', modifier: '1'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '-20'},{type: "ShipDataList", name: 'fuel', modifier: '1'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 
                 description : "Après avoir toqué à la porte, votre grand-mère (ou une copie parfaite d’elle) ouvre la porte.<br>*Et bien mon trésor ? On joue au cosmonaute ?*, dit-elle. *C’est adorable mon poussin, tiens, j'ai un petit quelque chose pour toi, mais ne vas pas le dire à tes parents !*<br>Elle vous glisse discrètement un billet avant de refermer la porte. C’est définitivement l’événement le plus bizarre de la journée…<br>+20 crédits",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '20'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '20'}]
             }
         ],
         optionFacade : "buttons"
@@ -71,12 +71,12 @@ let RoomData =
             {
                 name : "Utiliser la faiblesse des mimiques", 
                 description : "Vous décidez de distraire le banc avec ce que la chose préférée des mimiques même avant la chaire fraiche… L’argent !<br>Vous lancez l’intégralité du contenu de vos poches en l’air dans une pluie de pièce et de crédits. Les mimiques mordent à l’hameçon et sont absolument émerveillées par votre performance, vous en profitez pour vous enfuir.<br>-25 crédits",
-                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-25'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '-25'}]
             },
             {
                 name : "Faire passer un sale quart d’heure au banc", 
                 description : "Vraiment ? Vous avez déjà essayé de cogner un banc avec vos poings ?<br>Ces bestiaux sont bien plus solides que ce que vous pensiez.<br>Vous réussissez quand même à lui donner un œil au beurre noir en échange d’une partie de votre pantalon et de ce qui pourrait être appelé votre jambe gauche…<br>-30 de santé",
-                consequences: [{type: "PlayerDataList", name: 'health', modifier: '-30'}]
+                consequences: [{type: "player-data", name: 'health', modifier: '-30'}]
             }
         ],
         optionFacade : "buttons"
