@@ -21,7 +21,7 @@ export default class ModifierShipStat extends Modifier {
     this.stat = stat
   }
 
-  public canBeChoosen(ship : Ship){
+  public canBeChoosen(){
     switch(this._stat){
       case ShipDataList.fuel:
         return (this._ship.fuel + this.value) > 0
