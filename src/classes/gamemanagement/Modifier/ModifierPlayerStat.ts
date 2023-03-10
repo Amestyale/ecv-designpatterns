@@ -5,10 +5,12 @@ import Modifier from "./Modifier";
 
 export default class ModifierPlayerStat extends Modifier {
   private _stat: PlayerDataList 
+  private _player: Player
 
-  constructor(stat: PlayerDataList, value: number){
+  constructor(player: Player, stat: PlayerDataList, value: number){
     super(value)
     this._stat = stat
+    this._player = player
   }
 
   public get stat(): any {
@@ -19,21 +21,23 @@ export default class ModifierPlayerStat extends Modifier {
     this.stat = stat
   }
 
-  public canBeChoosen(player : Player){
+  public canBeChoosen(){
     switch(this._stat){
       case PlayerDataList.health:
-        return (player.health + this.value) > 0
+        return (this._player.health + this.value) > 0
       case PlayerDataList.money:
-        return (player.money + this.value) > 0
+        return (this._player.money + this.value) > 0
     }
   }
 
-  public apply(stat: PlayerDataList, player : Player){
-    switch(stat){
+  public apply(){
+    switch(this.stat){
       case PlayerDataList.health:
-        player.health =+ this.value
+        this._player.health = this._player.health + this.value
+        break;
       case PlayerDataList.money:
-        player.money =+ this.value
+        this._player.money = this._player.money + this._value
+        break;
     }
   }
 
