@@ -21,14 +21,14 @@ export default class ModifierPlayerItem extends Modifier {
   }
 
   public canBeChoosen(){
-    switch(this._item){
-      case ItemPlayer.id:
-        return (this._item.id + this.value) > "0"
-    }
+    return (this.value) > 0
   }
 
   public apply(){
-    this._player.addItem(this._item)
+    if (this.value > 0) {
+      this._player.addItem(this._item)
+    } else {
+      this._player.removeItem(this._item.id)
+    }
   }
-
 }

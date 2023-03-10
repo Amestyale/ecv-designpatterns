@@ -1,15 +1,16 @@
 import Player from "../../Player";
+import Ship from "../../Ship";
 import Modifier from "./Modifier";
 import ItemShip from "../../ItemShip";
 
 export default class ModifierPlayerItem extends Modifier {
   private _item: ItemShip 
-  private _player: Player
+  private _ship: Ship
 
-  constructor(player: Player, item: ItemShip, value: number){
+  constructor(ship: Ship, item: ItemShip, value: number){
     super(value)
     this._item = item
-    this._player = player
+    this._ship = ship
   }
 
   public get item(): ItemShip {
@@ -21,11 +22,15 @@ export default class ModifierPlayerItem extends Modifier {
   }
 
   public canBeChoosen(){
-
+    return (this.value) > 0
   }
 
   public apply(){
-    this._player.addItem(this._item)
+    if (this.value > 0) {
+      this._ship.addItem(this._item)
+    } else {
+      this._ship.removeItem(this._item.id)
+    }
   }
 
 }
