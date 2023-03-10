@@ -5,10 +5,12 @@ import Modifier from "./Modifier";
 
 export default class ModifierShipStat extends Modifier {
   private _stat: ShipDataList 
+  private _ship: Ship 
 
-  constructor(stat: ShipDataList, value: number){
+  constructor(ship: Ship, stat: ShipDataList, value: number){
     super(value)
     this._stat = stat
+    this._ship = ship
   }
 
   public get stat(): any {
@@ -30,8 +32,9 @@ export default class ModifierShipStat extends Modifier {
     }
   }
 
-  public apply(stat: ShipDataList, ship : Ship){
-    switch(stat){
+  public apply(){
+    const ship = this._ship
+    switch(this._stat){
       case ShipDataList.fuel:
         ship.fuel += this.value
         break
