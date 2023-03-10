@@ -1,5 +1,5 @@
 export default abstract class Modifier {
-  private _value: number;
+  protected _value: number;
 
   constructor(value: number){
     this._value = value
@@ -11,6 +11,9 @@ export default abstract class Modifier {
 
   public set value(value: number){
     this._value = value
+  }
+
+  public apply(){
   }
 
 }
