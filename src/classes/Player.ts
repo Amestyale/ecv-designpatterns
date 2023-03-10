@@ -1,19 +1,24 @@
-import ItemPlayer from './ItemPlayer'
-import Race from './Race'
+import ItemPlayer from "./ItemPlayer";
+import Race from "./Race";
+import Ship from "./Ship";
 
 class Player {
   private _health: number
   private _money: number
   private _race: Race
 
+
   private _inventory: [ItemPlayer | null]
+  private _ship: Ship;
 
   constructor(race: Race, money: number, inventory: [ItemPlayer | null]) {
     this._race = race
     this._money = money
     this._health = race.maxHealth
     //TODO Define how inventory work
+
     this._inventory = inventory
+    this._ship = ship;
   }
 
   public get health() {
@@ -46,6 +51,10 @@ class Player {
 
   public set inventory(inventory: [ItemPlayer | null]) {
     this._inventory = inventory
+  }
+
+  public get ship(){
+    return this._ship
   }
 }
 
