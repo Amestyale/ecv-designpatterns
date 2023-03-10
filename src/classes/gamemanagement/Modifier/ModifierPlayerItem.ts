@@ -1,40 +1,38 @@
-
-import { PlayerDataList } from "../../../types/PlayerStatList";
 import Player from "../../Player";
 import Modifier from "./Modifier";
+import ItemPlayer from "../../ItemPlayer";
 
 export default class ModifierPlayerItem extends Modifier {
-  private _stat: PlayerDataList 
+  private _item: ItemPlayer 
+  private _player: Player
 
-  constructor(stat: PlayerDataList, value: number){
+  constructor(player: Player, item: ItemPlayer, value: number){
     super(value)
-    this._stat = stat
+    this._item = item
+    this._player = player
   }
 
-  public get stat(): any {
-    return this._stat;
+  public get item(): ItemPlayer {
+    return this._item;
   }
 
-  public set stat(stat: any){
-    this.stat = stat
+  public set item(item: ItemPlayer){
+    this.item = item
   }
 
-  public canBeChoosen(player : Player){
-    switch(this._stat){
-      case PlayerDataList.health:
-        return (player.health + this.value) > 0
-      case PlayerDataList.money:
-        return (player.money + this.value) > 0
+  public canBeChoosen(){
+    if (this.value < 0) {
+      for (let i = 0; i < this._player._inventory.length; i++) {
+        return this._player._inventory.find(item => item.id === this._item.id) !== undefined;
+      }
     }
   }
 
-  public apply(stat: PlayerDataList, player : Player){
-    switch(stat){
-      case PlayerDataList.health:
-        player.health =+ this.value
-      case PlayerDataList.money:
-        player.money =+ this.value
+  public apply(){
+    if (this.value > 0) {
+      this._player.addItem(this._item)
+    } else {
+      this._player.removeItem(this._item.id)
     }
   }
-
 }

@@ -7,7 +7,7 @@ class Player {
   private _money: number
   private _race: Race
 
-  private _inventory: [ItemPlayer | null]
+  public _inventory: [ItemPlayer | null]
   private _ship: Ship
 
   constructor(race: Race, money: number, inventory: [ItemPlayer | null], ship: Ship) {
@@ -54,6 +54,19 @@ class Player {
 
   public get ship() {
     return this._ship
+  }
+
+  addItem(item: ItemPlayer) {
+    this._inventory.push(item)
+}
+
+  removeItem(id: string) {
+    const index = this._inventory.findIndex(item => item.id === id);
+    if (index === -1) {
+      return this._inventory;
+    }
+    this._inventory.splice(index, 1);
+    return this._inventory;
   }
 }
 
