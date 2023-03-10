@@ -1,4 +1,7 @@
+import ModifierCustom from "./gamemanagement/Modifier/ModifierCustom"
+import Option from "./gamemanagement/Option"
 import Planet from "./Planet"
+import Room from "./Room"
 
 export default class GameController {
   private _id: number
@@ -47,7 +50,19 @@ export default class GameController {
   set currentPlanet(planet: Planet | null) {
     this._currentPlanet = planet
   }
-
+  
+  public currentRoom(): Room {
+    if(!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[0]
+    else {
+      const options = this.nextPlanetsAvailables().map((planet: Planet)=>{ 
+        const modifier = new ModifierCustom(() => this._currentPlanet = planet)
+        const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
+        return opt
+      })
+      
+      return new Room(0, "Choisir le cap", "Où voulez-vous aller ?", options, "buttons")
+    }
+  }
   public nextPlanetsAvailables() : Array<Planet> {
     const currentX = (this._currentPlanet) ? this._currentPlanet.x : 0
     const currentY = (this._currentPlanet) ? this._currentPlanet.y : 0
