@@ -1,12 +1,13 @@
 import Chapter from "./Chapter"
 
-export default class Game {
+export default class GameController {
   private _id: number
   private _name: string
   private _distance: string
   private _player: any
 
   private _currentChapter: Chapter;
+  private _inspace: boolean;
   private _chapters: [Chapter];
 
   constructor(id: number, name: string, distance: string, player: any, chapters: [Chapter], startChapter: Chapter) {
@@ -16,6 +17,7 @@ export default class Game {
     this._player = player
     this._currentChapter = startChapter
     this._chapters = chapters
+    this._inspace = true
   }
 
   get id(): number {
@@ -36,6 +38,10 @@ export default class Game {
 
   get currentChapter(): Chapter {
     return this._currentChapter
+  }
+
+  get inSpace(): boolean {
+    return this._inspace
   }
 
   set currentChapter(chapter: Chapter) {
