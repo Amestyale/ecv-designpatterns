@@ -1,9 +1,9 @@
-import { Box, Center, Container, Flex, HStack, Text, VStack } from '@chakra-ui/layout'
+import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
 import Option from '../classes/gamemanagement/Option'
 import AdapterOption from './AdapterOption'
-import { FaUser, FaShip, FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
+import { FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
 
 interface Props {
   gameController: GameController
@@ -17,6 +17,8 @@ const Game = ({ gameController }: Props) => {
     setRefresh(!refresh)
   }
 
+  if (gameController.isGameWin()) return <Heading>You win !</Heading>
+  if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
   return (
     <>
       <HStack

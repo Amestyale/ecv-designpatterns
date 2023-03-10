@@ -128,7 +128,7 @@ export default class GameController {
   }
 
   public isGameWin(): boolean {
-    if (this.currentPlanet && this.currentPlanet.x >= this._distance) return true
+    if (this.currentPlanet && this.currentX() >= this._distance) return true
     return false
   }
 
@@ -136,12 +136,14 @@ export default class GameController {
     if (this.player.health <= 0) {
       return true
     }
+    console.log(this.player.ship.health)
     if (this.player.ship.health <= 0) {
       return true
     }
     if (this.player.ship.fuel <= 0) {
       return true
     }
+    if (this.nextPlanetsAvailables().length === 0) return true
     return false
   }
 }

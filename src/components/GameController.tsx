@@ -14,9 +14,6 @@ const GameController = ({ player }: Props) => {
   const planets = usePlanets(rooms)
   const gameController = useGameController(player, planets)
 
-  if (gameController.isGameWin()) return <Heading>You win !</Heading>
-  if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
-
   return <Game gameController={gameController} />
 }
 
