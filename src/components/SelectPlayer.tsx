@@ -1,14 +1,19 @@
 import React, { Dispatch, SetStateAction, useRef } from 'react'
+import Human from '../classes/Human'
+import Player from '../classes/Player'
 
 interface PropsType {
-  setRace: Dispatch<SetStateAction<string | null>>
+  setPlayer: Dispatch<SetStateAction<Player | null>>
 }
 
-const SelectRace = ({ setRace }: PropsType) => {
+const humain = new Human()
+const player = new Player(humain, 100, [null])
+
+const SelectPlayer = ({ setPlayer }: PropsType) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
     const race = selectRef?.current?.value
-    if (race) setRace(race)
+    if (race) setPlayer(player)
   }
   return (
     <>
@@ -21,4 +26,4 @@ const SelectRace = ({ setRace }: PropsType) => {
   )
 }
 
-export default SelectRace
+export default SelectPlayer

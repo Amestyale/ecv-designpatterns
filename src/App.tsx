@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
-import Human from './classes/Human'
 import Player from './classes/Player'
 import Ship from './classes/Ship'
-import SelectRace from './components/SelectRace'
+import Game from './components/Game'
+import SelectRace from './components/SelectPlayer'
 import SelectShip from './components/SelectShip'
 
 const App = () => {
-  const [race, setRace] = useState<string | null>(null)
-  console.log('🚀 ~ App ~ race:', race)
+  const [player, setPlayer] = useState<Player | null>(null)
   const [ship, setShip] = useState<Ship | null>(null)
-  console.log('🚀 ~ App ~ ship:', ship)
-
-  const humain = new Human()
-  const player = new Player(humain, 100, [null])
 
   return (
     <>
-      {!race && <SelectRace setRace={setRace} />}
+      {!player && <SelectRace setPlayer={setPlayer} />}
       {!ship && <SelectShip setShip={setShip} />}
+      {player && ship && (
+        <Game
+          player={player}
+          ship={ship}
+        />
+      )}
     </>
   )
 }
