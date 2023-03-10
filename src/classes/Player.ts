@@ -1,6 +1,7 @@
 import ItemPlayer from './ItemPlayer'
 import Race from './Race'
 import Ship from './Ship'
+import { PlayerStatList } from "../types/PlayerStatList";
 
 class Player {
   private _health: number
@@ -55,6 +56,27 @@ class Player {
   public get ship() {
     return this._ship
   }
+
+  public getStrenght():number{
+    const total = this._race.strenght;
+
+      for (let i = 0; i < this._inventory.length; i++) {
+        const currentItemStats = this._inventory[i].stat;
+  
+        for (let j = 0; j < currentItemStats.length; j++) {
+          const currentModifier = currentItemStats[i];
+
+          if(currentModifier.name == PlayerStatList.strenght){
+            total += currentModifier.modifier;
+          }
+        }
+      }
+
+    return total;
+  }
+
+
+
 }
 
 export default Player
