@@ -77,6 +77,76 @@ let RoomData =
             }
         ]
     },
+    {
+        id: 30,
+        title: 'Globalgosaur, Votre supermarché stratyn-nien',
+        text: 'Vous faites votre entrée dans un magasin vraisemblablement propre et parfaitement normal, si ce n’est pour la sélection d’items disponible sur les différents rayons et étalages.<br>Un caissier à mi-chemin entre un saumon et un figuier vous fait un léger salut de sa nageoire.<br>Le bruit épouvantable qu’il s’efforçât de transmettre après ça veut probablement dire bienvenue...<br>Allez-vous achetez quelque chose ou juste faire un tour des rayons ?',
+        options: [
+            {
+                name : "Un étrange boitier noir affublé d’une bandoulière", 
+                description : "Après une lecture attentive du manuel d’utilisation, vous vous rendez-compte qu’il s’agit d’un champ de force miniature.<br>Vous vous sentez tout de suite plutôt fier de votre achat et repartez satisfait.<br>-50 crédits, +1 Champ de force personnel",
+                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-50'},{type: "item",item:
+                {
+                    id: 'champ_de_force_personnel_tx_4670',
+                    title: 'Champ de force personnel TX-4670',
+                    description: 'Merveille de technologie crombonienne, le TX-4670 vous protégera des dangers de type organique tels que les piranhas radioactifs ou les belles-mères.',
+                    type: 'object',
+                    category: 'armor',
+                    stat: [{name: 'intelligence', modifier: '3'}],
+                }
+            }]
+            },
+            {
+                name : "Un pistolet un plastique", 
+                description : "Ce petit pistolet en plastique que vous venez de trouver dans la section enfant du magasin vous a curieusement rappelé votre enfance.<br>À la sortie du magasin, vous vous amusez à faire semblant de tirer avant de couper un panneau publicitaire en deux d’un coup de laser.<br>Eh bien, il faut croire que les normes galactiques en matière de jouet sont bien lax en ce moment !<br>-20 crédits, +1 Pistolet laser",
+                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-20'},{type: "item",item:
+                {
+                    id: 'pistolet_laser',
+                    title: 'Pistolet Laser',
+                    description: 'Cette arme étrange ressemble fortement à un jouet en plastique, mais elle tire des rayons mortels.',
+                    type: 'object',
+                    category: 'weapon',
+                    stat: [{name: 'strenght', modifier: '1'}],
+                }
+            }]
+            },
+            {
+                name : "Un nez de clown", 
+                description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
+                consequences: [{type: "PlayerDataList", name: 'money', modifier: '-5'},{type: "item",item:
+                {
+                    id: 'nez_de_clown',
+                    title: 'Nez de clown',
+                    description: 'Parfaitement inutile, il fais du bruit quand vous appuyez dessus.',
+                    type: 'object',
+                    category: 'nose',
+                    stat: [{name: 'intelligence', modifier: '0'}],
+                }
+            }]
+            },
+        ]
+    },
+    {
+        id: 40,
+        title: 'Bozo, le clown triste',
+        text: 'Au beau milieu de cette joyeuse aberration de son et de couleur, un individu fais tâche.<br>Un clown sans nez vous dévisage d’un air fatigué, il ne danse pas, ne rigole pas et ne cherche pas à vous chatouiller sans votre consentement.<br>Il vous fait bien de la peine ce clown, essayez donc de lui remonter le moral.',
+        options: [
+            {
+                name : "Offir un nouveau nez à Bozo", 
+                description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br>-1 nez de clown, +60 crédits",
+                consequences: [{type: "item",item:
+                {
+                    id: 'nez_de_clown',
+                },
+                modifier: '-1'},{type: "PlayerDataList", name: 'money', modifier: '60'}]
+            },
+            {
+                name : "Raconter un blague à Bozo", 
+                description : "Le clown essaye de sourire à votre tentative pitoyable d’humour, mais n’y arrive décidément pas.<br>Bravo, vous devez bien être le seul être vivant à des années lumières à la ronde qui ne réussit pas à faire rire un clown !<br>Vous repartez avec moins d’estime en vous qu’à l’arrivée.",
+                consequences: []
+            }
+        ]
+    },
 ];
 
 export default RoomData;
