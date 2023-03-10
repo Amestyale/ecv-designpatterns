@@ -8,7 +8,7 @@ export default class Planet {
   private _x: number
   private _y: number
 
-  constructor(x: number, y: number, name: string, description: string, appearance: string, rooms: [Room]) {
+  constructor(x: number, y: number, name: string, description: string, appearance: string, rooms: Room[]) {
     this._x = x
     this._y = y
     this._name = name

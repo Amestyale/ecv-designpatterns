@@ -1,17 +1,9 @@
 import React, { useState } from 'react'
-import GameController from '../classes/GameController'
-import GameInstance from '../classes/GameController'
-import ModifierPlayerStat from '../classes/gamemanagement/Modifier/ModifierPlayerStat'
-import ModifierShipStat from '../classes/gamemanagement/Modifier/ModifierShipStats'
 import Option from '../classes/gamemanagement/Option'
-import Planet from '../classes/Planet'
 import Player from '../classes/Player'
-import Room from '../classes/Room'
-import useChapters from '../hooks/useChapters'
+import useGameController from '../hooks/useGameController'
+import usePlanets from '../hooks/usePlanets'
 import useRooms from '../hooks/useRooms'
-import { PlayerDataList } from '../types/PlayerStatList'
-import { ShipDataList } from '../types/ShipStatList'
-import AdapterOption from './AdapterOption'
 
 interface Props {
   player: Player
@@ -20,9 +12,8 @@ interface Props {
 const Game = ({ player }: Props) => {
   const [refresh, setRefresh] = useState(false)
   const rooms = useRooms(player)
-  const chapters = useChapters(rooms)
-
-  const gameController = new GameController(0, 'Game', 1000, player, chapters)
+  const planets = usePlanets(rooms)
+  const gameController = useGameController(player, planets)
 
   const choose = (option: Option) => {
     option.modifiers.map((m) => m.apply())
