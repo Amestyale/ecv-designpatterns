@@ -9,35 +9,38 @@ import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 
 
 export default class Scenario {
-  private _planets: [Planet | null]
+  private _planets: Planet[]
   private _distance: number
   private _gameinstance: any
 
-  constructor(PlanetData: [any | null], gameInstance : any) {
+  constructor(PlanetData: any[], gameInstance : any) {
     this._distance = 100;
 
-    this._planets = this.InstantiatePlanetList(PlanetData);
     this._gameinstance = gameInstance
+    this._planets = this.InstantiatePlanetList(PlanetData);
+    console.log(gameInstance)
   }
 
-  private InstantiatePlanetList(PlanetData: [any | null]): any{
+  private InstantiatePlanetList(PlanetData: Planet[]): any{
 
     const planetlist = PlanetData.map(x => new Planet(
-      x.id,
+      1,
+      1,
       x.name,
       x.description,
       x.appearance,
       this.InstantiateRoomList(x.rooms)
     ));
 
+    return planetlist
   }
 
-  private InstantiateRoomList(RoomIdList: [any | null]): any{
+  private InstantiateRoomList(RoomIdList: any[]): any{
     
     const roomlist = []
 
     for (let i = 0; i < RoomIdList.length-1; i++) {
-      const currentData = RoomData.find((data) => data.id === RoomIdList[i]);
+      const currentData = RoomData.find((data) => data.id == RoomIdList[i]);
 
       if(!currentData) continue;
       roomlist.push(new Room(
@@ -77,4 +80,8 @@ export default class Scenario {
     }
   }
 
+  
+  get planets(): Planet[] {
+    return this._planets
+  }
 }
