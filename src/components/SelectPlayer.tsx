@@ -1,3 +1,4 @@
+import { Button, Select, VStack } from '@chakra-ui/react'
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import Human from '../classes/Human'
 import Player from '../classes/Player'
@@ -18,13 +19,18 @@ const SelectPlayer = ({ ship, setPlayer }: PropsType) => {
     if (player) setPlayer(player)
   }
   return (
-    <>
-      <select ref={selectRef}>
+    <VStack minWidth={'sm'}>
+      <Select ref={selectRef}>
         <option value='human'>human</option>
         <option value='alien'>alien</option>
-      </select>
-      <button onClick={handleOnClick}>Select race</button>
-    </>
+      </Select>
+      <Button
+        width={'full'}
+        onClick={handleOnClick}
+      >
+        Select race
+      </Button>
+    </VStack>
   )
 }
 
