@@ -1,8 +1,7 @@
 import React from 'react'
 import Option from '../classes/gamemanagement/Option'
 
-const ChooseOptionButtons = (props: any) => {
-  const { callback, options } = props
+const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
     <>
       {options.map((option: Option, i: number) => {
