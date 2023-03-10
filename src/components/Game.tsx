@@ -1,7 +1,9 @@
+import { Box, Center, Container, Flex, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
 import Option from '../classes/gamemanagement/Option'
 import AdapterOption from './AdapterOption'
+import { FaUser, FaShip, FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
 
 interface Props {
   gameController: GameController
@@ -17,11 +19,46 @@ const Game = ({ gameController }: Props) => {
 
   return (
     <>
-      <AdapterOption
-        callback={choose}
-        type={gameController.currentRoom().optionFacade}
-        options={gameController.currentRoom().options}
-      />
+      <HStack
+        width={'full'}
+        justify={'space-between'}
+        padding={5}
+        backgroundColor={'rgba(0, 0, 0, 0.8)'}
+      >
+        <HStack>
+          <Text>Ship</Text>
+          <HStack>
+            <FaHeart />
+            <Text>{gameController.player.ship.health}</Text>
+          </HStack>
+          <HStack>
+            <FaShieldAlt />
+            <Text>{gameController.player.ship.shield}</Text>
+          </HStack>
+          <HStack>
+            <FaGasPump />
+            <Text>{gameController.player.ship.fuel}</Text>
+          </HStack>
+        </HStack>
+        <HStack>
+          <Text>User</Text>
+          <HStack>
+            <FaHeart />
+            <Text>{gameController.player.health}</Text>
+          </HStack>
+          <HStack>
+            <FaCoins />
+            <Text>{gameController.player.money}</Text>
+          </HStack>
+        </HStack>
+      </HStack>
+      <Center flex={1}>
+        <AdapterOption
+          callback={choose}
+          type={gameController.currentRoom().optionFacade}
+          options={gameController.currentRoom().options}
+        />
+      </Center>
     </>
   )
 }

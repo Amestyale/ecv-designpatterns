@@ -28,8 +28,8 @@ export default class GameController {
     this._player = player
     this._currentPlanet = null
 
-    const scenario =  new Scenario( this)
-    this._planets = scenario.InstantiatePlanetList(planetData);
+    const scenario = new Scenario(this)
+    this._planets = scenario.InstantiatePlanetList(planetData)
     this._inspace = true
     this._inevent = false
     this._canevent = false
@@ -70,27 +70,26 @@ export default class GameController {
 
   public resolveRoom(option: Option) {
     option.modifiers.map((m) => {
-      if(m) m.apply()
+      if (m) m.apply()
     })
 
-    if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
+    if (this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1) {
       this._currentRoomIndex++
     } else {
       this._inspace = true
       this._canevent = true
       this._currentRoomIndex = -1
     }
-
   }
 
   public currentRoom(): Room {
-    if(this._inevent){
-      console.log("event")
-      const scenario = new Scenario(this);
+    if (this._inevent) {
+      console.log('event')
+      const scenario = new Scenario(this)
       this._inevent = false
       return scenario.instanciateRoom(EventsData[0])
     } else if (!this.inSpace && this.currentPlanet) {
-      console.log("planet")
+      console.log('planet')
       return this.currentPlanet?.rooms[this._currentRoomIndex]
     } else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
@@ -98,7 +97,7 @@ export default class GameController {
           this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
           this.currentPlanet = planet
           this.inSpace = false
-          this._inevent = (this._canevent) ? ((Math.random() * 0) + this.player.race.luck) > 10 : false
+          this._inevent = this._canevent ? Math.random() * 0 + this.player.race.luck > 10 : false
         })
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
@@ -108,10 +107,10 @@ export default class GameController {
     }
   }
 
-  public currentX(): number{
+  public currentX(): number {
     return this._currentPlanet ? this._currentPlanet.x : 0
   }
-  public currentY(): number{
+  public currentY(): number {
     return this._currentPlanet ? this._currentPlanet.y : 0
   }
 
@@ -121,5 +120,23 @@ export default class GameController {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
       return ship.getMaxFlyingDistance() >= distance
     })
+  }
+
+  public isGameWin(): boolean {
+    if (this.currentPlanet && this.currentPlanet.x >= this._distance) return true
+    return false
+  }
+
+  public isGameLoose(): boolean {
+    if (this._player._health <= 0) {
+      return true
+    }
+    if (this._player.ship._health <= 0) {
+      return true
+    }
+    if (this._player.ship.fuel <= 0) {
+      return true
+    }
+    return false
   }
 }
