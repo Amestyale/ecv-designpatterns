@@ -1,7 +1,5 @@
 import Planet from './Planet'
 import Room from './Room'
-
-import PlanetData from '../data/PlanetData'
 import RoomData from '../data/RoomData'
 import Option from './gamemanagement/Option'
 import Modifier from './gamemanagement/Modifier/Modifier'
