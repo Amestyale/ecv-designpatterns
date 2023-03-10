@@ -5,10 +5,12 @@ import Modifier from "./Modifier";
 
 export default class ModifierShipStat extends Modifier {
   private _stat: ShipDataList 
+  private _ship: Ship 
 
-  constructor(stat: ShipDataList, value: number){
+  constructor(ship: Ship, stat: ShipDataList, value: number){
     super(value)
     this._stat = stat
+    this._ship = ship
   }
 
   public get stat(): any {
@@ -22,24 +24,26 @@ export default class ModifierShipStat extends Modifier {
   public canBeChoosen(ship : Ship){
     switch(this._stat){
       case ShipDataList.fuel:
-        return (ship.fuel + this.value) > 0
+        return (this._ship.fuel + this.value) > 0
       case ShipDataList.shield:
-        return (ship.shield + this.value) > 0
+        return (this._ship.shield + this.value) > 0
       case ShipDataList.health:
-        return (ship.health + this.value) > 0
+        return (this._ship.health + this.value) > 0
+      default:
+        return true
     }
   }
 
-  public apply(stat: ShipDataList, ship : Ship){
-    switch(stat){
+  public apply(){
+    switch(this.stat){
       case ShipDataList.fuel:
-        ship.fuel += this.value
+        this._ship.fuel = this._ship.fuel + this.value
         break
       case ShipDataList.shield:
-        ship.shield += this.value
+        this._ship.shield = this._ship.shield + this.value
         break
       case ShipDataList.health:
-        ship.health += this.value
+        this._ship.health = this._ship.health + this.value
         break
     }
   }
