@@ -1,4 +1,4 @@
-import Chapter from "./Chapter"
+import Chapter from './Chapter'
 
 export default class GameController {
   private _id: number
@@ -6,11 +6,11 @@ export default class GameController {
   private _distance: number
   private _player: any
 
-  private _currentChapter: Chapter | null;
-  private _inspace: boolean;
-  private _chapters: [Chapter];
+  private _currentChapter: Chapter | null
+  private _inspace: boolean
+  private _chapters: Chapter[]
 
-  constructor(id: number, name: string, distance: number, player: any, chapters: [Chapter]) {
+  constructor(id: number, name: string, distance: number, player: any, chapters: Chapter[]) {
     this._id = id
     this._name = name
     this._distance = distance
@@ -48,14 +48,13 @@ export default class GameController {
     this._currentChapter = chapter
   }
 
-  public nextChaptersAvailables() : Array<Chapter> {
-    const currentX = (this._currentChapter) ? this._currentChapter.x : 0
-    const currentY = (this._currentChapter) ? this._currentChapter.y : 0
-    const ship = this.player.ship;
-    return this._chapters.filter((chapter)=>{
+  public nextChaptersAvailables(): Array<Chapter> {
+    const currentX = this._currentChapter ? this._currentChapter.x : 0
+    const currentY = this._currentChapter ? this._currentChapter.y : 0
+    const ship = this.player.ship
+    return this._chapters.filter((chapter) => {
       const distance = chapter.distanceFrom(currentX, currentY)
       return ship.getMaxFlyingDistance() <= distance
     })
   }
-
 }

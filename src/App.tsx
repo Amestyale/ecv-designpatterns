@@ -1,3 +1,4 @@
+import { Center } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Player from './classes/Player'
 import Ship from './classes/Ship'
@@ -10,7 +11,7 @@ const App = () => {
   const [ship, setShip] = useState<Ship | null>(null)
 
   return (
-    <>
+    <Center minHeight={'100vh'}>
       {!ship && <SelectShip setShip={setShip} />}
       {!player && ship && (
         <SelectPlayer
@@ -19,7 +20,7 @@ const App = () => {
         />
       )}
       {player && ship && <Game player={player} />}
-    </>
+    </Center>
   )
 }
 

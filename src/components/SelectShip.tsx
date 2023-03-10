@@ -1,3 +1,4 @@
+import { Button, Select, VStack } from '@chakra-ui/react'
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import Ship from '../classes/Ship'
 import Vehicle from '../classes/Vehicle'
@@ -26,8 +27,8 @@ const SelectShip = ({ setShip }: Props) => {
     if (ship) setShip(new Ship(100, 100, 100, [null]))
   }
   return (
-    <>
-      <select ref={selectRef}>
+    <VStack minWidth={'sm'}>
+      <Select ref={selectRef}>
         {ships.map((ship) => (
           <option
             key={ship.name}
@@ -36,9 +37,14 @@ const SelectShip = ({ setShip }: Props) => {
             {ship.name}
           </option>
         ))}
-      </select>
-      <button onClick={handleOnClick}>Select ship</button>
-    </>
+      </Select>
+      <Button
+        width={'full'}
+        onClick={handleOnClick}
+      >
+        Select ship
+      </Button>
+    </VStack>
   )
 }
 

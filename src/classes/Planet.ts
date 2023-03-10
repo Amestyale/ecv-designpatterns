@@ -5,9 +5,9 @@ export default class Planet {
   private _name: string
   private _description: string
   private _appearance: string
-  private _rooms: [Room]
+  private _rooms: Room[]
 
-  constructor(id: number, name: string, description: string, appearance: string, rooms: [Room]) {
+  constructor(id: number, name: string, description: string, appearance: string, rooms: Room[]) {
     this._id = id
     this._name = name
     this._description = description
@@ -31,7 +31,7 @@ export default class Planet {
     return this._appearance
   }
 
-  get rooms(): [Room] {
+  get rooms(): Room[] {
     return this._rooms
   }
 }
