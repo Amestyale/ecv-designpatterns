@@ -128,13 +128,13 @@ export default class GameController {
   }
 
   public isGameLoose(): boolean {
-    if (this._player._health <= 0) {
+    if (this.player.health <= 0) {
       return true
     }
-    if (this._player.ship._health <= 0) {
+    if (this.player.ship.health <= 0) {
       return true
     }
-    if (this._player.ship.fuel <= 0) {
+    if (this.player.ship.fuel <= 0) {
       return true
     }
     return false
