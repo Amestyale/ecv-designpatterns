@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD
 import Chapter from '../classes/Chapter'
 import GameController from '../classes/GameController'
+=======
+import GameController from '../classes/GameController'
+import GameInstance from '../classes/GameController'
+>>>>>>> game-loop
 import ModifierPlayerStat from '../classes/gamemanagement/Modifier/ModifierPlayerStat'
+import ModifierShipStat from '../classes/gamemanagement/Modifier/ModifierShipStats'
 import Option from '../classes/gamemanagement/Option'
 import Planet from '../classes/Planet'
 import Player from '../classes/Player'
@@ -9,6 +15,7 @@ import Room from '../classes/Room'
 import useChapters from '../hooks/useChapters'
 import useRooms from '../hooks/useRooms'
 import { PlayerDataList } from '../types/PlayerStatList'
+import { ShipDataList } from '../types/ShipStatList'
 import AdapterOption from './AdapterOption'
 
 interface Props {
