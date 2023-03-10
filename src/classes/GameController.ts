@@ -73,11 +73,11 @@ export default class GameController {
       if(m) m.apply()
     })
 
-    if(this._inevent){
-    } else if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
+    if(this.currentPlanet && this.currentPlanet?.rooms.length > this._currentRoomIndex + 1){
       this._currentRoomIndex++
     } else {
       this._inspace = true
+      this._canevent = true
       this._currentRoomIndex = -1
     }
 
@@ -85,18 +85,20 @@ export default class GameController {
 
   public currentRoom(): Room {
     if(this._inevent){
-      this._canevent = false
-      this._inevent = false
+      console.log("event")
       const scenario = new Scenario(this);
+      this._inevent = false
       return scenario.instanciateRoom(EventsData[0])
-    } else if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[this._currentRoomIndex]
-    else {
+    } else if (!this.inSpace && this.currentPlanet) {
+      console.log("planet")
+      return this.currentPlanet?.rooms[this._currentRoomIndex]
+    } else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
         const modifier = new ModifierCustom(() => {
           this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
           this.currentPlanet = planet
           this.inSpace = false
-          this._inevent = (this._canevent) ? ((Math.random() * 0) + this.player.race.luck) < 8 : false
+          this._inevent = (this._canevent) ? ((Math.random() * 0) + this.player.race.luck) > 10 : false
         })
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
