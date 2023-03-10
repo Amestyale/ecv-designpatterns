@@ -1,11 +1,13 @@
+import Option from './gamemanagement/Option'
+
 export default class Room {
   private _id: number
   private _title: string
   private _text: string
-  private _options: any[]
+  private _options: Option[]
   private _optionFacade: string
 
-  constructor(id: number, title: string, text: string, options: any[], optionFacade: string) {
+  constructor(id: number, title: string, text: string, options: Option[], optionFacade: string) {
     this._id = id
     this._title = title
     this._text = text
@@ -22,7 +24,7 @@ export default class Room {
   get text(): string {
     return this._text
   }
-  get options(): any[] {
+  get options(): Option[] {
     return this._options
   }
   get optionFacade(): String {

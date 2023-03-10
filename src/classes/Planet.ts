@@ -1,22 +1,28 @@
 import Room from './Room'
 
 export default class Planet {
-  private _id: number
   private _name: string
   private _description: string
   private _appearance: string
   private _rooms: Room[]
+  private _x: number
+  private _y: number
 
-  constructor(id: number, name: string, description: string, appearance: string, rooms: Room[]) {
-    this._id = id
+  constructor(x: number, y: number, name: string, description: string, appearance: string, rooms: Room[]) {
+    this._x = x
+    this._y = y
     this._name = name
     this._description = description
     this._appearance = appearance
     this._rooms = rooms
   }
 
-  get id(): number {
-    return this._id
+  get x(): number {
+    return this._x
+  }
+
+  get y(): number {
+    return this._y
   }
 
   get name(): string {
@@ -33,5 +39,9 @@ export default class Planet {
 
   get rooms(): Room[] {
     return this._rooms
+  }
+
+  public distanceFrom(x: number, y: number): number {
+    return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2))
   }
 }

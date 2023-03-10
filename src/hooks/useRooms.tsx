@@ -6,6 +6,8 @@ import Room from '../classes/Room'
 import { PlayerDataList } from '../types/PlayerStatList'
 
 const useRooms = (player: Player) => {
+  if (!player) throw new Error('Player is undefined')
+
   const room1_opt1 = new Option('Option 1', 'Ceci est la première option', [
     new ModifierPlayerStat(player, PlayerDataList.money, -50),
     new ModifierPlayerStat(player, PlayerDataList.health, 100),

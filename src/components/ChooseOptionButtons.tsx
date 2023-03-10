@@ -1,21 +1,21 @@
 import React from 'react'
+import { Button, ButtonGroup } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
 
-const ChooseOptionButtons = (props: any) => {
-  const { callback, options } = props
+const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
-    <>
+    <ButtonGroup>
       {options.map((option: Option, i: number) => {
         return (
-          <button
+          <Button
             key={i}
             onClick={() => callback(option)}
           >
             {option.title}
-          </button>
+          </Button>
         )
       })}
-    </>
+    </ButtonGroup>
   )
 }
 

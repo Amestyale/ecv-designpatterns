@@ -1,4 +1,9 @@
-import Chapter from './Chapter'
+import { PlayerDataList } from '../types/PlayerStatList'
+import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
+import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
+import Option from './gamemanagement/Option'
+import Planet from './Planet'
+import Room from './Room'
 
 export default class GameController {
   private _id: number
@@ -6,17 +11,17 @@ export default class GameController {
   private _distance: number
   private _player: any
 
-  private _currentChapter: Chapter | null
+  private _currentPlanet: Planet | null
   private _inspace: boolean
-  private _chapters: Chapter[]
+  private _planets: Planet[]
 
-  constructor(id: number, name: string, distance: number, player: any, chapters: Chapter[]) {
+  constructor(id: number, name: string, distance: number, player: any, planets: Planet[]) {
     this._id = id
     this._name = name
     this._distance = distance
     this._player = player
-    this._currentChapter = null
-    this._chapters = chapters
+    this._currentPlanet = null
+    this._planets = planets
     this._inspace = true
   }
 
@@ -36,25 +41,44 @@ export default class GameController {
     return this._player
   }
 
-  get currentChapter(): Chapter | null {
-    return this._currentChapter
+  get currentPlanet(): Planet | null {
+    return this._currentPlanet
   }
 
   get inSpace(): boolean {
     return this._inspace
   }
 
-  set currentChapter(chapter: Chapter | null) {
-    this._currentChapter = chapter
+  set inSpace(inspace: boolean) {
+    this._inspace = inspace
+  }
+  set currentPlanet(planet: Planet | null) {
+    this._currentPlanet = planet
   }
 
-  public nextChaptersAvailables(): Array<Chapter> {
-    const currentX = this._currentChapter ? this._currentChapter.x : 0
-    const currentY = this._currentChapter ? this._currentChapter.y : 0
+  public currentRoom(): Room {
+    console.log('building cap', this.inSpace, this.currentPlanet)
+    if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[0]
+    else {
+      const options = this.nextPlanetsAvailables().map((planet: Planet) => {
+        const modifier = new ModifierCustom((gameController: GameController) => {
+          this.currentPlanet = planet
+          this.inSpace = false
+        })
+        const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
+        return opt
+      })
+
+      return new Room(0, 'Choisir le cap', 'Où voulez-vous aller ?', options, 'buttons')
+    }
+  }
+  public nextPlanetsAvailables(): Array<Planet> {
+    const currentX = this._currentPlanet ? this._currentPlanet.x : 0
+    const currentY = this._currentPlanet ? this._currentPlanet.y : 0
     const ship = this.player.ship
-    return this._chapters.filter((chapter) => {
-      const distance = chapter.distanceFrom(currentX, currentY)
-      return ship.getMaxFlyingDistance() <= distance
+    return this._planets.filter((planet) => {
+      const distance = planet.distanceFrom(currentX, currentY)
+      return true // ship.getMaxFlyingDistance() <= distance
     })
   }
 }
