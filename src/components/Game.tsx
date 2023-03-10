@@ -1,20 +1,14 @@
 import React, { useState } from 'react'
+import GameController from '../classes/GameController'
 import Option from '../classes/gamemanagement/Option'
-import Player from '../classes/Player'
-import useGameController from '../hooks/useGameController'
-import usePlanets from '../hooks/usePlanets'
-import useRooms from '../hooks/useRooms'
 import AdapterOption from './AdapterOption'
 
 interface Props {
-  player: Player
+  gameController: GameController
 }
 
-const Game = ({ player }: Props) => {
+const Game = ({ gameController }: Props) => {
   const [refresh, setRefresh] = useState(false)
-  const rooms = useRooms(player)
-  const planets = usePlanets(rooms)
-  const gameController = useGameController(player, planets)
 
   const choose = (option: Option) => {
     option.modifiers.map((m) => m.apply())
@@ -22,15 +16,13 @@ const Game = ({ player }: Props) => {
   }
 
   return (
-    <div>
-      <p>Life {player.health}</p>
-      <p>Money {player.money}</p>
+    <>
       <AdapterOption
         callback={choose}
         type={gameController.currentRoom().optionFacade}
         options={gameController.currentRoom().options}
       />
-    </div>
+    </>
   )
 }
 

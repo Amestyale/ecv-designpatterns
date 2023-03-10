@@ -1,10 +1,10 @@
-import { Button } from '@chakra-ui/button'
 import React from 'react'
+import { Button, ButtonGroup } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
 
 const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
-    <>
+    <ButtonGroup>
       {options.map((option: Option, i: number) => {
         return (
           <Button
@@ -15,7 +15,7 @@ const ChooseOptionButtons = ({ callback, options }: any) => {
           </Button>
         )
       })}
-    </>
+    </ButtonGroup>
   )
 }
 
