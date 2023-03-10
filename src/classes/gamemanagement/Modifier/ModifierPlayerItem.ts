@@ -25,6 +25,8 @@ export default class ModifierPlayerItem extends Modifier {
       for (let i = 0; i < this._player._inventory.length; i++) {
         return this._player._inventory.find(item => item.id === this._item.id) !== undefined;
       }
+    } else {
+      return true
     }
   }
 
