@@ -24,19 +24,19 @@ export default class ModifierPlayerStat extends Modifier {
   public canBeChoosen(){
     switch(this._stat){
       case PlayerDataList.health:
-        return (this._player.health + this.value) > 0
+        return (this._player.health + +this.value) > 0
       case PlayerDataList.money:
-        return (this._player.money + this.value) > 0
+        return (this._player.money + +this.value) > 0
     }
   }
 
   public apply(){
     switch(this.stat){
       case PlayerDataList.health:
-        this._player.health = this._player.health + this.value
+        this._player.health = this._player.health + +this.value
         break;
       case PlayerDataList.money:
-        this._player.money = this._player.money + this._value
+        this._player.money = this._player.money + +this._value
         break;
     }
   }
