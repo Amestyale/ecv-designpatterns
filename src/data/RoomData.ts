@@ -53,7 +53,7 @@ let RoomData =
             {
                 name : "Une station essence", 
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
-                consequences: [{type: "player-data", name: 'money', modifier: '-20'},{type: "ShipDataList", name: 'fuel', modifier: '1'}]
+                consequences: [{type: "ship-data", name: 'fuel', modifier: '5'},{type: "ShipDataList", name: 'fuel', modifier: '1'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 

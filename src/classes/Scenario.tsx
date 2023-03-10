@@ -6,6 +6,7 @@ import RoomData from '../data/RoomData'
 import Option from './gamemanagement/Option'
 import Modifier from './gamemanagement/Modifier/Modifier'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
+import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
 
 
 export default class Scenario {
@@ -18,7 +19,6 @@ export default class Scenario {
 
     this._gameinstance = gameInstance
     this._planets = this.InstantiatePlanetList(PlanetData);
-    console.log(gameInstance)
   }
 
   private InstantiatePlanetList(PlanetData: Planet[]): any{
@@ -74,6 +74,8 @@ export default class Scenario {
     switch(data.type){
       case 'player-data':
         return new ModifierPlayerStat(this._gameinstance.player, data.name, data.modifier)
+      case 'ship-data':
+        return new ModifierShipStat(this._gameinstance.player.ship, data.name, data.modifier)
 
       default:
         return null

@@ -7,7 +7,9 @@ enum ShipStatList {
   enum ShipDataList {
     "health",
     "shield",
-    "fuel"
+    "fuel" = "fuel"
   }
+
+
 
 export {ShipStatList, ShipDataList};
