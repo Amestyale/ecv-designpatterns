@@ -48,7 +48,7 @@ class Ship {
 
     removeItem(id: string) {
         // Find item index with given id
-        const index = this._items.findIndex(item => item.id === id);
+        const index = this._items.findIndex(item => item && item.id === id);
         // If item not found, return array without modification
         if (index === -1) {
           return this._items;
