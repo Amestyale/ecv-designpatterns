@@ -30,6 +30,7 @@ export default class GameController {
 
     const scenario = new Scenario(this)
     this._planets = scenario.InstantiatePlanetList(planetData)
+    console.log(this._planets)
     this._inspace = true
     this._inevent = false
     this._canevent = false
@@ -90,7 +91,7 @@ export default class GameController {
       return scenario.instanciateRoom(EventsData[0])
     } else if (!this.inSpace && this.currentPlanet) {
       console.log('planet')
-      return this.currentPlanet?.rooms[this._currentRoomIndex]
+      return this.currentPlanet?.rooms[0]
     } else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
         const modifier = new ModifierCustom(() => {

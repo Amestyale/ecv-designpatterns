@@ -5,6 +5,10 @@ import Option from './gamemanagement/Option'
 import Modifier from './gamemanagement/Modifier/Modifier'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
+import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
+import ItemPlayer from './ItemPlayer'
+import ItemShip from './ItemShip'
+import ModifierShipItem from './gamemanagement/Modifier/ModifierShipItem'
 
 export default class Scenario {
   private _distance: number
@@ -53,9 +57,32 @@ export default class Scenario {
     switch (data.type) {
       case 'player-data':
         return new ModifierPlayerStat(this._gameinstance.player, data.name, data.modifier)
+        break;
       case 'ship-data':
         return new ModifierShipStat(this._gameinstance.player.ship, data.name, data.modifier)
-
+        break;
+      case 'player-item':
+        const itemPlayer = new ItemPlayer(
+          data.item.id,
+          data.item.title,
+          data.item.description,
+          [],
+          'rien',
+          'rien'
+        )
+        return new ModifierPlayerItem(this._gameinstance.player, itemPlayer, data.modifier)
+        break;
+      case 'ship-item':
+        const itemShip = new ItemShip(
+          data.item.id,
+          data.item.title,
+          data.item.description,
+          [],
+          'rien',
+          'rien'
+        )
+        return new ModifierShipItem(this._gameinstance.player, itemShip, data.modifier)
+        break;
       default:
         return null
     }

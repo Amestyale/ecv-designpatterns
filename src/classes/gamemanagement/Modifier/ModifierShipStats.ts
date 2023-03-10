@@ -24,11 +24,11 @@ export default class ModifierShipStat extends Modifier {
   public canBeChoosen(){
     switch(this._stat){
       case ShipDataList.fuel:
-        return (this._ship.fuel + this.value) > 0
+        return (this._ship.fuel + +this.value) > 0
       case ShipDataList.shield:
-        return (this._ship.shield + this.value) > 0
+        return (this._ship.shield + +this.value) > 0
       case ShipDataList.health:
-        return (this._ship.health + this.value) > 0
+        return (this._ship.health + +this.value) > 0
     }
   }
 

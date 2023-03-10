@@ -2,9 +2,9 @@ import Item from "./Item";
 import { PlayerStatList } from "../types/PlayerStatList";
 
 class ItemPlayer extends Item {
-  private _stat: [{ name: PlayerStatList; modifier: number }]
+  private _stat: { name: PlayerStatList; modifier: number }[]
 
-  constructor(id: string, title: string, description: string, stat: [{ name: PlayerStatList; modifier: number }], type: string, category: string) {
+  constructor(id: string, title: string, description: string, stat: { name: PlayerStatList; modifier: number }[], type: string, category: string) {
     super(id, title, description, type, category)
 
     // {name: 'strenght',modifier: '2'}
@@ -15,7 +15,7 @@ class ItemPlayer extends Item {
     return this._stat
   }
 
-  public set stat(stat: [{ name: PlayerStatList; modifier: number }]) {
+  public set stat(stat: { name: PlayerStatList; modifier: number }[]) {
     this._stat = stat
   }
 }
