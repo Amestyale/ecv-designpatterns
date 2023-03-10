@@ -6,12 +6,10 @@ import Modifier from "./Modifier";
 
 export default class ModifierCustom extends Modifier {
   private _callback: Function
-  private _gamecontroller: GameController
 
-  constructor(callback: any, gameController: GameController){
+  constructor(callback: any){
     super(0)
     this._callback = callback
-    this._gamecontroller = gameController
   }
 
   public canBeChoosen(){
@@ -19,7 +17,7 @@ export default class ModifierCustom extends Modifier {
   }
 
   public apply(){
-    this._callback(this._gamecontroller)
+    this._callback()
   }
 
 }

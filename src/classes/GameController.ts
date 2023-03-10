@@ -62,9 +62,9 @@ export default class GameController {
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
         const modifier = new ModifierCustom((gameController: GameController) => {
-          gameController.currentPlanet = planet
-          gameController.inSpace = false
-        }, this)
+          this.currentPlanet = planet
+          this.inSpace = false
+        })
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
       })
