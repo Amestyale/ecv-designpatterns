@@ -53,7 +53,7 @@ let RoomData =
             {
                 name : "Une station essence", 
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
-                consequences: [{type: "ship-data", name: 'money', modifier: -2000},{type: "ShipDataList", name: 'fuel', modifier: '1'}]
+                consequences: [{type: "player-data", name: 'money', modifier: -2000},{type: "ship-data", name: 'fuel', modifier: '1'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 
@@ -128,7 +128,8 @@ let RoomData =
                 }
             }]
             },
-        ]
+        ],
+        optionFacade : "buttons"
     },
     {
         id: 40,
@@ -149,7 +150,8 @@ let RoomData =
                 description : "Le clown essaye de sourire à votre tentative pitoyable d’humour, mais n’y arrive décidément pas.<br>Bravo, vous devez bien être le seul être vivant à des années lumières à la ronde qui ne réussit pas à faire rire un clown !<br>Vous repartez avec moins d’estime en vous qu’à l’arrivée.",
                 consequences: []
             }
-        ]
+        ],
+        optionFacade : "buttons"
     },
 ];
 
