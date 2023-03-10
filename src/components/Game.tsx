@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
+import { Center, Container, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
 import Option from '../classes/gamemanagement/Option'
@@ -58,11 +58,23 @@ const Game = ({ gameController }: Props) => {
         </HStack>
       </HStack>
       <Center flex={1}>
-        <AdapterOption
-          callback={choose}
-          type={gameController.currentRoom().optionFacade}
-          options={gameController.currentRoom().options}
-        />
+        <VStack
+          minWidth={'2xl'}
+          borderRadius={'xl'}
+          backgroundColor={'rgba(0, 0, 0, 0.8)'}
+          padding={20}
+          marginX={20}
+          gap={10}
+          align={'flex-start'}
+        >
+          <Heading>{gameController.currentRoom().title}</Heading>
+          <Text>{gameController.currentRoom().text}</Text>
+          <AdapterOption
+            callback={choose}
+            type={gameController.currentRoom().optionFacade}
+            options={gameController.currentRoom().options}
+          />
+        </VStack>
       </Center>
     </>
   )
