@@ -62,7 +62,7 @@ class Player {
 
   removeItem(id: string) {
     console.log(this._inventory)
-    const index = this._inventory.findIndex(item => item.id === id);
+    const index = this._inventory.findIndex(item => item && item.id === id);
     if (index === -1) {
       return this._inventory;
     }
