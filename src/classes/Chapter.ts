@@ -29,7 +29,7 @@ export default class Chapter {
     return this._planet
   }
 
-  public distanceFrom(x: number, y: number): number{
-    return Math.sqrt(Math.pow((this.x - x),2) + Math.pow((this.y - y), 2))
+  public distanceFrom(x: number, y: number): number {
+    return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2))
   }
 }

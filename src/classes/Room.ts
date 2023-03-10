@@ -2,10 +2,10 @@ export default class Room {
   private _id: number
   private _title: string
   private _text: string
-  private _options: [any]
+  private _options: any[]
   private _optionFacade: string
 
-  constructor(id: number, title: string, text: string, options: [any], optionFacade: string) {
+  constructor(id: number, title: string, text: string, options: any[], optionFacade: string) {
     this._id = id
     this._title = title
     this._text = text
@@ -22,11 +22,10 @@ export default class Room {
   get text(): string {
     return this._text
   }
-  get options(): [any] {
+  get options(): any[] {
     return this._options
   }
-  get optionFacade(): String{
+  get optionFacade(): String {
     return this._optionFacade
   }
-
 }
