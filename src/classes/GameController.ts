@@ -3,6 +3,7 @@ import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
+import Player from './Player'
 import Room from './Room'
 import Scenario from './Scenario'
 
@@ -10,14 +11,14 @@ export default class GameController {
   private _id: number
   private _name: string
   private _distance: number
-  private _player: any
+  private _player: Player
 
   private _currentPlanet: Planet | null
   private _currentRoomIndex: number
   private _inspace: boolean
   private _planets: Planet[]
 
-  constructor(id: number, name: string, distance: number, player: any, planetData: any) {
+  constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
     this._id = id
     this._name = name
     this._distance = distance
@@ -43,7 +44,7 @@ export default class GameController {
     return this._distance
   }
 
-  get player(): any {
+  get player(): Player {
     return this._player
   }
 
@@ -80,7 +81,8 @@ export default class GameController {
     if (!this.inSpace && this.currentPlanet) return this.currentPlanet?.rooms[this._currentRoomIndex]
     else {
       const options = this.nextPlanetsAvailables().map((planet: Planet) => {
-        const modifier = new ModifierCustom((gameController: GameController) => {
+        const modifier = new ModifierCustom(() => {
+          this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
           this.currentPlanet = planet
           this.inSpace = false
         })
@@ -92,12 +94,17 @@ export default class GameController {
     }
   }
 
+  public currentX(): number{
+    return this._currentPlanet ? this._currentPlanet.x : 0
+  }
+  public currentY(): number{
+    return this._currentPlanet ? this._currentPlanet.y : 0
+  }
+
   public nextPlanetsAvailables(): Array<Planet> {
-    const currentX = this._currentPlanet ? this._currentPlanet.x : 0
-    const currentY = this._currentPlanet ? this._currentPlanet.y : 0
     const ship = this.player.ship
     return this._planets.filter((planet) => {
-      const distance = planet.distanceFrom(currentX, currentY)
+      const distance = planet.distanceFrom(this.currentX(), this.currentY())
       return ship.getMaxFlyingDistance() >= distance
     })
   }

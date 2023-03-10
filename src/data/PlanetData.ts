@@ -2,7 +2,7 @@ let PlanetData =
 [
     {
         id: 1,
-        x: 600,
+        x: 750,
         y: 0,
         name: 'Planète gelée',
         description: 'La première chose que vous remarquez en atterrissant est la température absolument glaciale qui règne sur ce globe froid et sans vie.<br>Une banquise géante est la seule chose visible à perte de vue, le vent fait virevolter la fine couche de neige présente sur le sol…',
