@@ -15,7 +15,8 @@ let RoomData =
                 description : "Vous décidez de ne pas prendre de risque aujourd’hui.<br>Votre vaisseau repart juste dix minutes après son arrivée.<br>Il ne s'est rien passé.",
                 consequences: []
             }
-        ]
+        ],
+        optionFacade : "buttons"
     },
     {
         id: 11,
@@ -41,7 +42,8 @@ let RoomData =
                 description : "Vous finissez par atteindre une ouverture aux milieux des rues désertes, les restes de ce qui aurait pu autrefois être la place centrale s’offre à vous.<br>Une gigantesque fontaine noire et luisante continue de couler doucement malgré le froid, le liquide visqueux et sombre n’ayant pas gelé.<br>Mais. Il s’agit d’essence ! Ces anciennes civilisations perdues ont vraiment des goûts douteux…<br>+3 fuel!",
                 consequences: [{type: "ShipDataList", name: 'fuel', modifier: '3'}]
             }
-        ]
+        ],
+        optionFacade : "buttons"
     },
     {
         id: 20,
@@ -58,7 +60,8 @@ let RoomData =
                 description : "Après avoir toqué à la porte, votre grand-mère (ou une copie parfaite d’elle) ouvre la porte.<br>*Et bien mon trésor ? On joue au cosmonaute ?*, dit-elle. *C’est adorable mon poussin, tiens, j'ai un petit quelque chose pour toi, mais ne vas pas le dire à tes parents !*<br>Elle vous glisse discrètement un billet avant de refermer la porte. C’est définitivement l’événement le plus bizarre de la journée…<br>+20 crédits",
                 consequences: [{type: "PlayerDataList", name: 'money', modifier: '20'}]
             }
-        ]
+        ],
+        optionFacade : "buttons"
     },
     {
         id: 21,
@@ -75,7 +78,8 @@ let RoomData =
                 description : "Vraiment ? Vous avez déjà essayé de cogner un banc avec vos poings ?<br>Ces bestiaux sont bien plus solides que ce que vous pensiez.<br>Vous réussissez quand même à lui donner un œil au beurre noir en échange d’une partie de votre pantalon et de ce qui pourrait être appelé votre jambe gauche…<br>-30 de santé",
                 consequences: [{type: "PlayerDataList", name: 'health', modifier: '-30'}]
             }
-        ]
+        ],
+        optionFacade : "buttons"
     },
 ];
 
