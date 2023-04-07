@@ -28,7 +28,7 @@ export default class GameController {
 
     const scenario = new Scenario(this)
     this.planets = scenario.InstantiatePlanetList(planetData)
-    
+
     this.inspace = true
     this.inevent = false
     this.canevent = false
@@ -63,7 +63,7 @@ export default class GameController {
           this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
           this.currentPlanet = planet
           this.inspace = false
-          this.inevent = this.canevent ? Math.random() * 0 + this.player.race.luck > 10 : false
+          this.inevent = this.canevent ? Math.random() * 0 + this.player.luck > 10 : false
         })
         const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
         return opt
@@ -101,7 +101,7 @@ export default class GameController {
     if (this.player.health <= 0) {
       return true
     }
-    
+
     if (this.player.ship.health <= 0) {
       return true
     }
