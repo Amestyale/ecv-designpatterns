@@ -1,8 +1,6 @@
 import { extendTheme } from '@chakra-ui/theme-utils'
 
 const theme = extendTheme({
-  initialColorMode: 'dark',
-  useSystemColorMode: false,
   styles: {
     global: () => ({
       body: {
