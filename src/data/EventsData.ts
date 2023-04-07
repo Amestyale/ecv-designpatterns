@@ -18,16 +18,7 @@ export default
             {
               name : "On est 4 ? Et si on jouait au Kems ?", 
               description : "",
-              consequences: [{type: "item",item:
-                  {
-                      id: 'jeu-de-carte',
-                      title: 'Jeu de cartes',
-                      description: '',
-                      type: 'cardgame',
-                      category: 'game',
-                      stat: [{name: 'luck', modifier: '1'}],
-                  }
-              }]
+              consequences: [{type: "player-data", name: 'money', modifier: '50'}]
           },
         ],
         optionFacade : "buttons"
