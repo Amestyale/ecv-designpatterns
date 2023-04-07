@@ -1,9 +1,9 @@
 import Modifier from "./Modifier/Modifier";
 
 export default class Option{
-  private title: String;
-  private text: String;
-  private modifiers: Array<Modifier>
+  public title: String;
+  public text: String;
+  public modifiers: Array<Modifier>
 
   constructor(title: String, text: String, modifiers: Array<Modifier>){
     this.title = title
