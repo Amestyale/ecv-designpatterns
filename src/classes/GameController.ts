@@ -1,9 +1,6 @@
-import EventsData from '../data/EventsData'
-import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Player from './Player'
-import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
