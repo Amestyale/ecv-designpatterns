@@ -115,6 +115,88 @@ let RoomData =
         ],
         optionFacade : "buttons"
     },
+    
+    {
+        id: 50,
+        title: 'Le cratère en éruption',
+        text: 'Le vaisseau atterrit en douceur sur une plateforme rocheuse. Tout autour, des volcans crachent des flammes et de la lave. Le ciel est rougeoyant et l air est brûlant.<br>Vous entendez des cris au loin, il y a peut-être des survivants. Que décidez-vous de faire ?',
+        options: [
+            {
+            name : "Chercher des survivants",
+            description : "Vous vous dirigez vers les cris et trouvez un groupe de survivants acculés par des créatures de lave. Vous engagez le combat pour les aider.<br> Au prix de quelques blessures, vous gagné le combat, pour vous remercier, le plus vieux des survivants vous offre le peu de monnaie qu'il a sur lui<br>+10 d argent, -5 de vie",
+            consequences: [
+                {type: "player-data", name: 'health', modifier: '+10'},
+                {type: "player-data", name: 'money', modifier: '+5'}
+            ]
+            },
+            {
+            name : "Explorer les environs",
+            description : "Vous décidez d'explorer les environs, malgré les dangers. Vous trouvez une grotte qui mène à une chambre de cristal remplie de pierres précieuses.<br>+50 de richesse",
+            consequences: [
+                {type: "player-data", name: 'money', modifier: '+50'}
+            ]
+            }
+        ],
+        optionFacade : "buttons"
+    },
+    {
+        id: 51,
+        title: 'Au bord du cratère',
+        text: 'Vous êtes au bord d’un cratère immense, rempli de lave bouillonnante.<br>Les éruptions volcaniques sont visibles à l’horizon et des cendres tombent du ciel.<br>Vous apercevez quelque-chose de brillant au fond du cratère. Que décidez-vous de faire ?',
+        options: [
+            {
+                name : "Descendre dans le cratère",
+                description : "Vous descendez dans le cratère, mais la lave est trop chaude et vous brûlez vos pieds.<br>-10 de santé.",
+                consequences: [{type: "player-data", name: 'health', modifier: '-10'}]
+            },
+            {
+                name : "Repartir",
+                description : "Vous décidez de ne pas prendre de risque et de repartir immédiatement.<br>Vous ne trouvez rien d'intéressant, mais vous êtes en sécurité.",
+                consequences: [{type: "player-data", name: 'health', modifier: '0'}]
+            }
+        ],
+        optionFacade : "buttons"
+    },
+    {
+        id: 60,
+        title: 'Les profondeurs marines',
+        text: 'Le vaisseau atterrit en douceur sur l océan de la planète aquatique. Tout autour, des créatures marines étranges nagent autour du vaisseau.<br> Vous apercevez également ce qui semble être une épave au loin.<br>Que décidez-vous de faire ?',
+        options: [
+            {
+                name : "Explorer l épave",
+                description : "Vous trouvez une vieille épave au fond de l'océan et décidez de l'explorer. Vous trouvez un coffre rempli de richesses.<br>+50 de richesse",
+                consequences: [
+                {type: "player-data", name: 'money', modifier: '+10'}
+                ]
+            },
+            {
+                name : "Rencontrer la civilisation sous-marine",
+                description : "Vous rencontrez une civilisation sous-marine avancée qui vous invite à discuter.C est finalement un piège, vous vous faites dépouiller.<br>-10 d argent",
+                consequences: [
+                {type: "player-data", name: 'money', modifier: '-10'}
+                ]
+            }
+        ],
+        optionFacade : "buttons"
+    },
+    {
+        id: 61,
+        title: 'Dans les abysses',
+        text: 'Vous plongez dans les abysses de la planète aquatique.<br>Les créatures marines les plus étranges nagent autour de vous, certaines étant amicales, d’autres plus hostiles.<br> Certaine semblent posséder des écailles de valeur, d autres des dents de couleur or. Que choisissez-vous de faire ?',
+        options: [
+        {
+            name : "Observer les créatures aux dents d orées",
+            description : "Vous décidez de chasser la créature aux dents d orées.<br> Celle-ci se montre très agressive. Elle vous mort violament le bras",
+            consequences: [{type: "player-data", name: 'health', modifier: '-5'}]
+        },
+        {
+            name : "Chasser les créatures aux écailles de valeur",
+            description : "Vous décidez de chasser la créature.<br>Vous réussissez à la vaincre et récupérer ses écailles.<br>",
+            consequences: [{type: "player-data", name: 'money', modifier: '15'}]
+        }
+        ],
+        optionFacade : "buttons"
+    }
 ];
 
 export default RoomData;
