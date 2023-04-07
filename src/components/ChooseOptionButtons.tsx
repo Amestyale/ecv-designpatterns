@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonGroup } from '@chakra-ui/button'
+import { Button } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
 import { HStack } from '@chakra-ui/layout'
 

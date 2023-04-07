@@ -4,7 +4,7 @@ const theme = extendTheme({
   styles: {
     global: () => ({
       body: {
-        bg: "url('/bg.jpg') no-repeat center/cover",
+        bg: "url('/bg.webp') no-repeat center/cover",
       },
     }),
   },
