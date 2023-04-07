@@ -1,5 +1,5 @@
 import React from 'react'
-import { HStack } from '@chakra-ui/react'
+import { Heading, HStack } from '@chakra-ui/react'
 
 const FlightInstruments = ({ instruments }: any) => {
   return (

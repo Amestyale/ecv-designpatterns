@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading } from '@chakra-ui/layout'
+import { Heading, HStack } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
 import Option from '../classes/gamemanagement/Option'
 import FlightInstruments from './FlightInstruments'
@@ -29,7 +29,14 @@ const Game = ({ gameController }: GameProps) => {
   if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
   return (
     <>
-      <FlightInstruments instruments={[<FlightInstrument text={distanceFromWin}></FlightInstrument>]} />
+      <FlightInstruments
+        instruments={[
+          <HStack>
+            <Heading>Distance</Heading>
+            <FlightInstrument text={distanceFromWin}></FlightInstrument>
+          </HStack>,
+        ]}
+      />
       <Story
         title={title}
         text={text}
@@ -39,18 +46,26 @@ const Game = ({ gameController }: GameProps) => {
       />
       <FlightInstruments
         instruments={[
-          <FlightInstrument text={gameController.player.ship.health}>
-            <FaHeart />
-          </FlightInstrument>,
-          <FlightInstrument text={gameController.player.ship.fuel}>
-            <FaGasPump />
-          </FlightInstrument>,
-          <FlightInstrument text={gameController.player.health}>
-            <FaHeart />
-          </FlightInstrument>,
-          <FlightInstrument text={gameController.player.money}>
-            <FaCoins />
-          </FlightInstrument>,
+          <HStack>
+            <Heading>Ship</Heading>,
+            <FlightInstrument text={gameController.player.ship.health}>
+              <FaHeart />
+            </FlightInstrument>
+            ,
+            <FlightInstrument text={gameController.player.ship.fuel}>
+              <FaGasPump />
+            </FlightInstrument>
+          </HStack>,
+          <HStack>
+            <Heading>Player</Heading>
+            <FlightInstrument text={gameController.player.health}>
+              <FaHeart />
+            </FlightInstrument>
+            ,
+            <FlightInstrument text={gameController.player.money}>
+              <FaCoins />
+            </FlightInstrument>
+          </HStack>,
         ]}
       />
     </>
