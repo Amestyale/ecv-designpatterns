@@ -92,4 +92,10 @@ export default class GameDisplay {
   public displayShipHealth(): number {
     return this.player.ship.health;
   }
+  public displayCurrentPlanetName(): string {
+    if (!this.inspace && this.currentPlanet) {
+      return this.currentPlanet.name
+    }
+    return "";
+  }
 }
