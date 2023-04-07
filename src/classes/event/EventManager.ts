@@ -1,6 +1,6 @@
 
 import GameController from "../GameController";
-import { EventHandlerP, EventHandlerPlanet, EventHandlerUnexpected } from "./EventHandler";
+import { EventHandlerFlightPlan, EventHandlerP, EventHandlerPlanet, EventHandlerUnexpected } from "./EventHandler";
 
 
 export default class EventManager {
@@ -10,9 +10,9 @@ export default class EventManager {
   constructor(gameInstance: GameController){
     this.gameInstance = gameInstance
     this.eventHandlers = [
-      new EventHandlerP(this.gameInstance),
-      new EventHandlerP(this.gameInstance),
-      new EventHandlerP(this.gameInstance)
+      new EventHandlerUnexpected(this.gameInstance),
+      new EventHandlerPlanet(this.gameInstance),
+      new EventHandlerFlightPlan(this.gameInstance)
     ]
   }
 

@@ -1,10 +1,16 @@
 import GameController from '../GameController'
+import Room from '../Room'
 
 export default class GameDisplay {
   public gamecontroller: GameController
 
   constructor(gamecontroller: GameController) {
     this.gamecontroller = gamecontroller
+  }
+
+  public currentRoom(): Room | null{
+    console.log(this.gamecontroller._currentRoom)
+    return this.gamecontroller._currentRoom
   }
 
   public isGameWin(): boolean {

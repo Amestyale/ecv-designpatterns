@@ -54,6 +54,7 @@ export default class GameController {
       this.currentRoomIndex = -1
     }
 
+    this.eventManager.resolve()
   }
 
   public currentRoom(){
