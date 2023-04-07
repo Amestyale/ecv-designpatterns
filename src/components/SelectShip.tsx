@@ -2,14 +2,13 @@ import { Button, Select, VStack } from '@chakra-ui/react'
 import React, { Dispatch, SetStateAction, useRef } from 'react'
 import { FaShip } from 'react-icons/fa'
 import Ship from '../classes/Ship'
-import Vehicle from '../classes/Vehicle'
 
 interface Props {
   setShip: Dispatch<SetStateAction<Ship | null>>
 }
 
-const leger = new Ship(12, 100, 100, [null])
-const lourd = new Ship(5, 200, 200, [null])
+const leger = new Ship('leger', 10, 10, 10, 10)
+const lourd = new Ship('lourd', 20, 20, 20, 20)
 const ships = [
   {
     name: 'leger',
