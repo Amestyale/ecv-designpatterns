@@ -1,6 +1,7 @@
 import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
+import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
 import AdapterOption from './AdapterOption'
 import { FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
@@ -18,7 +19,7 @@ const Game = ({ gameController }: Props) => {
   }
 
   if (gameController.isGameWin()) return <Heading>You win !</Heading>
-  if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
+  if (GameDisplay.isGameOver() != "alive") return <Heading>{gameController.isGameOver()}</Heading>
   return (
     <>
       <HStack
