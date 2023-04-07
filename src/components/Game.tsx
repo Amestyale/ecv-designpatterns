@@ -1,16 +1,24 @@
-import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
+import { Heading } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
 import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
-import AdapterOption from './AdapterOption'
-import { FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
+import FlightInstruments from './FlightInstruments'
+import FlightInstrument from './FlightInstrument'
+import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
+import Story from './Story'
 
-interface Props {
+type GameProps = {
   gameController: GameController
 }
 
-const Game = ({ gameController}: Props) => {
+const Game = ({ gameController }: GameProps) => {
+  const distanceFromWin = gameController.distanceFromWin()
+  const title = gameController.currentRoom().title
+  const text = gameController.currentRoom().text
+  const options = gameController.currentRoom().options
+  const optionFacade = gameController.currentRoom().optionFacade
+
   const [refresh, setRefresh] = useState(false)
   const gameDisplay = new GameDisplay(gameController)
   const choose = (option: Option) => {
@@ -23,45 +31,30 @@ const Game = ({ gameController}: Props) => {
 
   return (
     <>
-      <HStack
-        width={'full'}
-        justify={'space-between'}
-        padding={5}
-        backgroundColor={'rgba(0, 0, 0, 0.8)'}
-      >
-        <HStack>
-          <Text>Ship</Text>
-          <HStack>
+      <FlightInstruments instruments={[<FlightInstrument text={distanceFromWin}></FlightInstrument>]} />
+      <Story
+        title={title}
+        text={text}
+        choose={choose}
+        optionFacade={optionFacade}
+        options={options}
+      />
+      <FlightInstruments
+        instruments={[
+          <FlightInstrument text={gameController.player.ship.health}>
             <FaHeart />
-            <Text>{gameController.player.ship.health}</Text>
-          </HStack>
-          <HStack>
+          </FlightInstrument>,
+          <FlightInstrument text={gameController.player.ship.fuel}>
             <FaGasPump />
-            <Text>{gameController.player.ship.fuel}</Text>
-          </HStack>
-        </HStack>
-        <HStack>
-          <Text>Distance {gameController.distanceFromWin()}</Text>
-        </HStack>
-        <HStack>
-          <Text>User</Text>
-          <HStack>
+          </FlightInstrument>,
+          <FlightInstrument text={gameController.player.health}>
             <FaHeart />
-            <Text>{gameController.player.health}</Text>
-          </HStack>
-          <HStack>
+          </FlightInstrument>,
+          <FlightInstrument text={gameController.player.money}>
             <FaCoins />
-            <Text>{gameController.player.money}</Text>
-          </HStack>
-        </HStack>
-      </HStack>
-      <Center flex={1}>
-        <AdapterOption
-          callback={choose}
-          type={gameDisplay.currentRoom()?.optionFacade}
-          options={gameDisplay.currentRoom()?.options}
-        />
-      </Center>
+          </FlightInstrument>,
+        ]}
+      />
     </>
   )
 }

@@ -5,11 +5,11 @@ import usePlanets from '../hooks/usePlanets'
 import useRooms from '../hooks/useRooms'
 import Game from './Game'
 
-interface Props {
+type GameControllerProps = {
   player: Player
 }
 
-const GameController = ({ player }: Props) => {
+const GameController = ({ player }: GameControllerProps) => {
   const rooms = useRooms(player)
   const planets = usePlanets(rooms)
   const gameController = useGameController(player, planets)

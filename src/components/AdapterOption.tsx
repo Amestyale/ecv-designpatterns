@@ -10,7 +10,6 @@ const AdapterOption = ({ type, options, callback }: any) => {
           options={options}
         />
       )
-      break
     default:
       return <>error</>
   }
