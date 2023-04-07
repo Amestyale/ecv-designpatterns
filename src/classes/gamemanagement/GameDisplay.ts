@@ -33,7 +33,7 @@ export default class GameDisplay {
   }
   public displayFuel(): number {
     const fuelPurcent = (this.gamecontroller.player.ship.fuel / this.gamecontroller.player.ship.maxFuel)*100
-    return fuelPurcent;
+    return Math.min(100, fuelPurcent);
   }
   public displayHealth(): number {
     // const healthPurcent = (this.gamecontroller.player.health / this.gamecontroller.player.health)*100
@@ -43,7 +43,8 @@ export default class GameDisplay {
     return this.gamecontroller.player.money;
   }
   public displayShipHealth(): number {
-    return this.gamecontroller.player.ship.health;
+    const healthPurcent = (this.gamecontroller.player.ship.health / this.gamecontroller.player.ship.maxHealth)*100
+    return Math.min(100, healthPurcent);
   }
   public displayCurrentLocationInfo(): { name: string, description: string } {
     const location = {
