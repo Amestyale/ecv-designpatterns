@@ -7,6 +7,7 @@ import FlightInstruments from './FlightInstruments'
 import FlightInstrument from './FlightInstrument'
 import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
+import FlightInstrumentGauge from './FlightInstrumentGauge'
 
 type GameProps = {
   gameController: GameController
@@ -41,12 +42,12 @@ const Game = ({ gameController }: GameProps) => {
       />
       <FlightInstruments
         instruments={[
-          <FlightInstrument text={gameController.player.ship.health}>
+          <FlightInstrumentGauge percent={gameDisplay.displayShipHealth()}>
             <FaHeart />
-          </FlightInstrument>,
-          <FlightInstrument text={gameController.player.ship.fuel}>
+          </FlightInstrumentGauge>,
+          <FlightInstrumentGauge percent={gameDisplay.displayFuel()}>
             <FaGasPump />
-          </FlightInstrument>,
+          </FlightInstrumentGauge>,
           <FlightInstrument text={gameController.player.health}>
             <FaHeart />
           </FlightInstrument>,
