@@ -27,6 +27,7 @@ class EventHandlerUnexpected extends EventHandlerP{
       const scenario = new Scenario(this.gameInstance)
       this.gameInstance.canevent = false
       this.gameInstance.inevent = false
+      this.gameInstance.inspace = false
       this.gameInstance._currentRoom = scenario.instanciateRoom(EventsData[0])
       return true
     } else {
@@ -59,6 +60,7 @@ class EventHandlerFlightPlan extends EventHandlerP {
         this.gameInstance.currentPlanet = planet
         this.gameInstance.inspace = false
         this.gameInstance.canevent = true
+        this.gameInstance.currentRoomIndex = -1
         // this.gameInstance.inevent = this.gameInstance.canevent ? Math.random() * 0 + this.gameInstance.player.luck > 10 : false
       })
       const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
