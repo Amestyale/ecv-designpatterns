@@ -36,10 +36,6 @@ const Game = ({ gameController, gameDisplay }: Props) => {
             <Text>{gameController.player.ship.health}</Text>
           </HStack>
           <HStack>
-            <FaShieldAlt />
-            <Text>{gameController.player.ship.shield}</Text>
-          </HStack>
-          <HStack>
             <FaGasPump />
             <Text>{gameController.player.ship.fuel}</Text>
           </HStack>
