@@ -15,8 +15,8 @@ const SelectPlayer = ({ ship, setPlayer }: PropsType) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
     const race = selectRef?.current?.value
-    if (race === 'human') setPlayer(new Player(new Human(), 100, [null], ship))
-    if (race === 'alien') setPlayer(new Player(new Alien(), 100, [null], ship))
+    if (race === 'human') setPlayer(new Player(new Human(), 100, ship))
+    if (race === 'alien') setPlayer(new Player(new Alien(), 100, ship))
   }
   return (
     <VStack
