@@ -26,16 +26,7 @@ let RoomData =
             {
                 name : "Entrer dans un bâtiment", 
                 description : "L’intérieur de la structure est extrêmement sombre, l’endroit sent la poussière et la solitude.<br>Soudainement, un soupir brise le silence et par la même occasion le peu de courage qu’il vous restait et ce qui vous sert de jambes vous précipite vers la sortie.<br>Vous ne soufflez qu’une fois de retour en orbite, vous n’avez toujours pas remarqué que vous n’êtes plus vraiment seul.e dans le vaisseau.<br>Vous vous êtes fait un ami suspect…",
-                consequences: [{type: "item",item:
-                    {
-                        id: 'presence_douteuse',
-                        title: 'Présence douteuse',
-                        description: 'La chose qui errait dans le monolithe vous a suivi, ses intentions à votre égard restent trouble.',
-                        type: 'effect',
-                        category: '',
-                        stat: [{name: 'luck', modifier: '1'}],
-                    }
-                }]
+                consequences: [{type: "player-data", name: 'health', modifier: '-20'}]
             },
             {
                 name : "Visiter le centre de la ville", 
@@ -91,48 +82,17 @@ let RoomData =
             {
                 name : "Un étrange boitier noir affublé d’une bandoulière", 
                 description : "Après une lecture attentive du manuel d’utilisation, vous vous rendez-compte qu’il s’agit d’un champ de force miniature.<br>Vous vous sentez tout de suite plutôt fier de votre achat et repartez satisfait.<br>-50 crédits, +1 Champ de force personnel",
-                consequences: [{type: "player-data", name: 'money', modifier: '-50'},
-                {type: "ship-item",
-                  item:{
-                    id: 'champ_de_force_personnel_tx_4670',
-                    title: 'Champ de force personnel TX-4670',
-                    description: 'Merveille de technologie crombonienne, le TX-4670 vous protégera des dangers de type organique tels que les piranhas radioactifs ou les belles-mères.',
-                    type: 'object',
-                    category: 'armor',
-                    stat: [{name: 'intelligence', modifier: '3'}],
-                },
-                modifier: "1"
-            }]
+                consequences: [{type: "player-data", name: 'money', modifier: '-50'},{type: "ship-data", name: 'shield', modifier: '2'}]
             },
             {
                 name : "Un pistolet un plastique", 
                 description : "Ce petit pistolet en plastique que vous venez de trouver dans la section enfant du magasin vous a curieusement rappelé votre enfance.<br>À la sortie du magasin, vous vous amusez à faire semblant de tirer avant de couper un panneau publicitaire en deux d’un coup de laser.<br>Eh bien, il faut croire que les normes galactiques en matière de jouet sont bien lax en ce moment !<br>-20 crédits, +1 Pistolet laser",
-                consequences: [{type: "player-data", name: 'money', modifier: '-20'},{type: "player-item",item:
-                {
-                    id: 'pistolet_laser',
-                    title: 'Pistolet Laser',
-                    description: 'Cette arme étrange ressemble fortement à un jouet en plastique, mais elle tire des rayons mortels.',
-                    type: 'object',
-                    category: 'weapon',
-                    stat: [{name: 'strenght', modifier: '1'}],
-                },
-                modifier: "1"
-            }]
+                consequences: [{type: "player-data", name: 'money', modifier: '-20'},{type: "ship-data", name: 'fuel', modifier: '20'}]
             },
             {
                 name : "Un nez de clown", 
                 description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
-                consequences: [{type: "player-data", name: 'money', modifier: '-5'},{type: "player-item",item:
-                {
-                    id: 'nez_de_clown',
-                    title: 'Nez de clown',
-                    description: 'Parfaitement inutile, il fais du bruit quand vous appuyez dessus.',
-                    type: 'object',
-                    category: 'nose',
-                    stat: [{name: 'intelligence', modifier: '0'}],
-                },
-                modifier: "1"
-            }]
+                consequences: [{type: "player-data", name: 'money', modifier: '-5'}]
             },
         ],
         optionFacade : "buttons"
@@ -145,11 +105,7 @@ let RoomData =
             {
                 name : "Offir un nouveau nez à Bozo", 
                 description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br>-1 nez de clown, +60 crédits",
-                consequences: [{type: "player-item",item:
-                {
-                    id: 'nez_de_clown',
-                },
-                modifier: '-1'},{type: "player-data", name: 'money', modifier: '60'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '60'}]
             },
             {
                 name : "Raconter un blague à Bozo", 
