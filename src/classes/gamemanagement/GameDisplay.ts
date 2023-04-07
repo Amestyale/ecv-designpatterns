@@ -32,9 +32,11 @@ export default class GameDisplay {
     return "alive"
   }
   public displayFuel(): number {
-    return this.gamecontroller.player.ship.fuel;
+    const fuelPurcent = (this.gamecontroller.player.ship.fuel / this.gamecontroller.player.ship.maxFuel)*100
+    return fuelPurcent;
   }
   public displayHealth(): number {
+    // const healthPurcent = (this.gamecontroller.player.health / this.gamecontroller.player.health)*100
     return this.gamecontroller.player.health;
   }
   public displayMoney(): number {
@@ -43,10 +45,15 @@ export default class GameDisplay {
   public displayShipHealth(): number {
     return this.gamecontroller.player.ship.health;
   }
-  public displayCurrentPlanetName(): string {
+  public displayCurrentLocationInfo(): { name: string, description: string } {
+    const location = {
+        name: "Dans l'espace",
+        description: ""
+    };
     if (!this.gamecontroller.inspace && this.gamecontroller.currentPlanet) {
-      return this.gamecontroller.currentPlanet.name
+      location.name = this.gamecontroller.currentPlanet.name;
+      location.description = this.gamecontroller.currentPlanet.description;
     }
-    return "";
+    return location;
   }
 }
