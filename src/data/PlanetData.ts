@@ -38,7 +38,7 @@ let PlanetData =
     },
     {
         id: 100,
-        x: 450,
+        x: 600,
         y: 0,
         name: 'Planète volcanique',
         description: 'La première chose que vous remarquez en atterrissant est la chaleur intense et la lave en fusion qui coule sur cette planète.<br>Des volcans en éruption sont visibles à l’horizon, envoyant des nuages de cendres dans le ciel.<br>Attention où vous mettez les pieds…',
@@ -56,7 +56,7 @@ let PlanetData =
     },
     {
         id: 102,
-        x: 620,
+        x: 950,
         y: 16,
         name: 'Planète désertique',
         description: 'Vous arrivez sur une planète où il n’y a que du sable et des rochers à perte de vue.<br>Le soleil brûlant tape sur votre peau et le vent souffle des tempêtes de sable.<br>Attention aux tempêtes de sable et aux créatures souterraines…',
