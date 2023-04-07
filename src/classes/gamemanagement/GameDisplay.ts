@@ -18,7 +18,7 @@ export default class GameDisplay {
     return false
   }
 
-  public isGameOver(): string {
+  public isGameOver(): string | false {
     if (this.gamecontroller.player.health <= 0) {
       return "You are dead !"
     }
@@ -29,7 +29,7 @@ export default class GameDisplay {
       return "You are out of fuel !"
     }
     if (this.gamecontroller.nextPlanetsAvailables().length === 0) return "You don't have enough fuel and are now stuck on this planet..."
-    return "alive"
+    return false
   }
   public displayFuel(): number {
     const fuelPurcent = (this.gamecontroller.player.ship.fuel / this.gamecontroller.player.ship.maxFuel)*100

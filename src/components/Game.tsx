@@ -14,10 +14,10 @@ type GameProps = {
 
 const Game = ({ gameController }: GameProps) => {
   const distanceFromWin = gameController.distanceFromWin()
-  const title = gameController.currentRoom().title
-  const text = gameController.currentRoom().text
-  const options = gameController.currentRoom().options
-  const optionFacade = gameController.currentRoom().optionFacade
+  const title = gameController.currentRoom()?.title
+  const text = gameController.currentRoom()?.text
+  const options = gameController.currentRoom()?.options
+  const optionFacade = gameController.currentRoom()?.optionFacade
 
   const [refresh, setRefresh] = useState(false)
   const gameDisplay = new GameDisplay(gameController)
@@ -27,7 +27,7 @@ const Game = ({ gameController }: GameProps) => {
   }
 
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
-  if (gameDisplay.isGameOver() != "alive") return <Heading>{gameDisplay.isGameOver()}</Heading>
+  if (gameDisplay.isGameOver()) return <Heading>{gameDisplay.isGameOver()}</Heading>
 
   return (
     <>
