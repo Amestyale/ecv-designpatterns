@@ -97,18 +97,17 @@ export default class GameDisplay {
     return false
   }
 
-  public isGameLoose(): boolean {
+  public isGameOver(): string {
     if (this.player.health <= 0) {
-      return true
+      return "You are dead !"
     }
-
     if (this.player.ship.health <= 0) {
-      return true
+      return "Your ship is a wreck !"
     }
     if (this.player.ship.fuel <= 0) {
-      return true
+      return "You are out of fuel !"
     }
-    if (this.nextPlanetsAvailables().length === 0) return true
-    return false
+    if (this.nextPlanetsAvailables().length === 0) return "You don't have enough fuel and are now stuck on this planet..."
+    return "alive"
   }
 }
