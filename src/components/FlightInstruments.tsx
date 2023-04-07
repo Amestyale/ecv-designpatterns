@@ -7,6 +7,7 @@ const FlightInstruments = ({ instruments }: any) => {
       width={'full'}
       justify={'space-evenly'}
       padding={5}
+      alignItems={'flex-end'}
     >
       {instruments.map((instrument: any) => instrument)}
     </HStack>

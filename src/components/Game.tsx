@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Heading, HStack } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
+import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
 import FlightInstruments from './FlightInstruments'
 import FlightInstrument from './FlightInstrument'
 import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
+import FlightInstrumentGauge from './FlightInstrumentGauge'
 
 type GameProps = {
   gameController: GameController
@@ -13,20 +15,21 @@ type GameProps = {
 
 const Game = ({ gameController }: GameProps) => {
   const distanceFromWin = gameController.distanceFromWin()
-  const title = gameController.currentRoom().title
-  const text = gameController.currentRoom().text
-  const options = gameController.currentRoom().options
-  const optionFacade = gameController.currentRoom().optionFacade
+  const title = gameController.currentRoom()?.title
+  const text = gameController.currentRoom()?.text
+  const options = gameController.currentRoom()?.options
+  const optionFacade = gameController.currentRoom()?.optionFacade
 
   const [refresh, setRefresh] = useState(false)
-
+  const gameDisplay = new GameDisplay(gameController)
   const choose = (option: Option) => {
     gameController.resolveRoom(option)
     setRefresh(!refresh)
   }
 
-  if (gameController.isGameWin()) return <Heading>You win !</Heading>
-  if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
+  if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
+  if (gameDisplay.isGameOver()) return <Heading>{gameDisplay.isGameOver()}</Heading>
+
   return (
     <>
       <FlightInstruments
@@ -47,24 +50,22 @@ const Game = ({ gameController }: GameProps) => {
       <FlightInstruments
         instruments={[
           <HStack>
-            <Heading>Ship</Heading>,
-            <FlightInstrument text={gameController.player.ship.health}>
-              <FaHeart />
-            </FlightInstrument>
-            ,
-            <FlightInstrument text={gameController.player.ship.fuel}>
-              <FaGasPump />
-            </FlightInstrument>
-          </HStack>,
-          <HStack>
             <Heading>Player</Heading>
             <FlightInstrument text={gameController.player.health}>
               <FaHeart />
             </FlightInstrument>
-            ,
             <FlightInstrument text={gameController.player.money}>
               <FaCoins />
             </FlightInstrument>
+          </HStack>,
+          <HStack align={'flex-end'}>
+            <Heading>Ship</Heading>
+            <FlightInstrumentGauge percent={gameDisplay.displayShipHealth()}>
+              <FaHeart />
+            </FlightInstrumentGauge>
+            <FlightInstrumentGauge percent={gameDisplay.displayFuel()}>
+              <FaGasPump />
+            </FlightInstrumentGauge>
           </HStack>,
         ]}
       />

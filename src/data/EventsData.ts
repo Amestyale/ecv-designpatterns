@@ -8,7 +8,7 @@ export default
             {
                 name : "Refuser et se bastonner", 
                 description : "",
-                consequences: [{type: "player-data", name: 'health', modifier: '-50'}]
+                consequences: [{type: "player-data", name: 'health', modifier: '-25'}]
             },
             {
                 name : "Leur donner ce qu'ils demandent", 

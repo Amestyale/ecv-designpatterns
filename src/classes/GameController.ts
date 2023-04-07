@@ -1,5 +1,4 @@
-import EventsData from '../data/EventsData'
-import ModifierCustom from './gamemanagement/Modifier/ModifierCustom'
+import EventManager from './event/EventManager'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Player from './Player'
@@ -19,6 +18,9 @@ export default class GameController {
   public canevent: boolean
   public planets: Planet[]
 
+  public eventManager: EventManager
+  public _currentRoom: Room | null = null
+
   constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
     this.id = id
     this.name = name
@@ -34,6 +36,9 @@ export default class GameController {
     this.canevent = false
 
     this.currentRoomIndex = -1
+
+    this.eventManager = new EventManager(this)
+    this.eventManager.resolve()
   }
 
   public resolveRoom(option: Option) {
@@ -41,36 +46,11 @@ export default class GameController {
       if (m) m.apply()
     })
 
-    if (this.currentPlanet && this.currentPlanet?.rooms.length > this.currentRoomIndex + 1) {
-      this.currentRoomIndex++
-    } else {
-      this.inspace = true
-      this.canevent = true
-      this.currentRoomIndex = -1
-    }
+    this.eventManager.resolve()
   }
 
-  public currentRoom(): Room {
-    if (this.inevent) {
-      const scenario = new Scenario(this)
-      this.inevent = false
-      return scenario.instanciateRoom(EventsData[0])
-    } else if (!this.inspace && this.currentPlanet) {
-      return this.currentPlanet?.rooms[0]
-    } else {
-      const options = this.nextPlanetsAvailables().map((planet: Planet) => {
-        const modifier = new ModifierCustom(() => {
-          this.player.ship.flying(planet.distanceFrom(this.currentX(), this.currentY()))
-          this.currentPlanet = planet
-          this.inspace = false
-          this.inevent = this.canevent ? Math.random() * 0 + this.player.luck > 10 : false
-        })
-        const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
-        return opt
-      })
-
-      return new Room(0, 'Choisir le cap', 'Où voulez-vous aller ?', options, 'buttons')
-    }
+  public currentRoom(){
+    return this._currentRoom
   }
 
   public currentX(): number {
@@ -92,23 +72,4 @@ export default class GameController {
     })
   }
 
-  public isGameWin(): boolean {
-    if (this.currentPlanet && this.currentX() >= this.distance) return true
-    return false
-  }
-
-  public isGameLoose(): boolean {
-    if (this.player.health <= 0) {
-      return true
-    }
-
-    if (this.player.ship.health <= 0) {
-      return true
-    }
-    if (this.player.ship.fuel <= 0) {
-      return true
-    }
-    if (this.nextPlanetsAvailables().length === 0) return true
-    return false
-  }
 }
