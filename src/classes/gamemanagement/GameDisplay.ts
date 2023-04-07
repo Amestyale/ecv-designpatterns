@@ -25,7 +25,7 @@ export default class GameDisplay {
     if (this.gamecontroller.player.ship.health <= 0) {
       return "Your ship is a wreck !"
     }
-    if (this.gamecontroller.player.ship.fuel <= 0) {
+    if (this.gamecontroller.player.ship.fuel <= 0 && this.gamecontroller.inspace) {
       return "You are out of fuel !"
     }
     if (this.gamecontroller.nextPlanetsAvailables().length === 0) return "You don't have enough fuel and are now stuck on this planet..."
