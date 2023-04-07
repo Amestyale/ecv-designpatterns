@@ -1,21 +1,29 @@
-import Race from './Race'
 import Ship from './Ship'
 
 class Player {
+  public name: string
   public health: number
+
+  public strenght: number
+  public intelligence: number
+  public luck: number
+
   public money: number
-  public race: Race
 
   public ship: Ship
 
-  constructor(race: Race, money: number, ship: Ship) {
-    this.race = race
+  constructor(name: string, health: number, strenght: number, intelligence: number, luck: number, money: number, ship: Ship) {
+    this.name = name
+    this.health = health
+
+    this.strenght = strenght
+    this.intelligence = intelligence
+    this.luck = luck
+
     this.money = money
-    this.health = race.maxHealth
+
     this.ship = ship
   }
-  
-
 }
 
 export default Player
