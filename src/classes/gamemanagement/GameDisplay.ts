@@ -39,29 +39,6 @@ export default class GameDisplay {
     this.currentRoomIndex = -1
   }
 
-  public currentRoom(): Room {
-    if (this.inevent) {
-      const scenario = new Scenario(this)
-      this.inevent = false
-      return scenario.instanciateRoom(EventsData[0])
-    } else if (!this.inspace && this.currentPlanet) {
-      return this.currentPlanet?.rooms[0]
-    } else {
-      const options = this.gamecontroller.nextPlanetsAvailables().map((planet: Planet) => {
-        const modifier = new ModifierCustom(() => {
-          this.player.ship.flying(planet.distanceFrom(this.gamecontroller.currentX(), this.gamecontroller.currentY()))
-          this.currentPlanet = planet
-          this.inspace = false
-          this.inevent = this.canevent ? Math.random() * 0 + this.player.luck > 10 : false
-        })
-        const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
-        return opt
-      })
-
-      return new Room(0, 'Choisir le cap', 'Où voulez-vous aller ?', options, 'buttons')
-    }
-  }
-
   public isGameWin(): boolean {
     if (this.currentPlanet && this.gamecontroller.currentX() >= this.distance) return true
     return false
