@@ -8,9 +8,10 @@ import { FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } fro
 
 interface Props {
   gameController: GameController
+  gameDisplay: GameDisplay
 }
 
-const Game = ({ gameController }: Props) => {
+const Game = ({ gameController, gameDisplay }: Props) => {
   const [refresh, setRefresh] = useState(false)
 
   const choose = (option: Option) => {
@@ -18,8 +19,8 @@ const Game = ({ gameController }: Props) => {
     setRefresh(!refresh)
   }
 
-  if (gameController.isGameWin()) return <Heading>You win !</Heading>
-  if (GameDisplay.isGameOver() != "alive") return <Heading>{gameController.isGameOver()}</Heading>
+  if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
+  if (gameDisplay.isGameOver() != "alive") return <Heading>{gameDisplay.isGameOver()}</Heading>
   return (
     <>
       <HStack
@@ -61,8 +62,8 @@ const Game = ({ gameController }: Props) => {
       <Center flex={1}>
         <AdapterOption
           callback={choose}
-          type={gameController.currentRoom().optionFacade}
-          options={gameController.currentRoom().options}
+          type={gameDisplay.currentRoom().optionFacade}
+          options={gameDisplay.currentRoom().options}
         />
       </Center>
     </>
