@@ -1,15 +1,17 @@
 import { Box, Center, Container, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import GameController from '../classes/GameController'
+import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
 import AdapterOption from './AdapterOption'
 import { FaHeart, FaShieldAlt, FaGasPump, FaDollarSign, FaBitcoin, FaCoins } from 'react-icons/fa'
 
 interface Props {
   gameController: GameController
+  gameDisplay: GameDisplay
 }
 
-const Game = ({ gameController }: Props) => {
+const Game = ({ gameController, gameDisplay }: Props) => {
   const [refresh, setRefresh] = useState(false)
 
   const choose = (option: Option) => {
@@ -17,8 +19,8 @@ const Game = ({ gameController }: Props) => {
     setRefresh(!refresh)
   }
 
-  if (gameController.isGameWin()) return <Heading>You win !</Heading>
-  if (gameController.isGameLoose()) return <Heading>You loose !</Heading>
+  if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
+  if (gameDisplay.isGameOver() != "alive") return <Heading>{gameDisplay.isGameOver()}</Heading>
   return (
     <>
       <HStack
@@ -56,8 +58,8 @@ const Game = ({ gameController }: Props) => {
       <Center flex={1}>
         <AdapterOption
           callback={choose}
-          type={gameController.currentRoom().optionFacade}
-          options={gameController.currentRoom().options}
+          type={gameDisplay.currentRoom().optionFacade}
+          options={gameDisplay.currentRoom().options}
         />
       </Center>
     </>
