@@ -80,4 +80,16 @@ export default class GameDisplay {
     if (this.gamecontroller.nextPlanetsAvailables().length === 0) return "You don't have enough fuel and are now stuck on this planet..."
     return "alive"
   }
+  public displayFuel(): number {
+    return this.player.ship.fuel;
+  }
+  public displayHealth(): number {
+    return this.player.health;
+  }
+  public displayMoney(): number {
+    return this.player.money;
+  }
+  public displayShipHealth(): number {
+    return this.player.ship.health;
+  }
 }
