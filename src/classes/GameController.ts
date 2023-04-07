@@ -1,6 +1,8 @@
+import EventManager from './event/EventManager'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Player from './Player'
+import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
@@ -15,6 +17,9 @@ export default class GameController {
   public inevent: boolean
   public canevent: boolean
   public planets: Planet[]
+
+  public eventManager: EventManager
+  public _currentRoom: Room | null = null
 
   constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
     this.id = id
@@ -31,6 +36,9 @@ export default class GameController {
     this.canevent = false
 
     this.currentRoomIndex = -1
+
+    this.eventManager = new EventManager(this)
+    this.eventManager.resolve()
   }
 
   public resolveRoom(option: Option) {
@@ -45,6 +53,11 @@ export default class GameController {
       this.canevent = true
       this.currentRoomIndex = -1
     }
+
+  }
+
+  public currentRoom(){
+    return this._currentRoom
   }
 
   public currentX(): number {
