@@ -89,4 +89,7 @@ export default class GameDisplay {
   public displayMoney(): number {
     return this.player.money;
   }
+  public displayShipHealth(): number {
+    return this.player.ship.health;
+  }
 }
