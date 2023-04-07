@@ -1,17 +1,11 @@
 import React from 'react'
-import { Button } from '@chakra-ui/button'
+import { Button, ButtonGroup } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
 import { HStack } from '@chakra-ui/layout'
 
 const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
-    <HStack
-      justify={'space-evenly'}
-      minWidth={'2xl'}
-      borderRadius={'xl'}
-      backgroundColor={'rgba(0, 0, 0, 0.8)'}
-      padding={20}
-    >
+    <ButtonGroup>
       {options.map((option: Option, i: number) => {
         return (
           <Button
@@ -22,7 +16,7 @@ const ChooseOptionButtons = ({ callback, options }: any) => {
           </Button>
         )
       })}
-    </HStack>
+    </ButtonGroup>
   )
 }
 

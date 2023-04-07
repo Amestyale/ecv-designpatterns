@@ -1,5 +1,5 @@
 import React from 'react'
-import { HStack, Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
 
 type FlightInstrumentProps = {
   children?: React.ReactNode
@@ -8,16 +8,20 @@ type FlightInstrumentProps = {
 
 const FlightInstrument = ({ children, text }: FlightInstrumentProps) => {
   return (
-    <HStack
+    <Flex
+      width={150}
+      justify={'center'}
+      align={'center'}
+      gap={2}
       background={'black'}
       color={'green.300'}
       fontWeight={'bold'}
-      padding={4}
       borderRadius={8}
+      padding={4}
     >
       {children}
       <Text>{text}</Text>
-    </HStack>
+    </Flex>
   )
 }
 
