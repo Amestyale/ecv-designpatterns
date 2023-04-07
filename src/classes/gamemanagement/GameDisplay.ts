@@ -83,4 +83,10 @@ export default class GameDisplay {
   public displayFuel(): number {
     return this.player.ship.fuel;
   }
+  public displayHealth() {
+    return this.player.health;
+  }
+  public displayMoney() {
+    return this.player.money;
+  }
 }
