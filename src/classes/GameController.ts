@@ -46,14 +46,6 @@ export default class GameController {
       if (m) m.apply()
     })
 
-    if (this.currentPlanet && this.currentPlanet?.rooms.length > this.currentRoomIndex + 1) {
-      this.currentRoomIndex++
-    } else {
-      this.inspace = true
-      this.canevent = true
-      this.currentRoomIndex = -1
-    }
-
     this.eventManager.resolve()
   }
 
