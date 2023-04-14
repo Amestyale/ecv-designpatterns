@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading } from '@chakra-ui/layout'
+import { Heading, HStack } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
 import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
@@ -8,6 +8,9 @@ import FlightInstrument from './FlightInstrument'
 import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
 import FlightInstrumentGauge from './FlightInstrumentGauge'
+import PlayerInventory from './PlayerInventory'
+import { Stack } from '@chakra-ui/react'
+import Item from '../classes/Item'
 
 type GameProps = {
   gameController: GameController
@@ -33,13 +36,16 @@ const Game = ({ gameController }: GameProps) => {
   return (
     <>
       <FlightInstruments instruments={[<FlightInstrument text={distanceFromWin}></FlightInstrument>]} />
-      <Story
-        title={title}
-        text={text}
-        choose={choose}
-        optionFacade={optionFacade}
-        options={options}
-      />
+      <HStack>
+        <Story
+          title={title}
+          text={text}
+          choose={choose}
+          optionFacade={optionFacade}
+          options={options}
+        />
+        <PlayerInventory items={gameDisplay.currentInventory()} />
+      </HStack>
       <FlightInstruments
         instruments={[
           <FlightInstrumentGauge percent={gameDisplay.displayShipHealth()}>

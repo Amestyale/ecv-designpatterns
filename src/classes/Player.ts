@@ -19,7 +19,7 @@ class Player {
     this.luck = luck
 
     this.ship = ship
-    
+
     this.items = []
   }
 }

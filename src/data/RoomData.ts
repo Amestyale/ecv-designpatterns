@@ -1,3 +1,5 @@
+import Item from "../classes/Item";
+
 let RoomData = 
 [
     {
@@ -51,7 +53,11 @@ let RoomData =
             {
                 name : "La maison de votre grand-mère ?", 
                 description : "Après avoir toqué à la porte, votre grand-mère (ou une copie parfaite d’elle) ouvre la porte.<br>*Et bien mon trésor ? On joue au cosmonaute ?*, dit-elle. *C’est adorable mon poussin, tiens, j'ai un petit quelque chose pour toi, mais ne vas pas le dire à tes parents !*<br>Elle vous glisse discrètement un billet avant de refermer la porte. C’est définitivement l’événement le plus bizarre de la journée…<br>+20 crédits",
-                consequences: [{type: "player-data", name: 'money', modifier: '20'}]
+                consequences: [
+                  {type: "player-data", name: 'money', modifier: '20'},
+                  {type: "player-item", item: new Item("biscuits-durs", "Une boîte de biscuits très, très durs"), modifier: 1}
+                
+                ]
             }
         ],
         optionFacade : "buttons"

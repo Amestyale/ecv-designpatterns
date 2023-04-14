@@ -1,4 +1,5 @@
 import GameController from '../GameController'
+import Item from '../Item'
 import Room from '../Room'
 
 export default class GameDisplay {
@@ -53,5 +54,9 @@ export default class GameDisplay {
       location.description = this.gamecontroller.currentPlanet.description;
     }
     return location;
+  }
+
+  public currentInventory(): Array<Item>{
+    return this.gamecontroller.player.items
   }
 }

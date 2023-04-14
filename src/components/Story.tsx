@@ -5,9 +5,9 @@ import AdapterOption from './AdapterOption'
 const Story = ({ title, text, choose, optionFacade, options }: any) => {
   return (
     <Stack
-      flex={1}
+      flex={2}
       justify={'center'}
-      width={'4xl'}
+      width={'60%'}
       gap={4}
       backgroundColor={'rgba(0, 0, 0, 0.8)'}
       borderRadius={8}

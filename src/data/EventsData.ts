@@ -1,3 +1,5 @@
+import Item from "../classes/Item";
+
 export default 
 [
     {
@@ -13,7 +15,12 @@ export default
             {
                 name : "Leur donner ce qu'ils demandent", 
                 description : "",
-                consequences: [{type: "player-data", name: 'money', modifier: '-50'}]
+                consequences: [
+                  {type: "player-data", name: 'money', modifier: '-50'},
+                  {type: "player-item", item: new Item("biscuits-durs", "Une boîte de biscuits très, très durs"), modifier: -1}
+                ]
+                
+
             },
             {
               name : "On est 4 ? Et si on jouait au Kems ?", 
