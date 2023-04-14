@@ -58,7 +58,9 @@ class EventHandlerFlightPlan extends EventHandlerP {
     const options = this.gameInstance.nextPlanetsAvailables().map((planet: Planet) => {
       const modifier = new ModifierCustom(() => {
         this.gameInstance.inspace = false
-        this.gameInstance.player.ship.flying(planet.distanceFrom(this.gameInstance.currentX(), this.gameInstance.currentY()))
+        if (this.gameInstance.player &&  this.gameInstance.player.ship) {
+          this.gameInstance.player.ship.flying(planet.distanceFrom(this.gameInstance.currentX(), this.gameInstance.currentY()))
+        }
         this.gameInstance.currentPlanet = planet
         this.gameInstance.canevent = true
         this.gameInstance.currentRoomIndex = -1
