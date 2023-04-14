@@ -9,6 +9,8 @@ import GameController from './components/GameController'
 const App = () => {
   const [player, setPlayer] = useState<Player | null>(null)
   const [ship, setShip] = useState<Ship | null>(null)
+  const [isRestart, setIsRestart] = useState<boolean>(false);
+
   return (
     <Flex
       direction={'column'}
@@ -23,7 +25,7 @@ const App = () => {
           setPlayer={setPlayer}
         />
       )}
-      {player && ship && <GameController player={player} />}
+      {player && ship && <GameController player={player} setIsRestart={setIsRestart}/>}
     </Flex>
   )
 }

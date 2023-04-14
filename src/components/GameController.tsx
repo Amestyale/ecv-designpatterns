@@ -7,6 +7,7 @@ import Game from './Game'
 
 type GameControllerProps = {
   player: Player
+  setIsRestart: any
 }
 
 const GameController = ({ player }: GameControllerProps) => {
@@ -14,7 +15,7 @@ const GameController = ({ player }: GameControllerProps) => {
   const planets = usePlanets(rooms)
   const gameController = useGameController(player, planets)
 
-  return <Game gameController={gameController} />
+  return <Game gameController={gameController} onGameRestart={handleRestart}/>
 }
 
 export default GameController

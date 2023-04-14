@@ -72,4 +72,9 @@ export default class GameController {
     })
   }
 
+  public restartGame(): any {
+    // this.player = null
+  }
+
+
 }

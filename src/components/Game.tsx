@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Heading } from '@chakra-ui/layout'
+import { Button, Select, VStack } from '@chakra-ui/react'
 import GameController from '../classes/GameController'
 import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
@@ -9,8 +10,10 @@ import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
 import FlightInstrumentGauge from './FlightInstrumentGauge'
 
+
 type GameProps = {
   gameController: GameController
+  onGameRestart: any
 }
 
 const Game = ({ gameController }: GameProps) => {
@@ -26,9 +29,24 @@ const Game = ({ gameController }: GameProps) => {
     gameController.resolveRoom(option)
     setRefresh(!refresh)
   }
+  const [isRestart, setIsRestart] = useState<boolean>(false);
+  const handleRestart = () => {
+    setIsRestart(true);
+  };
+  const restartGame = () => {
+    console.log("restart")
+    console.log(gameController.player)
+    handleRestart();
+  }
 
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
-  if (gameDisplay.isGameOver()) return <Heading>{gameDisplay.isGameOver()}</Heading>
+  if (gameDisplay.isGameOver()) return (
+    <VStack>
+      <Heading>{gameDisplay.isGameOver()}</Heading>
+      <Button onClick={restartGame}>New game</Button>
+    </VStack>
+
+    )
 
   return (
     <>
@@ -40,6 +58,7 @@ const Game = ({ gameController }: GameProps) => {
         optionFacade={optionFacade}
         options={options}
       />
+    
       <FlightInstruments
         instruments={[
           <FlightInstrumentGauge percent={gameDisplay.displayShipHealth()}>
