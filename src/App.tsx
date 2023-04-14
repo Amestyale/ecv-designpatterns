@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Flex
       direction={'column'}
-      justify={'center'}
+      justify={'space-around'}
       align={'center'}
       minHeight={'100vh'}
     >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, HStack } from '@chakra-ui/layout'
+import { Heading, HStack, VStack } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
 import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
@@ -35,7 +35,7 @@ const Game = ({ gameController }: GameProps) => {
   if (gameDisplay.isGameOver()) return <Heading>{gameDisplay.isGameOver()}</Heading>
 
   return (
-    <>
+    <VStack justifyContent={"space-between"} height={"90vh"} width={'100vw'}>
       <ProgressMap planets={gameDisplay.mapPlanets()} finish={ gameDisplay.mapFinishX() } />
       <HStack>
         <Story
@@ -63,7 +63,7 @@ const Game = ({ gameController }: GameProps) => {
           </FlightInstrument>,
         ]}
       />
-    </>
+    </VStack>
   )
 }
 
