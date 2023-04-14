@@ -9,7 +9,7 @@ const useGameController = (player: Player, planets: Planet[]) => {
   if (!player) throw new Error('Player is undefined')
   if (!planets) throw new Error('Planets is undefined')
 
-  return new GameController(0, 'Game', 1000, player, PlanetData)
+  return GameController.getInstance()
 
 }
 
