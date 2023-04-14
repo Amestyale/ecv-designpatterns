@@ -11,6 +11,7 @@ import FlightInstrumentGauge from './FlightInstrumentGauge'
 import PlayerInventory from './PlayerInventory'
 import { Stack } from '@chakra-ui/react'
 import Item from '../classes/Item'
+import ProgressMap from './map/ProgressMap'
 
 type GameProps = {
   gameController: GameController
@@ -35,7 +36,7 @@ const Game = ({ gameController }: GameProps) => {
 
   return (
     <>
-      <FlightInstruments instruments={[<FlightInstrument text={distanceFromWin}></FlightInstrument>]} />
+      <ProgressMap planets={gameDisplay.mapPlanets()} finish={ gameDisplay.mapFinishX() } />
       <HStack>
         <Story
           title={title}
