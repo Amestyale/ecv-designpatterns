@@ -1,3 +1,4 @@
+import PlanetData from '../data/PlanetData'
 import EventManager from './event/EventManager'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
@@ -6,10 +7,15 @@ import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
-  public id: number
-  public name: string
+  static gameControllerInstance: GameController
+
+  static getInstance(): GameController{
+    if(GameController.gameControllerInstance) return GameController.gameControllerInstance
+    else return new GameController(1000)
+  }
+
   public distance: number
-  public player: Player | null
+  public player: Player | null = null
 
   public currentPlanet: Planet | null
   public currentRoomIndex: number
@@ -21,15 +27,12 @@ export default class GameController {
   public eventManager: EventManager
   public _currentRoom: Room | null = null
 
-  constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
-    this.id = id
-    this.name = name
+  constructor(distance: number) {
     this.distance = distance
-    this.player = player
     this.currentPlanet = null
 
     const scenario = new Scenario(this)
-    this.planets = scenario.InstantiatePlanetList(planetData)
+    this.planets = scenario.InstantiatePlanetList(PlanetData)
 
     this.inspace = true
     this.inevent = false
@@ -65,7 +68,8 @@ export default class GameController {
   }
 
   public nextPlanetsAvailables(): Array<Planet> {
-    const ship = this.player ? this.player.ship : null
+    if(!this.player) return []
+    const ship = this.player.ship
     return this.planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
       if (ship) {
@@ -78,8 +82,8 @@ export default class GameController {
   }
 
   public restartGame(): any {
-    this.player.ship = null
-    this.player = null
+    //this.player.ship = null
+    // this.player = null
   }
 
 

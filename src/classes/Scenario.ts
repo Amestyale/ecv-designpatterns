@@ -15,8 +15,8 @@ export default class Scenario {
     this.gameinstance = gameInstance
   }
 
-  public InstantiatePlanetList(PlanetData: Planet[]): any {
-    const planetlist = PlanetData.map((x) => new Planet(x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
+  public InstantiatePlanetList(PlanetData: any): any {
+    const planetlist = PlanetData.map((x: any) => new Planet(x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
 
     return planetlist
   }
