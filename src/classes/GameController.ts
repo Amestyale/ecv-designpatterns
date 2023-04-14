@@ -55,27 +55,31 @@ export default class GameController {
             this.log += ";Vous perdez "+m.value
           }
 
-          switch(m.stat) { 
-            case "money": { 
-               this.log += " unités d'argent"
-               break; 
-            } 
-            case "health": { 
-              this.log += " points de vie"
-               break; 
-            } 
-            case "shield": { 
-              this.log += " points de bouclier"
-               break; 
-            } 
-            case "fuel": { 
-              this.log += " unités de fuel"
-               break; 
-            } 
-            default: { 
-               break; 
-            } 
-         } 
+          if(m.stat){
+            switch(m.stat) { 
+                case "money": { 
+                  this.log += " unités d'argent"
+                  break; 
+                } 
+                case "health": { 
+                  this.log += " points de vie"
+                  break; 
+                } 
+                case "shield": { 
+                  this.log += " points de bouclier"
+                  break; 
+                } 
+                case "fuel": { 
+                  this.log += " unités de fuel"
+                  break; 
+                } 
+                default: { 
+                  break; 
+                } 
+              }  
+            }else{
+              this.log += " "+m.item.name
+            }
 
         }
         
