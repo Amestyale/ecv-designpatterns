@@ -81,9 +81,11 @@ export default class GameController {
     })
   }
 
-  public restartGame(): any {
-    //this.player.ship = null
-    // this.player = null
+  public restartGame() {
+    if (this.player && this.player.ship) {
+      this.player.ship = null
+      this.player = null
+    }
   }
 
 
