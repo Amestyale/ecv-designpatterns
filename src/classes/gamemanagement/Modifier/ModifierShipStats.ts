@@ -17,8 +17,8 @@ export default class ModifierShipStat extends Modifier {
     switch(this.stat){
       case ShipDataList.fuel:
         return (this.ship.fuel + +this.value) > 0
-      case ShipDataList.shield:
-        return (this.ship.shield + +this.value) > 0
+      // case ShipDataList.shield:
+      //   return (this.ship.shield + +this.value) > 0
       case ShipDataList.health:
         return (this.ship.health + +this.value) > 0
     }
@@ -29,9 +29,9 @@ export default class ModifierShipStat extends Modifier {
       case ShipDataList.fuel:
         this.ship.fuel += +this.value
         break
-      case ShipDataList.shield:
-        this.ship.shield += +this.value
-        break
+      // case ShipDataList.shield:
+      //   this.ship.shield += +this.value
+      //   break
       case ShipDataList.health:
         this.ship.health += +this.value
         break

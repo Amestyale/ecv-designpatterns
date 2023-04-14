@@ -1,4 +1,7 @@
+import MapPlanet from '../../interfaces/MapPlanet'
 import GameController from '../GameController'
+import Item from '../Item'
+import Planet from '../Planet'
 import Room from '../Room'
 
 export default class GameDisplay {
@@ -7,6 +10,7 @@ export default class GameDisplay {
   constructor(gamecontroller: GameController) {
     this.gamecontroller = gamecontroller
   }
+  
 
   public currentRoom(): Room | null{
     console.log(this.gamecontroller._currentRoom)
@@ -53,5 +57,29 @@ export default class GameDisplay {
       location.description = this.gamecontroller.currentPlanet.description;
     }
     return location;
+  }
+
+  public currentInventory(): Array<Item>{
+    return this.gamecontroller.player.items
+  }
+
+  public mapPlanetsMaxX(): number{
+    const planets = this.gamecontroller.planets
+    planets.sort((a,b)=> (a.x > b.x) ? -1 : 1 )
+    return planets[0].x + (planets[0].x/10)
+  }
+  public mapPlanets(): Array<MapPlanet>{
+    const maxX = this.mapPlanetsMaxX()
+
+    return this.gamecontroller.planets.map((planet)=>{
+      return {
+        left: planet.x / maxX * 100,
+        name: planet.name,
+        current: this.gamecontroller.currentPlanet == planet
+      }
+    })
+  }
+  public mapFinishX(): number{
+    return this.gamecontroller.distance / this.mapPlanetsMaxX() * 100
   }
 }
