@@ -9,7 +9,7 @@ export default class GameController {
   public id: number
   public name: string
   public distance: number
-  public player: Player
+  public player: Player | null
 
   public currentPlanet: Planet | null
   public currentRoomIndex: number
@@ -65,15 +65,21 @@ export default class GameController {
   }
 
   public nextPlanetsAvailables(): Array<Planet> {
-    const ship = this.player.ship
+    const ship = this.player ? this.player.ship : null
     return this.planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
-      return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
+      if (ship) {
+        return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
+      } else {
+        return ""
+      }
+      
     })
   }
 
   public restartGame(): any {
-    // this.player = null
+    this.player.ship = null
+    this.player = null
   }
 
 

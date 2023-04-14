@@ -7,7 +7,7 @@ class Player {
   public money: number
   public health: number
 
-  public ship: Ship
+  public ship: Ship | null
 
   constructor(name: string, health: number, luck: number, money: number, ship: Ship) {
     this.name = name

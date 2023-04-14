@@ -19,28 +19,36 @@ export default class GameDisplay {
   }
 
   public isGameOver(): string | false {
-    if (this.gamecontroller.player.health <= 0) {
-      return "You are dead !"
+    if (this.gamecontroller.player && this.gamecontroller.player.ship) {
+      if (this.gamecontroller.player.health <= 0) {
+        return "You are dead !"
+      }
+      if (this.gamecontroller.player.ship.health <= 0) {
+        return "Your ship is a wreck !"
+      }
     }
-    if (this.gamecontroller.player.ship.health <= 0) {
-      return "Your ship is a wreck !"
-    }
+   
     if (this.gamecontroller.nextPlanetsAvailables().length === 0 && this.gamecontroller.inspace) return "You don't have enough fuel and are now stuck on this planet..."
     return false
   }
   public displayFuel(): number {
-    const fuelPurcent = (this.gamecontroller.player.ship.fuel / this.gamecontroller.player.ship.maxFuel)*100
-    return Math.min(100, fuelPurcent);
+    var fuelPurcent = 0
+    if (this.gamecontroller.player && this.gamecontroller.player.ship) {
+      const fuelPurcentValue = (this.gamecontroller.player.ship.fuel / this.gamecontroller.player.ship.maxFuel)*100
+      fuelPurcent =  Math.min(100, fuelPurcentValue);
+    }
+    return fuelPurcent
+    
   }
   public displayHealth(): number {
     // const healthPurcent = (this.gamecontroller.player.health / this.gamecontroller.player.health)*100
-    return this.gamecontroller.player.health;
+    return this.gamecontroller.player ? this.gamecontroller.player.health : 0; 
   }
   public displayMoney(): number {
-    return this.gamecontroller.player.money;
+    return this.gamecontroller.player ? this.gamecontroller.player.money : 0;
   }
   public displayShipHealth(): number {
-    const healthPurcent = (this.gamecontroller.player.ship.health / this.gamecontroller.player.ship.maxHealth)*100
+    const healthPurcent = this.gamecontroller.player && this.gamecontroller.player.ship ? (this.gamecontroller.player.ship.health / this.gamecontroller.player.ship.maxHealth)*100 : 0
     return Math.min(100, healthPurcent);
   }
   public displayCurrentLocationInfo(): { name: string, description: string } {
