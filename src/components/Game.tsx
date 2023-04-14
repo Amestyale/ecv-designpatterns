@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, HStack, VStack } from '@chakra-ui/layout'
+import { Heading,UnorderedList,ListItem, HStack, VStack } from '@chakra-ui/layout'
 import GameController from '../classes/GameController'
 import GameDisplay from '../classes/gamemanagement/GameDisplay'
 import Option from '../classes/gamemanagement/Option'
@@ -7,6 +7,7 @@ import FlightInstruments from './FlightInstruments'
 import FlightInstrument from './FlightInstrument'
 import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
+import Log from './Log'
 import FlightInstrumentGauge from './FlightInstrumentGauge'
 import PlayerInventory from './PlayerInventory'
 import { Stack } from '@chakra-ui/react'
@@ -23,6 +24,7 @@ const Game = ({ gameController }: GameProps) => {
   const text = gameController.currentRoom()?.text
   const options = gameController.currentRoom()?.options
   const optionFacade = gameController.currentRoom()?.optionFacade
+  const logText = gameController.log
 
   const [refresh, setRefresh] = useState(false)
   const gameDisplay = new GameDisplay(gameController)
@@ -38,6 +40,9 @@ const Game = ({ gameController }: GameProps) => {
     <VStack justifyContent={"space-between"} height={"90vh"} width={'100vw'}>
       <ProgressMap planets={gameDisplay.mapPlanets()} finish={ gameDisplay.mapFinishX() } />
       <HStack>
+        <Log
+         text={logText}
+        />
         <Story
           title={title}
           text={text}

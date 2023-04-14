@@ -18,15 +18,19 @@ export default class GameController {
   public canevent: boolean
   public planets: Planet[]
 
+  public log: String
+
   public eventManager: EventManager
   public _currentRoom: Room | null = null
 
-  constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
+  constructor(id: number, name: string, distance: number, player: Player, planetData: any, log: String) {
     this.id = id
     this.name = name
     this.distance = distance
     this.player = player
     this.currentPlanet = null
+
+    this.log = "Vous commencez votre aventure";
 
     const scenario = new Scenario(this)
     this.planets = scenario.InstantiatePlanetList(planetData)
@@ -43,7 +47,41 @@ export default class GameController {
 
   public resolveRoom(option: Option) {
     option.modifiers.map((m) => {
-      if (m) m.apply()
+      if (m){
+        if(m.value != 0){
+          if(m.value > 0){
+            this.log += ";Vous gagnez "+m.value
+          }else{
+            this.log += ";Vous perdez "+m.value
+          }
+
+          switch(m.stat) { 
+            case "money": { 
+               this.log += " unités d'argent"
+               break; 
+            } 
+            case "health": { 
+              this.log += " points de vie"
+               break; 
+            } 
+            case "shield": { 
+              this.log += " points de bouclier"
+               break; 
+            } 
+            case "fuel": { 
+              this.log += " unités de fuel"
+               break; 
+            } 
+            default: { 
+               break; 
+            } 
+         } 
+
+        }
+        
+        console.log(this.log)
+        m.apply()
+      }
     })
 
     this.eventManager.resolve()
