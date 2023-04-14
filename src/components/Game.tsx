@@ -9,14 +9,15 @@ import FlightInstrument from './FlightInstrument'
 import { FaCoins, FaGasPump, FaHeart } from 'react-icons/fa'
 import Story from './Story'
 import FlightInstrumentGauge from './FlightInstrumentGauge'
+import useGameController from '../hooks/useGameController'
 
 
 type GameProps = {
-  gameController: GameController
-  onGameRestart: any
 }
 
-const Game = ({ gameController }: GameProps) => {
+const Game = ({ }: GameProps) => {
+  const gameController = useGameController()
+
   const distanceFromWin = gameController.distanceFromWin()
   const title = gameController.currentRoom()?.title
   const text = gameController.currentRoom()?.text
@@ -39,6 +40,7 @@ const Game = ({ gameController }: GameProps) => {
     handleRestart();
   }
 
+  if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
   if (gameDisplay.isGameOver()) return (
     <VStack>

@@ -10,8 +10,10 @@ export default class GameController {
   static gameControllerInstance: GameController
 
   static getInstance(): GameController{
-    if(GameController.gameControllerInstance) return GameController.gameControllerInstance
-    else return new GameController(1000)
+    if(!GameController.gameControllerInstance)  {
+      GameController.gameControllerInstance = new GameController(1000)
+    }
+    return GameController.gameControllerInstance
   }
 
   public distance: number
@@ -82,10 +84,10 @@ export default class GameController {
   }
 
   public restartGame() {
-    if (this.player && this.player.ship) {
-      this.player.ship = null
-      this.player = null
-    }
+   // if (this.player && this.player.ship) {
+   //   this.player.ship = null
+   //   this.player = null
+   // }
   }
 
 

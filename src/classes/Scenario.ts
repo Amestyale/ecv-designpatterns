@@ -8,7 +8,7 @@ import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
 
 export default class Scenario {
   public distance: number
-  public gameinstance: any
+  public gameinstance: any 
 
   constructor(gameInstance: any) {
     this.distance = 1000
@@ -52,9 +52,9 @@ export default class Scenario {
   private instantiateModifier(data: any): Modifier | null {
     switch (data.type) {
       case 'player-data':
-        return new ModifierPlayerStat(this.gameinstance.player, data.name, data.modifier)
+        return new ModifierPlayerStat(data.name, data.modifier)
       case 'ship-data':
-        return new ModifierShipStat(this.gameinstance.player.ship, data.name, data.modifier)
+        return new ModifierShipStat(data.name, data.modifier)
       default:
         return null
     }
