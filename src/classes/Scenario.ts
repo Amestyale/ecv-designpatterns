@@ -16,6 +16,7 @@ export default class Scenario {
     this.distance = 1000
     this.gameinstance = gameInstance
   }
+  
 
   public InstantiatePlanetList(PlanetData: any): any {
     const planetlist = PlanetData.map((x: any) => new Planet(x.id, x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))

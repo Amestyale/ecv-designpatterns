@@ -19,7 +19,7 @@ const BackupInterface = () => {
           return (
             <Button
               width={'full'}
-              onClick={()=> backupManager.save()}>
+              onClick={()=> backupManager.restore(backup.data)}>
             Sauvegarde {backup.date}
             </Button>
           )

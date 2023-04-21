@@ -18,7 +18,9 @@ const App = () => {
   const gameInstance = useGameController()
 
   const getStep = () => {
-    if(!gameInstance.player){
+    if(!backup) { 
+      return <BackupInterface />
+    } else if(!gameInstance.player){
       return <SelectPlayer setPlayer={(player: Player) => { 
         setPlayer(player)
         gameInstance.player = player
