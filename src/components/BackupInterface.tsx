@@ -2,10 +2,14 @@ import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
 import React from 'react'
 import BackupManager from '../classes/gamemanagement/BackupManager'
+import Planet from '../classes/Planet'
+import PlanetData from '../data/PlanetData'
 import ChooseOptionButtons from './ChooseOptionButtons'
+import moment from 'moment'
 
 const BackupInterface = ({callback}: any) => {
   const backupManager = new BackupManager()
+  console.log( backupManager.getBackups())
   return (
     <>
     <VStack
@@ -23,7 +27,8 @@ const BackupInterface = ({callback}: any) => {
                 backupManager.restore(backup.data)
                 callback()
               }}>
-            Sauvegarde {backup.date}
+            Sauvegarde { moment.unix(backup.date).format("DD/MM/YYYY HH:mm:ss") }
+            <br/>Lieu : { PlanetData.find((p)=> p.id == backup.data.currentPlanet)?.name ?? "Dans l'espace"}
             </Button>
           )
         })
