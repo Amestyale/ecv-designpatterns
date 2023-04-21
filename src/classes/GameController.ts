@@ -1,6 +1,6 @@
 import PlanetData from '../data/PlanetData'
 import EventManager from './event/EventManager'
-import { BackupPlayer, BackupShip, BackupItem } from './gamemanagement/BackupTypes'
+import { BackupPlayer, BackupShip, BackupItem, BackupGame } from './gamemanagement/BackupTypes'
 import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
@@ -196,5 +196,19 @@ export default class GameController {
     return backup;
   }
 
+
+  public saveGame() : BackupGame {
+    return {
+      planets : this.planets.map(p => p.id),
+      currentRoomIndex : this.currentRoomIndex,
+      
+      inspace: this.inspace,
+      inevent: this.inevent,
+      canevent: this.canevent,
+
+      log: this.log,
+      distance: this.distance,
+    }
+  }
 
 }

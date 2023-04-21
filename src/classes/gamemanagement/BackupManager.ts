@@ -1,3 +1,4 @@
+import GameController from "../GameController"
 
 
 class Backup {
@@ -12,8 +13,8 @@ class Backup {
 export default class BackupManager {
   
   public save() {
-    const data = JSON.stringify(["data1", "data2"])
-    const backup = new Backup(data)
+    const data = GameController.getInstance().saveGame()
+    const backup = new Backup(JSON.stringify(data))
 
     let backups = [...this.getBackups()]
     backups.push(backup)
