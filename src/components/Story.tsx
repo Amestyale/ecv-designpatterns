@@ -14,8 +14,8 @@ const Story = ({ title, text, choose, optionFacade, options }: any) => {
       padding={16}
       color={'white'}
     >
-      <Heading>{title}</Heading>
-      <Text> {text}</Text>
+      <Heading>{br2jsx(title)}</Heading>
+      <Text> {br2jsx(text)}</Text>
       <AdapterOption
         callback={choose}
         type={optionFacade}
@@ -26,3 +26,14 @@ const Story = ({ title, text, choose, optionFacade, options }: any) => {
 }
 
 export default Story
+
+const br2jsx = (text: string) => {
+  return text.split('<br/>').map((item, key) => {
+    return (
+      <React.Fragment key={key}>
+        {item}
+        <br />
+      </React.Fragment>
+    )
+  })
+}
