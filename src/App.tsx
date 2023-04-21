@@ -7,8 +7,10 @@ import { Flex } from '@chakra-ui/react'
 import GameController from './components/GameController'
 import GameInstance from './classes/GameController'
 import useGameController from './hooks/useGameController'
+import BackupInterface from './components/BackupInterface'
 
 const App = () => {
+  const [backup, setBackup] = useState<number | null>(null)
   const [player, setPlayer] = useState<Player | null>(null)
   const [ship, setShip] = useState<Ship | null>(null)
   const [isRestart, setIsRestart] = useState<boolean>(false);
@@ -16,7 +18,9 @@ const App = () => {
   const gameInstance = useGameController()
 
   const getStep = () => {
-    if(!gameInstance.player){
+    if(!backup) { 
+      return <BackupInterface />
+    } else if(!gameInstance.player){
       return <SelectPlayer setPlayer={(player: Player) => { 
         setPlayer(player)
         gameInstance.player = player
