@@ -11,7 +11,7 @@ export type BackupShip = {
   name: string
 
   fuel: number
-  maxfuel: number
+  maxFuel: number
 
   health: number
   maxHealth: number
