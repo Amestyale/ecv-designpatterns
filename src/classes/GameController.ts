@@ -1,5 +1,6 @@
 import PlanetData from '../data/PlanetData'
 import EventManager from './event/EventManager'
+import { BackupPlayer, BackupShip, BackupItem } from './gamemanagement/BackupTypes'
 import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
@@ -140,6 +141,59 @@ export default class GameController {
    //   this.player.ship = null
    //   this.player = null
    // }
+  }
+
+  public savePlayer() : any {
+    if(!this.player){
+      return null;
+    }
+
+    let itemList = [];
+
+    this.player.items.forEach( (value)=>{
+      itemList.push(this.saveItem(value));
+    }); 
+
+    let backup : BackupPlayer = {
+      luck: this.player?.luck,
+      money: this.player?.money,
+      health: this.player?.health,
+      ship: this.saveShip(),
+      items: itemList,
+    };
+
+    return backup;
+  }
+
+  public saveShip() : any {
+    if(!this.player?.ship){
+      return null;
+    }
+
+    let backup : BackupShip = {
+      name: this.player?.ship.name,
+      fuel: this.player?.ship.fuel,
+      maxFuel: this.player?.ship.maxFuel,
+      health: this.player?.ship.health,
+      maxHealth: this.player?.ship.maxHealth,
+    };
+
+    return backup;
+  }
+
+  public saveItem(item : any) : any {
+    if(!item){
+      return null;
+    }
+
+    let backup : BackupItem = {
+      id: item.id,
+      name: item.name,
+      description: item.description,
+      image: item.image,
+    };
+
+    return backup;
   }
 
 
