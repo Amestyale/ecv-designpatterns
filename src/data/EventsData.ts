@@ -17,7 +17,7 @@ export default
                 description : "",
                 consequences: [
                   {type: "player-data", name: 'money', modifier: '-50'},
-                  {type: "player-item", item: new Item("biscuits-durs", "Une boîte de biscuits très, très durs"), modifier: -1}
+                  {type: "player-item", item: 'biscuits_durs', modifier: -1}
                 ]
                 
 
