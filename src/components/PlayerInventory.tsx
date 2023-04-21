@@ -14,6 +14,8 @@ const PlayerInventory = ({ items }: any) => {
     borderRadius={8}
     padding={16}
     color={'white'}
+    height={'45vh'}
+    overflowY={'auto'}
     >
       <Heading>Inventaire</Heading>
       {

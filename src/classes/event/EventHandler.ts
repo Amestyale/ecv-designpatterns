@@ -23,12 +23,15 @@ class EventHandlerP{
 class EventHandlerUnexpected extends EventHandlerP{
 
   public handle(){
-    if(this.gameInstance.canevent){
+    if(this.gameInstance.canevent && (Math.random() > 0.33) ){
       const scenario = new Scenario(this.gameInstance)
       this.gameInstance.canevent = false
       this.gameInstance.inevent = false
       this.gameInstance.inspace = false
-      this.gameInstance._currentRoom = scenario.instanciateRoom(EventsData[0])
+
+
+      const event = Math.floor((Math.random() - 0.001) * EventsData.length)
+      this.gameInstance._currentRoom = scenario.instanciateRoom(EventsData[event])
       return true
     } else {
       return false

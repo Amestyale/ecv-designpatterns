@@ -14,6 +14,7 @@ const ProgressMap = ({ planets, finish }: any) => {
     borderRadius={8}
     color={'white'}
     position={'relative'}
+    minHeight={"72px"}
     >
       { 
         planets.map((planet: MapPlanet)=>{
