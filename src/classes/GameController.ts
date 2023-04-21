@@ -58,8 +58,16 @@ export default class GameController {
     this.eventManager.resolve()
 
   }
+
+
+  public isActive(option: Option): boolean {
+    console.log(option)
+    return option.modifiers.every((m) =>  m.canBeChoosen())
+  }
+
   public resolveRoom(option: Option) {
     option.modifiers.map((m) => {
+      if (m)
       if (m){
         if(m.value != 0){
           if(m.value > 0){
@@ -99,9 +107,8 @@ export default class GameController {
             }
 
         }
-        
-        console.log(this.log)
-        m.apply()
+
+          m.apply()
       }
     })
 

@@ -11,15 +11,15 @@ export default class ModifierShipStat extends Modifier {
     this.stat = stat
   }
 
-  public canBeChoosen(){
+  public canBeChoosen() {
     const ship = GameController.getInstance().player?.ship
     if(!ship) return false
-
+    
     switch(this.stat){
       case ShipDataList.fuel:
         return (ship.fuel + +this.value) > 0
       case ShipDataList.health:
-        return (ship.health + +this.value) > 0
+        return true
     }
   }
 
