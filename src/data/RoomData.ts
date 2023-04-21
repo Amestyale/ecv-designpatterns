@@ -47,7 +47,7 @@ let RoomData =
                 name : "Une station essence", 
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
                 consequences: [
-                  {type: "player-data", name: 'money', modifier: -2000},
+                  {type: "player-data", name: 'money', modifier: -20},
                   {type: "ship-data", name: 'fuel', modifier: '10'}]
             },
             {
@@ -55,7 +55,7 @@ let RoomData =
                 description : "Après avoir toqué à la porte, votre grand-mère (ou une copie parfaite d’elle) ouvre la porte.<br>*Et bien mon trésor ? On joue au cosmonaute ?*, dit-elle. *C’est adorable mon poussin, tiens, j'ai un petit quelque chose pour toi, mais ne vas pas le dire à tes parents !*<br>Elle vous glisse discrètement un billet avant de refermer la porte. C’est définitivement l’événement le plus bizarre de la journée…<br>+20 crédits",
                 consequences: [
                   {type: "player-data", name: 'money', modifier: '20'},
-                  {type: "player-item", item: new Item("biscuits-durs", "Une boîte de biscuits très, très durs"), modifier: 1}
+                  {type: "player-item", item: 'biscuits_durs', modifier: 1}
                 
                 ]
             }
