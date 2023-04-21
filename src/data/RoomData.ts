@@ -1,3 +1,5 @@
+import Item from "../classes/Item";
+
 let RoomData = 
 [
     {
@@ -45,13 +47,17 @@ let RoomData =
                 name : "Une station essence", 
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
                 consequences: [
-                  {type: "player-data", name: 'money', modifier: -2000},
+                  {type: "player-data", name: 'money', modifier: -20},
                   {type: "ship-data", name: 'fuel', modifier: '10'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 
                 description : "Après avoir toqué à la porte, votre grand-mère (ou une copie parfaite d’elle) ouvre la porte.<br>*Et bien mon trésor ? On joue au cosmonaute ?*, dit-elle. *C’est adorable mon poussin, tiens, j'ai un petit quelque chose pour toi, mais ne vas pas le dire à tes parents !*<br>Elle vous glisse discrètement un billet avant de refermer la porte. C’est définitivement l’événement le plus bizarre de la journée…<br>+20 crédits",
-                consequences: [{type: "player-data", name: 'money', modifier: '20'}]
+                consequences: [
+                  {type: "player-data", name: 'money', modifier: '20'},
+                  {type: "player-item", item: 'biscuits_durs', modifier: 1}
+                
+                ]
             }
         ],
         optionFacade : "buttons"
@@ -93,6 +99,11 @@ let RoomData =
                 name : "Un nez de clown", 
                 description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
                 consequences: [{type: "player-data", name: 'money', modifier: '-5'}]
+            },
+            {
+                name : "Passer votre chemin", 
+                description : "Vous ne trouvez rien d'intéressant...",
+                consequences: [{type: "player-data", name: 'money', modifier: '0'}]
             },
         ],
         optionFacade : "buttons"

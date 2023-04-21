@@ -5,18 +5,21 @@ import Option from './gamemanagement/Option'
 import Modifier from './gamemanagement/Modifier/Modifier'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
 import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
+import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
+import Item from './Item'
 
 export default class Scenario {
   public distance: number
-  public gameinstance: any
+  public gameinstance: any 
 
   constructor(gameInstance: any) {
     this.distance = 1000
     this.gameinstance = gameInstance
   }
+  
 
-  public InstantiatePlanetList(PlanetData: Planet[]): any {
-    const planetlist = PlanetData.map((x) => new Planet(x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
+  public InstantiatePlanetList(PlanetData: any): Array<Planet> {
+    const planetlist = PlanetData.map((x: any) => new Planet(x.id, x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
 
     return planetlist
   }
@@ -52,9 +55,11 @@ export default class Scenario {
   private instantiateModifier(data: any): Modifier | null {
     switch (data.type) {
       case 'player-data':
-        return new ModifierPlayerStat(this.gameinstance.player, data.name, data.modifier)
+        return new ModifierPlayerStat(data.name, data.modifier)
+      case 'player-item':
+        return new ModifierPlayerItem(data.item, data.modifier)
       case 'ship-data':
-        return new ModifierShipStat(this.gameinstance.player.ship, data.name, data.modifier)
+        return new ModifierShipStat(data.name, data.modifier)
       default:
         return null
     }

@@ -7,7 +7,7 @@ enum PlayerStatList {
 
 enum PlayerDataList {
     "health" = "health",
-    "money" = "moner"
+    "money" = "money"
 }
 
 export { PlayerStatList, PlayerDataList};

@@ -1,3 +1,4 @@
+import Item from './Item'
 import Ship from './Ship'
 
 class Player {
@@ -7,9 +8,10 @@ class Player {
   public money: number
   public health: number
 
-  public ship: Ship
+  public items: Array<Item>
+  public ship: Ship | null = null
 
-  constructor(name: string, health: number, luck: number, money: number, ship: Ship) {
+  constructor(name: string, health: number, luck: number, money: number, ship: Ship | null = null) {
     this.name = name
 
     this.health = health
@@ -17,6 +19,8 @@ class Player {
     this.luck = luck
 
     this.ship = ship
+
+    this.items = []
   }
 }
 

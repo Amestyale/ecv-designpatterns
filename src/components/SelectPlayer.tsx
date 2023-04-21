@@ -5,16 +5,16 @@ import Player from '../classes/Player'
 import Ship from '../classes/Ship'
 
 interface PropsType {
-  ship: Ship
-  setPlayer: Dispatch<SetStateAction<Player | null>>
+  setPlayer: Function
 }
 
-const SelectPlayer = ({ ship, setPlayer }: PropsType) => {
+const SelectPlayer = ({ setPlayer }: PropsType) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
+
   const handleOnClick = () => {
     const race = selectRef?.current?.value
-    if (race === 'human') setPlayer(new Player('human', 40, 5, 50, ship))
-    if (race === 'alien') setPlayer(new Player('human', 40, 5, 50, ship))
+    if (race === 'human') setPlayer(new Player('human', 40, 5, 50))
+    if (race === 'alien') setPlayer(new Player('human', 40, 5, 50))
   }
   return (
     <VStack
