@@ -5,8 +5,8 @@ import Player from "../../Player";
 import Modifier from "./Modifier";
 
 export default class ModifierPlayerItem extends Modifier {
-  private item: Item 
-  private player: Player
+  public item: Item 
+  public player: Player
 
   constructor(player: Player, item: Item, value = 1){
     super(value)

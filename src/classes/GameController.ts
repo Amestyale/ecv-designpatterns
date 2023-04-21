@@ -1,4 +1,7 @@
 import EventManager from './event/EventManager'
+import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
+import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
+import ModifierShipStat from './gamemanagement/Modifier/ModifierShipStats'
 import Option from './gamemanagement/Option'
 import Planet from './Planet'
 import Player from './Player'
@@ -23,7 +26,7 @@ export default class GameController {
   public eventManager: EventManager
   public _currentRoom: Room | null = null
 
-  constructor(id: number, name: string, distance: number, player: Player, planetData: any, log: String) {
+  constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
     this.id = id
     this.name = name
     this.distance = distance
@@ -55,7 +58,7 @@ export default class GameController {
             this.log += ";Vous perdez "+m.value
           }
 
-          if(m.stat){
+          if(m instanceof ModifierPlayerStat){
             switch(m.stat) { 
                 case "money": { 
                   this.log += " unités d'argent"
@@ -65,6 +68,12 @@ export default class GameController {
                   this.log += " points de vie"
                   break; 
                 } 
+                default: { 
+                  break; 
+                } 
+              }  
+            } else if(m instanceof ModifierShipStat){
+              switch(m.stat) { 
                 case "shield": { 
                   this.log += " points de bouclier"
                   break; 
@@ -73,11 +82,9 @@ export default class GameController {
                   this.log += " unités de fuel"
                   break; 
                 } 
-                default: { 
-                  break; 
-                } 
-              }  
-            }else{
+              }
+
+            } else if(m instanceof ModifierPlayerItem){
               this.log += " "+m.item.name
             }
 

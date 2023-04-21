@@ -4,8 +4,8 @@ import Ship from "../../Ship";
 import Modifier from "./Modifier";
 
 export default class ModifierShipStat extends Modifier {
-  private stat: ShipDataList 
-  private ship: Ship 
+  public stat: ShipDataList 
+  public ship: Ship 
 
   constructor(ship: Ship, stat: ShipDataList, value: number){
     super(value)
