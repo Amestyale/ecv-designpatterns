@@ -68,7 +68,7 @@ export default class GameDisplay {
   }
 
   public currentInventory(): Array<Item>{
-    return this.gamecontroller.player.items
+    return (this.gamecontroller.player) ? this.gamecontroller.player.items : []
   }
 
   public mapPlanetsMaxX(): number{

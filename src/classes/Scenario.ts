@@ -54,9 +54,9 @@ export default class Scenario {
   private instantiateModifier(data: any): Modifier | null {
     switch (data.type) {
       case 'player-data':
-        return new ModifierPlayerStat(this.gameinstance.player, data.name, data.modifier)
+        return new ModifierPlayerStat(data.name, data.modifier)
       case 'player-item':
-        return new ModifierPlayerItem(this.gameinstance.player, data.item, data.modifier)
+        return new ModifierPlayerItem(data.item, data.modifier)
       case 'ship-data':
         return new ModifierShipStat(data.name, data.modifier)
       default:

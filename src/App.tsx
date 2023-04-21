@@ -25,6 +25,7 @@ const App = () => {
       return <SelectShip setShip={(ship: Ship) => {
         setShip(ship)
         if(gameInstance.player) gameInstance.player.ship = ship
+        gameInstance.start()
       }} />
     } else {
       return <GameController setIsRestart={setIsRestart}/>

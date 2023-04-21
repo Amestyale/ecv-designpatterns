@@ -1,16 +1,15 @@
 
 import { ShipDataList } from "../../../types/ShipStatList";
+import GameController from "../../GameController";
 import Item from "../../Item";
 import Player from "../../Player";
 import Modifier from "./Modifier";
 
 export default class ModifierPlayerItem extends Modifier {
   public item: Item 
-  public player: Player
 
-  constructor(player: Player, item: Item, value = 1){
+  constructor(item: Item, value = 1){
     super(value)
-    this.player = player
     this.item = item
   }
 
@@ -19,14 +18,16 @@ export default class ModifierPlayerItem extends Modifier {
   }
 
   public apply(){
+    const player = GameController.getInstance().player
+    if(!player) return null
     if(this.value >= 1){
-      this.player.items.push(this.item)
+      player.items.push(this.item)
     } else {
-      const index = this.player.items.findIndex((item)=>{
+      const index = player.items.findIndex((item)=>{
         return item.id == this.item.id
       })
       if(index >= 0){
-        this.player.items.splice(index, 1)
+        player.items.splice(index, 1)
       }
     }
   }

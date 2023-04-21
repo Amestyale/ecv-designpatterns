@@ -55,6 +55,8 @@ class EventHandlerFlightPlan extends EventHandlerP {
 
   public handle(){
     this.gameInstance.inspace = true
+    console.log(this.gameInstance)
+    console.log("planets", this.gameInstance.nextPlanetsAvailables())
     const options = this.gameInstance.nextPlanetsAvailables().map((planet: Planet) => {
       const modifier = new ModifierCustom(() => {
         this.gameInstance.inspace = false
@@ -69,6 +71,7 @@ class EventHandlerFlightPlan extends EventHandlerP {
       const opt = new Option(`Aller sur ${planet.name}`, planet.appearance, [modifier])
       return opt
     })
+    console.log('options', options)
 
     this.gameInstance._currentRoom = new Room(0, 'Choisir le cap', 'Où voulez-vous aller ?', options, 'buttons')
 

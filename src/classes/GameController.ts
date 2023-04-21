@@ -31,7 +31,8 @@ export default class GameController {
 
   public log: String
 
-  public eventManager: EventManager
+  public eventManager: EventManager | null = null
+
   public _currentRoom: Room | null = null
 
   constructor(distance: number) {
@@ -48,11 +49,14 @@ export default class GameController {
     this.canevent = false
 
     this.currentRoomIndex = -1
+  }
+
+  public start(){
 
     this.eventManager = new EventManager(this)
     this.eventManager.resolve()
-  }
 
+  }
   public resolveRoom(option: Option) {
     option.modifiers.map((m) => {
       if (m){
@@ -100,7 +104,7 @@ export default class GameController {
       }
     })
 
-    this.eventManager.resolve()
+    if(this.eventManager)this.eventManager.resolve()
   }
 
   public currentRoom(){
@@ -128,7 +132,6 @@ export default class GameController {
       } else {
         return false
       }
-      
     })
   }
 
