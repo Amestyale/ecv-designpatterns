@@ -19,7 +19,7 @@ export default class ModifierShipStat extends Modifier {
       case ShipDataList.fuel:
         return (ship.fuel + +this.value) > 0
       case ShipDataList.health:
-        return (ship.health + +this.value) > 0
+        return true
     }
   }
 

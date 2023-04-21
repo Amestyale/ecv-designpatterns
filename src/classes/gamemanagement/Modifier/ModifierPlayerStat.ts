@@ -18,7 +18,7 @@ export default class ModifierPlayerStat extends Modifier {
 
     switch(this.stat){
       case PlayerDataList.health:
-        return (player.health + +this.value) > 0
+        return true
       case PlayerDataList.money:
         return (player.money + +this.value) >= 0
     }
