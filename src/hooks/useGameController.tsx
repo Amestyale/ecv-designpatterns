@@ -7,7 +7,6 @@ import PlanetData from '../data/PlanetData'
 
 const useGameController = () => {
   return GameController.getInstance()
-
 }
 
 export default useGameController

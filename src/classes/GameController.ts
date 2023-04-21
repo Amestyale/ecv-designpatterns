@@ -126,7 +126,7 @@ export default class GameController {
       if (ship) {
         return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
       } else {
-        return ""
+        return false
       }
       
     })

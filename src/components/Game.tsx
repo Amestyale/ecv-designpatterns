@@ -26,6 +26,7 @@ const Game = ({ }: GameProps) => {
   const title = gameController.currentRoom()?.title
   const text = gameController.currentRoom()?.text
   const options = gameController.currentRoom()?.options
+  console.log(gameController.currentRoom())
   const optionFacade = gameController.currentRoom()?.optionFacade
   const logText = gameController.log
 

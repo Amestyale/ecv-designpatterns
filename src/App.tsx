@@ -17,14 +17,17 @@ const App = () => {
 
   const getStep = () => {
     if(!gameInstance.player){
-      return <SelectPlayer setPlayer={(player: Player) => gameInstance.player = player} />
+      return <SelectPlayer setPlayer={(player: Player) => { 
+        setPlayer(player)
+        gameInstance.player = player
+      }} />
     } else if (gameInstance.player && !gameInstance.player.ship) {
       return <SelectShip setShip={(ship: Ship) => {
+        setShip(ship)
         if(gameInstance.player) gameInstance.player.ship = ship
       }} />
     } else {
-      alert("game")
-      return <GameController  setIsRestart={setIsRestart}/>
+      return <GameController setIsRestart={setIsRestart}/>
     }
   }
   return (
