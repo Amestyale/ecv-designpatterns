@@ -1,4 +1,7 @@
 import GameController from "../GameController"
+import Player from "../Player"
+import Ship from "../Ship"
+import { BackupPlayer, BackupShip } from "./BackupTypes"
 
 
 class Backup {
@@ -45,6 +48,21 @@ export default class BackupManager {
     if(backup){
       console.log("backup", backup)
     }
+  }
+
+  public loadPlayer(backupPlayer : BackupPlayer) : Player{
+    let newShip = this.loadShip(backupPlayer.ship);
+
+    let newPlayer = new Player('player', backupPlayer.health, backupPlayer.luck, backupPlayer.money, newShip);
+
+    return newPlayer;
+  }
+
+  public loadShip(backupShip : BackupShip) : Ship{
+
+    let newShip = new Ship(backupShip.name, backupShip.fuel, backupShip.health, backupShip.maxFuel, backupShip.maxHealth);
+
+    return newShip;
   }
 
 }
