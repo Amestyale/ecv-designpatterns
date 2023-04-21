@@ -27,7 +27,7 @@ export type BackupPlayer = {
 }
 
 export type BackupGame = {
-  player: BackupPlayer
+  player?: BackupPlayer
   planets: Array<number>
 
   currentRoomIndex: number

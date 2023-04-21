@@ -1,6 +1,7 @@
 import Room from './Room'
 
 export default class Planet {
+  public id : number
   public name: string
   public description: string
   public appearance: string
@@ -8,7 +9,8 @@ export default class Planet {
   public x: number
   public y: number
 
-  constructor(x: number, y: number, name: string, description: string, appearance: string, rooms: Room[]) {
+  constructor(id: number, x: number, y: number, name: string, description: string, appearance: string, rooms: Room[]) {
+    this.id = id
     this.x = x
     this.y = y
     this.name = name
