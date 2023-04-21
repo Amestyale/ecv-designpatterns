@@ -7,8 +7,8 @@ interface Props {
   setShip: Function
 }
 
-const leger = new Ship('leger', 10, 10, 10, 10)
-const lourd = new Ship('lourd', 20, 20, 20, 20)
+const leger = new Ship('leger', 20, 20, 10, 10)
+const lourd = new Ship('lourd', 10, 40, 20, 20)
 const ships = [
   {
     name: 'leger',

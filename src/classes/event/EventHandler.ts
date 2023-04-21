@@ -23,7 +23,7 @@ class EventHandlerP{
 class EventHandlerUnexpected extends EventHandlerP{
 
   public handle(){
-    if(this.gameInstance.canevent && (Math.random() > 0.33) ){
+    if(this.gameInstance.canevent && (Math.random() > 0.66) ){
       const scenario = new Scenario(this.gameInstance)
       this.gameInstance.canevent = false
       this.gameInstance.inevent = false
