@@ -1,3 +1,4 @@
+import PlanetData from '../data/PlanetData'
 import EventManager from './event/EventManager'
 import ModifierPlayerItem from './gamemanagement/Modifier/ModifierPlayerItem'
 import ModifierPlayerStat from './gamemanagement/Modifier/ModifierPlayerStat'
@@ -9,10 +10,17 @@ import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
-  public id: number
-  public name: string
+  static gameControllerInstance: GameController
+
+  static getInstance(): GameController{
+    if(!GameController.gameControllerInstance)  {
+      GameController.gameControllerInstance = new GameController(1000)
+    }
+    return GameController.gameControllerInstance
+  }
+
   public distance: number
-  public player: Player
+  public player: Player | null = null
 
   public currentPlanet: Planet | null
   public currentRoomIndex: number
@@ -26,17 +34,14 @@ export default class GameController {
   public eventManager: EventManager
   public _currentRoom: Room | null = null
 
-  constructor(id: number, name: string, distance: number, player: Player, planetData: any) {
-    this.id = id
-    this.name = name
+  constructor(distance: number) {
     this.distance = distance
-    this.player = player
     this.currentPlanet = null
 
     this.log = "Vous commencez votre aventure";
 
     const scenario = new Scenario(this)
-    this.planets = scenario.InstantiatePlanetList(planetData)
+    this.planets = scenario.InstantiatePlanetList(PlanetData)
 
     this.inspace = true
     this.inevent = false
@@ -114,11 +119,25 @@ export default class GameController {
   }
 
   public nextPlanetsAvailables(): Array<Planet> {
+    if(!this.player) return []
     const ship = this.player.ship
     return this.planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
-      return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
+      if (ship) {
+        return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
+      } else {
+        return ""
+      }
+      
     })
   }
+
+  public restartGame() {
+   // if (this.player && this.player.ship) {
+   //   this.player.ship = null
+   //   this.player = null
+   // }
+  }
+
 
 }

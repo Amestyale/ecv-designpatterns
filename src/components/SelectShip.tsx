@@ -4,7 +4,7 @@ import { FaShip } from 'react-icons/fa'
 import Ship from '../classes/Ship'
 
 interface Props {
-  setShip: Dispatch<SetStateAction<Ship | null>>
+  setShip: Function
 }
 
 const leger = new Ship('leger', 10, 10, 10, 10)

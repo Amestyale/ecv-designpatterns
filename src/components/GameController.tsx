@@ -6,15 +6,12 @@ import useRooms from '../hooks/useRooms'
 import Game from './Game'
 
 type GameControllerProps = {
-  player: Player
+  setIsRestart: any
 }
 
-const GameController = ({ player }: GameControllerProps) => {
-  const rooms = useRooms(player)
-  const planets = usePlanets(rooms)
-  const gameController = useGameController(player, planets)
+const GameController = ({ }: GameControllerProps) => {
 
-  return <Game gameController={gameController} />
+  return <Game />
 }
 
 export default GameController

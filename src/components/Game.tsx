@@ -13,12 +13,15 @@ import PlayerInventory from './PlayerInventory'
 import { Stack } from '@chakra-ui/react'
 import Item from '../classes/Item'
 import ProgressMap from './map/ProgressMap'
+import useGameController from '../hooks/useGameController'
+
 
 type GameProps = {
-  gameController: GameController
 }
 
-const Game = ({ gameController }: GameProps) => {
+const Game = ({ }: GameProps) => {
+  const gameController = useGameController()
+
   const distanceFromWin = gameController.distanceFromWin()
   const title = gameController.currentRoom()?.title
   const text = gameController.currentRoom()?.text
@@ -32,9 +35,25 @@ const Game = ({ gameController }: GameProps) => {
     gameController.resolveRoom(option)
     setRefresh(!refresh)
   }
+  const [isRestart, setIsRestart] = useState<boolean>(false);
+  const handleRestart = () => {
+    setIsRestart(true);
+  };
+  const restartGame = () => {
+    console.log("restart")
+    console.log(gameController.player)
+    handleRestart();
+  }
 
+  if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
-  if (gameDisplay.isGameOver()) return <Heading>{gameDisplay.isGameOver()}</Heading>
+  if (gameDisplay.isGameOver()) return (
+    <VStack>
+      <Heading>{gameDisplay.isGameOver()}</Heading>
+      <button onClick={restartGame}>New game</button>
+    </VStack>
+
+    )
 
   return (
     <VStack justifyContent={"space-between"} height={"90vh"} width={'100vw'}>

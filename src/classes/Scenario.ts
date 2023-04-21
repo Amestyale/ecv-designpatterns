@@ -10,15 +10,15 @@ import Item from './Item'
 
 export default class Scenario {
   public distance: number
-  public gameinstance: any
+  public gameinstance: any 
 
   constructor(gameInstance: any) {
     this.distance = 1000
     this.gameinstance = gameInstance
   }
 
-  public InstantiatePlanetList(PlanetData: Planet[]): any {
-    const planetlist = PlanetData.map((x) => new Planet(x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
+  public InstantiatePlanetList(PlanetData: any): any {
+    const planetlist = PlanetData.map((x: any) => new Planet(x.x, x.y, x.name, x.description, x.appearance, this.InstantiateRoomList(x.rooms)))
 
     return planetlist
   }
@@ -58,7 +58,7 @@ export default class Scenario {
       case 'player-item':
         return new ModifierPlayerItem(this.gameinstance.player, data.item, data.modifier)
       case 'ship-data':
-        return new ModifierShipStat(this.gameinstance.player.ship, data.name, data.modifier)
+        return new ModifierShipStat(data.name, data.modifier)
       default:
         return null
     }
