@@ -148,7 +148,7 @@ export default class GameController {
       return null;
     }
 
-    let itemList = [];
+    let itemList: Array<BackupItem> = [];
 
     this.player.items.forEach( (value)=>{
       itemList.push(this.saveItem(value));
@@ -200,6 +200,7 @@ export default class GameController {
   public saveGame() : BackupGame {
     return {
       planets : this.planets.map(p => p.id),
+      player: this.savePlayer(),
       currentRoomIndex : this.currentRoomIndex,
       
       inspace: this.inspace,

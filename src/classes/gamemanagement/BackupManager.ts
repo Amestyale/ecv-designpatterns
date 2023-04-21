@@ -1,4 +1,5 @@
 import GameController from "../GameController"
+import Planet from "../Planet"
 
 
 class Backup {
@@ -45,6 +46,9 @@ export default class BackupManager {
     if(backup){
       console.log("backup", backup)
     }
+
+    
   }
+
 
 }

@@ -14,6 +14,7 @@ import { Stack } from '@chakra-ui/react'
 import Item from '../classes/Item'
 import ProgressMap from './map/ProgressMap'
 import useGameController from '../hooks/useGameController'
+import BackupManager from '../classes/gamemanagement/BackupManager'
 
 
 type GameProps = {
@@ -45,6 +46,9 @@ const Game = ({ }: GameProps) => {
     console.log(gameController.player)
     handleRestart();
   }
+
+  const backupManager = new BackupManager;
+  backupManager.save()
 
   if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
