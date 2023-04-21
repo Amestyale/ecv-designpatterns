@@ -203,6 +203,7 @@ export default class GameController {
       player: this.savePlayer(),
       currentRoomIndex : this.currentRoomIndex,
       
+      currentPlanet: this.currentPlanet?.id,
       inspace: this.inspace,
       inevent: this.inevent,
       canevent: this.canevent,

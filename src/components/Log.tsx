@@ -1,6 +1,8 @@
 import React from 'react'
 import { VStack, Text, Heading, Box, Stack, UnorderedList,ListItem } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/button'
 import AdapterOption from './AdapterOption'
+import BackupManager from '../classes/gamemanagement/BackupManager'
 
 const Log = ({ text }: any) => {
 
@@ -27,6 +29,10 @@ const Log = ({ text }: any) => {
     >
       <Heading>Logs :</Heading>
       <UnorderedList>{listItems}</UnorderedList>
+      <Button onClick={()=>{
+        const backupManager = new BackupManager
+        backupManager.save()
+      }}>Sauvergarde</Button>
     </Stack>
   )
 }

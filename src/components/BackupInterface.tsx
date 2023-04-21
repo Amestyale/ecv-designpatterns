@@ -4,7 +4,7 @@ import React from 'react'
 import BackupManager from '../classes/gamemanagement/BackupManager'
 import ChooseOptionButtons from './ChooseOptionButtons'
 
-const BackupInterface = () => {
+const BackupInterface = ({callback}: any) => {
   const backupManager = new BackupManager()
   return (
     <>
@@ -19,12 +19,22 @@ const BackupInterface = () => {
           return (
             <Button
               width={'full'}
-              onClick={()=> backupManager.restore(backup.data)}>
+              onClick={()=> {
+                backupManager.restore(backup.data)
+                callback()
+              }}>
             Sauvegarde {backup.date}
             </Button>
           )
         })
       }
+      <Button
+        width={'full'}
+        onClick={()=> {
+          callback()
+        }}>
+        Nouvelle Partie
+      </Button>
     </VStack>
     </>
   )

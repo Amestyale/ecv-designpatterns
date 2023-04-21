@@ -10,9 +10,9 @@ import PlanetData from "../../data/PlanetData"
 
 class Backup {
   public date: number
-  public data: string
+  public data: any
 
-  constructor(data: string){
+  constructor(data: any){
     this.date = Date.now()
     this.data = data
   }
@@ -21,7 +21,7 @@ export default class BackupManager {
   
   public save() {
     const data = GameController.getInstance().saveGame()
-    const backup = new Backup(JSON.stringify(data))
+    const backup = new Backup(data)
 
     let backups = [...this.getBackups()]
     backups.push(backup)
@@ -39,9 +39,6 @@ export default class BackupManager {
         arr = decode
       }
     }
-    arr.map((b: Backup)=>{
-      if(b.data) b.data = JSON.parse(b.data)
-    })
 
     return (allBackupsJSON) ? arr : []
   }
@@ -65,16 +62,23 @@ export default class BackupManager {
     gameInstance.inspace = backup.inspace
     gameInstance.canevent = backup.canevent
     gameInstance.distance = backup.distance
-    gameInstance.currentRoomIndex = backup.currentRoomIndex
+    gameInstance._currentRoom = backup.currentRoomIndex
     gameInstance.log = backup.log
     gameInstance.distance = backup.distance
 
     gameInstance.planets = scenario.InstantiatePlanetList(PlanetData.filter((p) => backup.planets.includes(p.id) ))
-    
-    console.log(gameInstance)
-  }
+    if(backup.currentPlanet){
+      const planet = gameInstance.planets.find(p => p.id == backup.currentPlanet)
+      if(planet) gameInstance.currentPlanet = planet
+    }
 
-  public load(date: number){
+    if(backup.player){
+      gameInstance.player = this.loadPlayer(backup.player)
+    }
+
+    gameInstance.start()
+
+    GameController.gameControllerInstance = gameInstance
   }
 
   public loadPlayer(backupPlayer : BackupPlayer) : Player{

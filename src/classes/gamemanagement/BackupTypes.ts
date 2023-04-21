@@ -30,6 +30,8 @@ export type BackupGame = {
   player?: BackupPlayer
   planets: Array<number>
 
+  currentPlanet?: number
+
   currentRoomIndex: number
 
   inspace: boolean

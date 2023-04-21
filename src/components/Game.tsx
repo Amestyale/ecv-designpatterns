@@ -47,9 +47,6 @@ const Game = ({ }: GameProps) => {
     handleRestart();
   }
 
-  const backupManager = new BackupManager;
-  backupManager.save()
-
   if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
   if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
   if (gameDisplay.isGameOver()) return (
