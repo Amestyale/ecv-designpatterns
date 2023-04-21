@@ -20,7 +20,7 @@ export default class ModifierPlayerStat extends Modifier {
       case PlayerDataList.health:
         return (player.health + +this.value) > 0
       case PlayerDataList.money:
-        return (player.money + +this.value) > 0
+        return (player.money + +this.value) >= 0
     }
   }
 

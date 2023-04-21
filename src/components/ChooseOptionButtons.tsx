@@ -2,6 +2,9 @@ import React from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
 import { HStack } from '@chakra-ui/layout'
+import useGameController from '../hooks/useGameController'
+
+const gameController = useGameController()
 
 const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
@@ -11,6 +14,7 @@ const ChooseOptionButtons = ({ callback, options }: any) => {
           <Button
             key={i}
             onClick={() => callback(option)}
+            isDisabled={!gameController.isActive(option)}
           >
             {option.title}
           </Button>

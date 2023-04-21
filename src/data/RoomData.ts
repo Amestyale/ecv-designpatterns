@@ -100,6 +100,11 @@ let RoomData =
                 description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
                 consequences: [{type: "player-data", name: 'money', modifier: '-5'}]
             },
+            {
+                name : "Passer votre chemin", 
+                description : "Vous ne trouvez rien d'intéressant...",
+                consequences: [{type: "player-data", name: 'money', modifier: '0'}]
+            },
         ],
         optionFacade : "buttons"
     },
