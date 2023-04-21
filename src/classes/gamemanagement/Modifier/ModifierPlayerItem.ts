@@ -23,7 +23,22 @@ export default class ModifierPlayerItem extends Modifier {
   }
 
   public canBeChoosen(){
-     return true
+    const player = GameController.getInstance().player
+    if(this.value >= 0) return true;
+    if(!player) return false;
+    if(this.item){
+      const itemId = this.item.id
+      const FoundItem = player.items.find((item) => {
+        return item.id === itemId;
+      });
+  
+      if(FoundItem){
+        return true;
+      }else{
+        return false;
+      }
+    } 
+    return false;
   }
 
   public apply(){
