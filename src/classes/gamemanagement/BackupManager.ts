@@ -2,6 +2,7 @@ import GameController from "../GameController"
 import Player from "../Player"
 import Ship from "../Ship"
 import { BackupPlayer, BackupShip } from "./BackupTypes"
+import Planet from "../Planet"
 
 
 class Backup {
@@ -48,6 +49,8 @@ export default class BackupManager {
     if(backup){
       console.log("backup", backup)
     }
+
+    
   }
 
   public loadPlayer(backupPlayer : BackupPlayer) : Player{
