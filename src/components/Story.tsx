@@ -6,16 +6,19 @@ const Story = ({ title, text, choose, optionFacade, options }: any) => {
   return (
     <Stack
       flex={2}
-      justify={'center'}
+      justify={'start'}
       width={'60%'}
       gap={4}
       backgroundColor={'rgba(0, 0, 0, 0.8)'}
       borderRadius={8}
       padding={16}
       color={'white'}
+      height={'45vh'}
+      overflowY={'auto'}
     >
-      <Heading>{title}</Heading>
-      <Text> {text}</Text>
+      <Heading
+      >{br2jsx(title)}</Heading>
+      <Text> {br2jsx(text)}</Text>
       <AdapterOption
         callback={choose}
         type={optionFacade}
@@ -26,3 +29,14 @@ const Story = ({ title, text, choose, optionFacade, options }: any) => {
 }
 
 export default Story
+
+const br2jsx = (text: string) => {
+  return text.split('<br/>').map((item, key) => {
+    return (
+      <React.Fragment key={key}>
+        {item}
+        <br />
+      </React.Fragment>
+    )
+  })
+}

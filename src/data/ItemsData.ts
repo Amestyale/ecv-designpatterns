@@ -40,6 +40,11 @@ let ItemsData =
         title: 'Boîte de biscuits très, très durs',
         description: 'Croquer dans l\'un de ces biscuits risque bien de vous casser une dent !',
     },
+    {
+        id: 'robot_reparation',
+        title: 'Robot de réparation pour votre vaisseau',
+        description: 'Un petit robot pour réparer votre vaisseau en cas de panne !',
+    }
 ];
 
 export default ItemsData;

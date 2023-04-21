@@ -26,13 +26,15 @@ const Log = ({ text }: any) => {
       borderRadius={8}
       padding={8}
       color={'white'}
+      height={'45vh'}
+      overflowY={'auto'}
     >
       <Heading>Logs :</Heading>
       <UnorderedList>{listItems}</UnorderedList>
       <Button onClick={()=>{
         const backupManager = new BackupManager
         backupManager.save()
-      }}>Sauvergarde</Button>
+      }}>Sauvegarde</Button>
     </Stack>
   )
 }

@@ -1,16 +1,19 @@
 import React from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/button'
 import Option from '../classes/gamemanagement/Option'
-import { HStack } from '@chakra-ui/layout'
+import { HStack, Wrap, WrapItem } from '@chakra-ui/layout'
 import useGameController from '../hooks/useGameController'
 
 const gameController = useGameController()
 
 const ChooseOptionButtons = ({ callback, options }: any) => {
   return (
-    <ButtonGroup>
+    <Wrap
+      display={"contents"}
+    >
       {options.map((option: Option, i: number) => {
         return (
+          <WrapItem>
           <Button
             key={i}
             onClick={() => callback(option)}
@@ -18,9 +21,10 @@ const ChooseOptionButtons = ({ callback, options }: any) => {
           >
             {option.title}
           </Button>
+          </WrapItem>
         )
       })}
-    </ButtonGroup>
+    </Wrap>
   )
 }
 
