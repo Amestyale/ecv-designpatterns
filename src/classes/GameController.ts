@@ -94,7 +94,7 @@ export default class GameController {
                 } 
               }
 
-            } else if(m instanceof ModifierPlayerItem){
+            } else if(m instanceof ModifierPlayerItem && m.item){
               this.log += " "+m.item.name
             }
 
