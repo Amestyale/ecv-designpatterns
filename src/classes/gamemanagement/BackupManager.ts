@@ -86,6 +86,10 @@ export default class BackupManager {
 
     let newPlayer = new Player('player', backupPlayer.health, backupPlayer.luck, backupPlayer.money, newShip);
 
+    backupPlayer.items.forEach(element => {
+      newPlayer.items.push(element);
+    }); 
+
     return newPlayer;
   }
 
