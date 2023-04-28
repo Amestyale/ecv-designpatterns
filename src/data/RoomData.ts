@@ -27,8 +27,8 @@ let RoomData =
         options: [
             {
                 name : "Entrer dans un bâtiment", 
-                description : "L’intérieur de la structure est extrêmement sombre, l’endroit sent la poussière et la solitude.<br>Soudainement, un soupir brise le silence et par la même occasion le peu de courage qu’il vous restait et ce qui vous sert de jambes vous précipite vers la sortie.<br>Vous ne soufflez qu’une fois de retour en orbite, vous n’avez toujours pas remarqué que vous n’êtes plus vraiment seul.e dans le vaisseau.<br>Vous vous êtes fait un ami suspect…",
-                consequences: [{type: "player-data", name: 'health', modifier: '-20'}]
+                description : "L’intérieur de la structure est extrêmement sombre, l’endroit sent la poussière et la solitude, vous y trouvez cependant un stock de fuel.<br>Soudainement, un soupir brise le silence et par la même occasion le peu de courage qu’il vous restait et ce qui vous sert de jambes vous précipite vers la sortie.<br>Vous ne soufflez qu’une fois de retour en orbite, vous n’avez toujours pas remarqué que vous n’êtes plus vraiment seul.e dans le vaisseau.<br>Vous vous êtes fait un ami suspect…",
+                consequences: [{type: "player-data", name: 'health', modifier: '-20'},{type: "ship-data", name: 'fuel', modifier: '2'}]
             },
             {
                 name : "Visiter le centre de la ville", 
@@ -142,9 +142,10 @@ let RoomData =
             },
             {
             name : "Explorer les environs",
-            description : "Vous décidez d'explorer les environs, malgré les dangers. Vous trouvez une grotte qui mène à une chambre de cristal remplie de pierres précieuses.<br>+50 de richesse",
+            description : "Vous décidez d'explorer les environs, malgré les dangers. Vous trouvez une grotte qui mène à une chambre de cristal remplie de pierres précieuses. Vous trouvez également une épave de vaisseau abandonné, il reste un peux de fuel dans le réservoir. <br>+50 de richesse, +1 fuel",
             consequences: [
-                {type: "player-data", name: 'money', modifier: '+50'}
+                {type: "player-data", name: 'money', modifier: '+50'},
+                {type: "ship-data", name: 'fuel', modifier: '1'}
             ]
             }
         ],
