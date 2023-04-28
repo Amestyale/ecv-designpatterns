@@ -53,14 +53,6 @@ export default class GameController {
   }
 
   public start(){
-
-    this.inspace = true
-    this.inevent = false
-    this.canevent = false 
-
-    this.currentRoomIndex = -1
-    this.currentPlanet = null
-
     this.eventManager = new EventManager(this)
     this.eventManager.resolve()
   }
@@ -152,6 +144,14 @@ export default class GameController {
 
   public restartGame() {
     if(this.player) this.player = null
+
+    this.inspace = true
+    this.inevent = false
+    this.canevent = false 
+
+    this.currentRoomIndex = -1
+    this.currentPlanet = null
+
   }
 
   public savePlayer() : any {
