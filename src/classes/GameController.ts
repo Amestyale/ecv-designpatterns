@@ -11,7 +11,7 @@ import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
-  static gameControllerInstance: GameController
+  static gameControllerInstance: GameController | undefined
 
   static getInstance(): GameController{
     if(!GameController.gameControllerInstance)  {
@@ -54,9 +54,15 @@ export default class GameController {
 
   public start(){
 
+    this.inspace = true
+    this.inevent = false
+    this.canevent = false 
+
+    this.currentRoomIndex = -1
+    this.currentPlanet = null
+
     this.eventManager = new EventManager(this)
     this.eventManager.resolve()
-
   }
 
 
@@ -144,10 +150,7 @@ export default class GameController {
   }
 
   public restartGame() {
-   // if (this.player && this.player.ship) {
-   //   this.player.ship = null
-   //   this.player = null
-   // }
+    if(this.player) this.player = null
   }
 
   public savePlayer() : any {

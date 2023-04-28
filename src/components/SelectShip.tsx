@@ -12,11 +12,17 @@ const lourd = new Ship('lourd', 10, 40, 20, 20)
 const ships = [
   {
     name: 'leger',
-    vehicule: leger,
+    fuel: 20,
+    health: 20,
+    maxFuel: 20,
+    maxHealth: 20
   },
   {
     name: 'lourd',
-    vehicule: lourd,
+    fuel: 20,
+    health: 20,
+    maxFuel: 20,
+    maxHealth: 20
   },
 ]
 
@@ -24,7 +30,7 @@ const SelectShip = ({ setShip }: Props) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
     const ship = ships.find((ship) => ship.name === selectRef?.current?.value)
-    if (ship) setShip(ship.vehicule)
+    if (ship) setShip(new Ship(ship.name, ship.fuel, ship.health, ship.maxFuel, ship.maxHealth))
   }
   return (
     <VStack
@@ -40,7 +46,7 @@ const SelectShip = ({ setShip }: Props) => {
             key={ship.name}
             value={ship.name}
           >
-            {ship.name} ({ship.vehicule.health} pv)
+            {ship.name} ({ship.health} pv)
           </option>
         ))}
       </Select>

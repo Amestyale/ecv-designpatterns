@@ -9,7 +9,7 @@ type GameControllerProps = {
 
 const GameController = ({ }: GameControllerProps) => {
 
-  return <Game />
+  return <></>
 }
 
 export default GameController
