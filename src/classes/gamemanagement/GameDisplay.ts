@@ -25,14 +25,14 @@ export default class GameDisplay {
   public isGameOver(): string | false {
     if (this.gamecontroller.player && this.gamecontroller.player.ship) {
       if (this.gamecontroller.player.health <= 0) {
-        return "You are dead !"
+        return "Vous êtes mort, votre corps alimente désormais le compost d'un spatio-agriculteur"
       }
       if (this.gamecontroller.player.ship.health <= 0) {
-        return "Your ship is a wreck !"
+        return "Votre vaisseau a fini en pièces détachées... et vous avec"
       }
     }
    
-    if (this.gamecontroller.nextPlanetsAvailables().length === 0 && this.gamecontroller.inspace) return "You don't have enough fuel and are now stuck on this planet..."
+    if (this.gamecontroller.nextPlanetsAvailables().length === 0 && this.gamecontroller.inspace) return "Vous n'avez plus assez d'essence et êtes désormais coincé sur cette planète jusqu'à ce que mort ou folie s'ensuive"
     return false
   }
   public displayFuel(): number {

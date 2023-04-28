@@ -42,11 +42,11 @@ const Game = ({ restart }: GameProps) => {
   }
 
   if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
-  if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
+  if (gameDisplay.isGameWin()) return <Heading>Vous avez gagné !</Heading>
   if (gameDisplay.isGameOver()) return (
     <VStack>
       <Heading>{gameDisplay.isGameOver()}</Heading>
-      <button onClick={restartGame}>New game</button>
+      <button onClick={restartGame}>Je veux réessayer</button>
     </VStack>
 
     )

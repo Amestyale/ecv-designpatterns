@@ -11,14 +11,14 @@ const leger = new Ship('leger', 20, 20, 10, 10)
 const lourd = new Ship('lourd', 10, 40, 20, 20)
 const ships = [
   {
-    name: 'leger',
+    name: 'Léger',
     fuel: 20,
     health: 20,
     maxFuel: 20,
     maxHealth: 20
   },
   {
-    name: 'lourd',
+    name: 'Lourd',
     fuel: 20,
     health: 20,
     maxFuel: 20,
@@ -46,7 +46,7 @@ const SelectShip = ({ setShip }: Props) => {
             key={ship.name}
             value={ship.name}
           >
-            {ship.name} ({ship.health} pv)
+            {ship.name}
           </option>
         ))}
       </Select>
@@ -54,7 +54,7 @@ const SelectShip = ({ setShip }: Props) => {
         width={'full'}
         onClick={handleOnClick}
       >
-        Select ship
+        Choisissez votre vaisseau
       </Button>
     </VStack>
   )

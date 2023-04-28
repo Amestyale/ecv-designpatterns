@@ -14,7 +14,7 @@ const SelectPlayer = ({ setPlayer }: PropsType) => {
   const handleOnClick = () => {
     const race = selectRef?.current?.value
     if (race === 'human') setPlayer(new Player('human', 40, 5, 50))
-    if (race === 'alien') setPlayer(new Player('human', 40, 5, 50))
+    if (race === 'alien') setPlayer(new Player('alien', 40, 5, 50))
   }
   return (
     <VStack
@@ -25,14 +25,14 @@ const SelectPlayer = ({ setPlayer }: PropsType) => {
     >
       <FaUser size={50} />
       <Select ref={selectRef}>
-        <option value='human'>human</option>
-        <option value='alien'>alien</option>
+        <option value='human'>Humain</option>
+        <option value='alien'>Alien</option>
       </Select>
       <Button
         width={'full'}
         onClick={handleOnClick}
       >
-        Select race
+        Choisissez votre ethnie
       </Button>
     </VStack>
   )
