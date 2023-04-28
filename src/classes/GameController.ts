@@ -67,7 +67,6 @@ export default class GameController {
 
 
   public isActive(option: Option): boolean {
-    console.log(option)
     return option.modifiers.every((m) =>  m.canBeChoosen())
   }
 

@@ -53,7 +53,6 @@ export default class BackupManager {
 
   public restore(backup: any)
   {
-    console.log(backup)
     const gameInstance = GameController.getInstance()
  
     const scenario = new Scenario(this)

@@ -13,7 +13,6 @@ export default class GameDisplay {
   
 
   public currentRoom(): Room | null{
-    console.log(this.gamecontroller._currentRoom)
     return this.gamecontroller._currentRoom
   }
 
