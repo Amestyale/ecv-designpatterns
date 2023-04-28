@@ -98,7 +98,8 @@ let RoomData =
             {
                 name : "Un nez de clown", 
                 description : "Il s’agit littéralement d’un nez de clown.<br>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br>-5 crédits, +1 nez de clown",
-                consequences: [{type: "player-data", name: 'money', modifier: '-5'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '-5'},
+                {type: "player-item", item: 'nez_clown', modifier: 1}]
             },
             {
                 name : "Passer votre chemin", 
@@ -116,7 +117,8 @@ let RoomData =
             {
                 name : "Offir un nouveau nez à Bozo", 
                 description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br>-1 nez de clown, +60 crédits",
-                consequences: [{type: "player-data", name: 'money', modifier: '60'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '60'},
+                {type: "player-item", item: 'nez_clown', modifier: -1}]
             },
             {
                 name : "Raconter un blague à Bozo", 
