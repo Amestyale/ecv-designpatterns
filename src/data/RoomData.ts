@@ -48,7 +48,7 @@ let RoomData =
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br>-20 crédits +1 fuel",
                 consequences: [
                   {type: "player-data", name: 'money', modifier: -20},
-                  {type: "ship-data", name: 'fuel', modifier: '10'}]
+                  {type: "ship-data", name: 'fuel', modifier: '5'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 
@@ -118,6 +118,7 @@ let RoomData =
                 name : "Offir un nouveau nez à Bozo", 
                 description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br>-1 nez de clown, +60 crédits",
                 consequences: [{type: "player-data", name: 'money', modifier: '60'},
+                {type: "ship-data", name: 'fuel', modifier: '2'},
                 {type: "player-item", item: 'nez_clown', modifier: -1}]
             },
             {
