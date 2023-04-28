@@ -8,6 +8,7 @@ import GameController from './components/GameController'
 import GameInstance from './classes/GameController'
 import useGameController from './hooks/useGameController'
 import BackupInterface from './components/BackupInterface'
+import Game from './components/Game'
 
 const App = () => {
   const [backup, setBackup] = useState<boolean>(false)
@@ -16,6 +17,13 @@ const App = () => {
   const [isRestart, setIsRestart] = useState<boolean>(false);
 
   const gameInstance = useGameController()
+
+  const restart = () => {
+    GameInstance.getInstance().restartGame()
+    setIsRestart(!isRestart)
+    setPlayer(null)
+    setShip(null)
+  }
 
   const getStep = () => {
     if(!backup) { 
@@ -32,7 +40,7 @@ const App = () => {
         gameInstance.start()
       }} />
     } else {
-      return <GameController setIsRestart={setIsRestart}/>
+      return <Game restart={restart}/>
     }
   }
   return (

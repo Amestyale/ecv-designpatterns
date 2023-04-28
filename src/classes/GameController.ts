@@ -11,7 +11,7 @@ import Room from './Room'
 import Scenario from './Scenario'
 
 export default class GameController {
-  static gameControllerInstance: GameController
+  static gameControllerInstance: GameController | undefined
 
   static getInstance(): GameController{
     if(!GameController.gameControllerInstance)  {
@@ -54,14 +54,19 @@ export default class GameController {
 
   public start(){
 
+    this.inspace = true
+    this.inevent = false
+    this.canevent = false 
+
+    this.currentRoomIndex = -1
+    this.currentPlanet = null
+
     this.eventManager = new EventManager(this)
     this.eventManager.resolve()
-
   }
 
 
   public isActive(option: Option): boolean {
-    console.log(option)
     return option.modifiers.every((m) =>  m.canBeChoosen())
   }
 
@@ -133,8 +138,10 @@ export default class GameController {
   public nextPlanetsAvailables(): Array<Planet> {
     if(!this.player) return []
     const ship = this.player.ship
+    console.log("max distance ", ship?.getMaxFlyingDistance())
     return this.planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
+      console.log(distance)
       if (ship) {
         return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
       } else {
@@ -144,10 +151,7 @@ export default class GameController {
   }
 
   public restartGame() {
-   // if (this.player && this.player.ship) {
-   //   this.player.ship = null
-   //   this.player = null
-   // }
+    if(this.player) this.player = null
   }
 
   public savePlayer() : any {

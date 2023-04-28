@@ -11,12 +11,18 @@ const leger = new Ship('leger', 20, 20, 10, 10)
 const lourd = new Ship('lourd', 10, 40, 20, 20)
 const ships = [
   {
-    name: 'leger',
-    vehicule: leger,
+    name: 'Léger',
+    fuel: 10,
+    health: 20,
+    maxFuel: 20,
+    maxHealth: 20
   },
   {
-    name: 'lourd',
-    vehicule: lourd,
+    name: 'Lourd',
+    fuel: 10,
+    health: 30,
+    maxFuel: 10,
+    maxHealth: 30
   },
 ]
 
@@ -24,7 +30,7 @@ const SelectShip = ({ setShip }: Props) => {
   const selectRef = useRef<HTMLSelectElement | null>(null)
   const handleOnClick = () => {
     const ship = ships.find((ship) => ship.name === selectRef?.current?.value)
-    if (ship) setShip(ship.vehicule)
+    if (ship) setShip(new Ship(ship.name, ship.fuel, ship.health, ship.maxFuel, ship.maxHealth))
   }
   return (
     <VStack
@@ -40,7 +46,7 @@ const SelectShip = ({ setShip }: Props) => {
             key={ship.name}
             value={ship.name}
           >
-            {ship.name} ({ship.vehicule.health} pv)
+            {ship.name}
           </option>
         ))}
       </Select>
@@ -48,7 +54,7 @@ const SelectShip = ({ setShip }: Props) => {
         width={'full'}
         onClick={handleOnClick}
       >
-        Select ship
+        Choisissez votre vaisseau
       </Button>
     </VStack>
   )

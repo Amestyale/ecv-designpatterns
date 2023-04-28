@@ -27,8 +27,8 @@ let RoomData =
         options: [
             {
                 name : "Entrer dans un bâtiment", 
-                description : "L’intérieur de la structure est extrêmement sombre, l’endroit sent la poussière et la solitude.<br/>Soudainement, un soupir brise le silence et par la même occasion le peu de courage qu’il vous restait et ce qui vous sert de jambes vous précipite vers la sortie.<br/>Vous ne soufflez qu’une fois de retour en orbite, vous n’avez toujours pas remarqué que vous n’êtes plus vraiment seul.e dans le vaisseau.<br/>Vous vous êtes fait un ami suspect…",
-                consequences: [{type: "player-data", name: 'health', modifier: '-20'}]
+                description : "L’intérieur de la structure est extrêmement sombre, l’endroit sent la poussière et la solitude, vous y trouvez cependant un stock de fuel.<br/>Soudainement, un soupir brise le silence et par la même occasion le peu de courage qu’il vous restait et ce qui vous sert de jambes vous précipite vers la sortie.<br/>Vous ne soufflez qu’une fois de retour en orbite, vous n’avez toujours pas remarqué que vous n’êtes plus vraiment seul.e dans le vaisseau.<br/>Vous vous êtes fait un ami suspect…",
+                consequences: [{type: "player-data", name: 'health', modifier: '-20'},{type: "ship-data", name: 'fuel', modifier: '2'}]
             },
             {
                 name : "Visiter le centre de la ville", 
@@ -48,7 +48,7 @@ let RoomData =
                 description : "Incroyable une station essence fonctionnelle sur une copie parfaite de la terre au beau milieu d’un système astrale totalement différent du système solaire ! Qui l’aurait cru ?<br/>Vous décidez de célébrer l’occasion en faisant un petit plein, personne ne semble surpris de vous voir remplir votre vaisseau en plein jour.<br/>-20 crédits +1 fuel",
                 consequences: [
                   {type: "player-data", name: 'money', modifier: -20},
-                  {type: "ship-data", name: 'fuel', modifier: '10'}]
+                  {type: "ship-data", name: 'fuel', modifier: '5'}]
             },
             {
                 name : "La maison de votre grand-mère ?", 
@@ -98,7 +98,8 @@ let RoomData =
             {
                 name : "Un nez de clown", 
                 description : "Il s’agit littéralement d’un nez de clown.<br/>Vous remarquez facilement l’air moqueur du caissier, qui pourtant est franchement peu expressif à cause de ses caractéristiques physiques.<br/>Il vous remet votre nouvelle acquisition dans un sac plastique et vous repartez de la planète en vous demandant ce qui ne va pas chez vous.<br/>-5 crédits, +1 nez de clown",
-                consequences: [{type: "player-data", name: 'money', modifier: '-5'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '-5'},
+                {type: "player-item", item: 'nez_clown', modifier: 1}]
             },
             {
                 name : "Passer votre chemin", 
@@ -116,7 +117,9 @@ let RoomData =
             {
                 name : "Offir un nouveau nez à Bozo", 
                 description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br/>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br/>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br/>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br/>-1 nez de clown, +60 crédits",
-                consequences: [{type: "player-data", name: 'money', modifier: '60'}]
+                consequences: [{type: "player-data", name: 'money', modifier: '60'},
+                {type: "ship-data", name: 'fuel', modifier: '2'},
+                {type: "player-item", item: 'nez_clown', modifier: -1}]
             },
             {
                 name : "Raconter un blague à Bozo", 
@@ -142,9 +145,10 @@ let RoomData =
             },
             {
             name : "Explorer les environs",
-            description : "Vous décidez d'explorer les environs, malgré les dangers. Vous trouvez une grotte qui mène à une chambre de cristal remplie de pierres précieuses.<br/>+50 de richesse",
+            description : "Vous décidez d'explorer les environs, malgré les dangers. Vous trouvez une grotte qui mène à une chambre de cristal remplie de pierres précieuses. Vous trouvez également une épave de vaisseau abandonné, il reste un peux de fuel dans le réservoir. <br/>+50 de richesse, +1 fuel",
             consequences: [
-                {type: "player-data", name: 'money', modifier: '+50'}
+                {type: "player-data", name: 'money', modifier: '+50'},
+                {type: "ship-data", name: 'fuel', modifier: '5'}
             ]
             }
         ],

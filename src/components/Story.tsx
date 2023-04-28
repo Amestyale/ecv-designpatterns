@@ -31,7 +31,7 @@ const Story = ({ title, text, choose, optionFacade, options }: any) => {
 export default Story
 
 const br2jsx = (text: string) => {
-  return text.replace('<br/>','<br/>').split('<br/>').map((item, key) => {
+  return text.split('<br/>').map((item, key) => {
     return (
       <React.Fragment key={key}>
         {item}

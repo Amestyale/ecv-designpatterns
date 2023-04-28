@@ -44,6 +44,11 @@ let ItemsData =
         id: 'robot_reparation',
         title: 'Robot de réparation pour votre vaisseau',
         description: 'Un petit robot pour réparer votre vaisseau en cas de panne !',
+    },
+    {
+        id: 'nez_clown',
+        title: 'Nez de clown',
+        description: 'Juste un nez de clown',
     }
 ];
 

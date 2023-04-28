@@ -18,16 +18,15 @@ import BackupManager from '../classes/gamemanagement/BackupManager'
 
 
 type GameProps = {
+  restart: Function
 }
 
-const Game = ({ }: GameProps) => {
+const Game = ({ restart }: GameProps) => {
   const gameController = useGameController()
 
-  const distanceFromWin = gameController.distanceFromWin()
   const title = gameController.currentRoom()?.title
   const text = gameController.currentRoom()?.text
   const options = gameController.currentRoom()?.options
-  console.log(gameController.currentRoom())
   const optionFacade = gameController.currentRoom()?.optionFacade
   const logText = gameController.log
 
@@ -37,22 +36,16 @@ const Game = ({ }: GameProps) => {
     gameController.resolveRoom(option)
     setRefresh(!refresh)
   }
-  const [isRestart, setIsRestart] = useState<boolean>(false);
-  const handleRestart = () => {
-    setIsRestart(true);
-  };
   const restartGame = () => {
-    console.log("restart")
-    console.log(gameController.player)
-    handleRestart();
+    restart();
   }
 
   if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
-  if (gameDisplay.isGameWin()) return <Heading>You win !</Heading>
+  if (gameDisplay.isGameWin()) return <Heading>Vous avez gagné !</Heading>
   if (gameDisplay.isGameOver()) return (
     <VStack>
       <Heading>{gameDisplay.isGameOver()}</Heading>
-      <button onClick={restartGame}>New game</button>
+      <button onClick={restartGame}>Je veux réessayer</button>
     </VStack>
 
     )

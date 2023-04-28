@@ -9,7 +9,6 @@ import moment from 'moment'
 
 const BackupInterface = ({callback}: any) => {
   const backupManager = new BackupManager()
-  console.log( backupManager.getBackups())
   return (
     <>
     <VStack

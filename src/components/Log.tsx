@@ -14,8 +14,6 @@ const Log = ({ text }: any) => {
     <ListItem>{string}</ListItem>
   ));
 
-  console.log(stringArray);
-  
   return (
     <Stack
       flex={1}
