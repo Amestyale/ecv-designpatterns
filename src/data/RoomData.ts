@@ -118,7 +118,7 @@ let RoomData =
                 name : "Offir un nouveau nez à Bozo", 
                 description : "À la vue d’un nouvel appendice rouge, le visage de Bozo s’écarquille.<br/>Il vous arrache presque le nez des mains avant de le coller à son visage, il semblerait presque soulager sous sa perruque multicolore.<br/>En guise de remerciement, le clown sort un porte-monnaie d’une taille imposante de son pantalon et en sort une seule pièce comiquement large.<br/>Votre bonne action a été largement remboursée par une forte somme d’argent et un mal de dos causé par le retour au vaisseau avec une pièce de plusieurs dizaines de kilos sur votre dos.<br/>-1 nez de clown, +60 crédits",
                 consequences: [{type: "player-data", name: 'money', modifier: '60'},
-                {type: "ship-data", name: 'fuel', modifier: '2'},
+                {type: "ship-data", name: 'fuel', modifier: '7'},
                 {type: "player-item", item: 'nez_clown', modifier: -1}]
             },
             {

@@ -12,9 +12,9 @@ const lourd = new Ship('lourd', 10, 40, 20, 20)
 const ships = [
   {
     name: 'Léger',
-    fuel: 10,
+    fuel: 12,
     health: 20,
-    maxFuel: 20,
+    maxFuel: 12,
     maxHealth: 20
   },
   {
