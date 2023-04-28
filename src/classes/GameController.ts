@@ -138,8 +138,10 @@ export default class GameController {
   public nextPlanetsAvailables(): Array<Planet> {
     if(!this.player) return []
     const ship = this.player.ship
+    console.log("max distance ", ship?.getMaxFlyingDistance())
     return this.planets.filter((planet) => {
       const distance = planet.distanceFrom(this.currentX(), this.currentY())
+      console.log(distance)
       if (ship) {
         return ship.getMaxFlyingDistance() >= distance && this.currentPlanet?.name != planet.name
       } else {
