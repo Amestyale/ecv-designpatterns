@@ -15,6 +15,7 @@ import Item from '../classes/Item'
 import ProgressMap from './map/ProgressMap'
 import useGameController from '../hooks/useGameController'
 import BackupManager from '../classes/gamemanagement/BackupManager'
+import { Button } from '@chakra-ui/button'
 
 
 type GameProps = {
@@ -41,11 +42,14 @@ const Game = ({ restart }: GameProps) => {
   }
 
   if(!gameController.player || !gameController.player.ship) throw Error("Mais, vous n'êtes pas censé être là ! >.<")
-  if (gameDisplay.isGameWin()) return <Heading>Vous avez gagné !</Heading>
+  if (gameDisplay.isGameWin()) return <Heading padding='16px' backgroundColor='rgba(0,0,0,0.6)' margin="16px" borderRadius="10px">Vous avez gagné !</Heading>
   if (gameDisplay.isGameOver()) return (
     <VStack>
-      <Heading>{gameDisplay.isGameOver()}</Heading>
-      <button onClick={restartGame}>Je veux réessayer</button>
+      <Heading padding='16px' backgroundColor='rgba(0,0,0,0.6)' textAlign="center" margin="16px" borderRadius="10px">{gameDisplay.isGameOver()}</Heading>
+      
+      <Button backgroundColor='rgba(0,0,0,0.8)' onClick={restartGame}>
+      Je veux réessayer
+      </Button>
     </VStack>
 
     )
